@@ -7,9 +7,9 @@
 			"metadata": "Nombre de instancia de Data Factory",
 			"defaultValue": "df-ana"
 		},
-		"ExcelDrive_password": {
+		"HttpServer1_password": {
 			"type": "secureString",
-			"metadata": "Cadena protegida para \"password\"de \"ExcelDrive\""
+			"metadata": "Cadena protegida para \"password\"de \"HttpServer1\""
 		},
 		"LS_ADLS_Gen2_accountKey": {
 			"type": "secureString",
@@ -23,13 +23,13 @@
 			"type": "secureString",
 			"metadata": "Cadena protegida para \"connectionString\"de \"LS_storage\""
 		},
-		"ExcelDrive_properties_typeProperties_url": {
+		"HttpServer1_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://drive.google.com/file/d/12Dirz5NkXa7QzIQOzp5wV8XFKMPqtuvp/view?usp=sharing"
+			"defaultValue": "https://drive.google.com/"
 		},
-		"ExcelDrive_properties_typeProperties_userName": {
+		"HttpServer1_properties_typeProperties_userName": {
 			"type": "string",
-			"defaultValue": "anaadmin"
+			"defaultValue": "anadmin"
 		},
 		"LS_ADLS_Gen2_properties_typeProperties_url": {
 			"type": "string",
@@ -344,7 +344,12 @@
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
 				},
-				"schema": []
+				"schema": [
+					{
+						"name": "<!DOCTYPE html><html dir=\"ltr\"><head><script nonce=\"m7hVRQhPzMsiE7IaG2RO2w\"> window['_DRIVE_VIEWER_ctiming']={}; </script><meta name=\"google\" content=\"notranslate\"><style nonce=\"P5o5HO5jQ5zA2YdpkkXGxQ\">@font-face{font-family:'Roboto';font-style:italic;font-weight:400;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOKCnqEu92Fr1Mu53ZEC9_Vu3r1gIhOszmOClHrs6ljXfMMLoHQuAj-lg.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWuaabVmUiA8.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbVmUiA8.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWub2bVmUiA8.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWuYjalmUiA8.ttf)format('truetype');}@font-face{font-family:'Google Sans';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrwEIJllpyw.ttf)format('truetype');}@font-face{font-family:'Google Sans';font-style:normal;font-weight:500;src:url(//fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrw2IJllpyw.ttf)format('truetype');}@font-face{font-family:'Google Sans';font-style:normal;font-weight:700;src:url(//fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrzjJ5llpyw.ttf)format('truetype');}</style><meta name=\"referrer\" content=\"origin\"><title>productos_demo3.csv - Google Drive</title><script nonce=\"m7hVRQhPzMsiE7IaG2RO2w\">",
+						"type": "String"
+					}
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
@@ -565,41 +570,59 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "ExcelDrive",
+					"referenceName": "HttpServer1",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "HttpServerLocation"
+						"type": "HttpServerLocation",
+						"relativeUrl": {
+							"value": "uc?export=download&id=12Dirz5NkXa7QzIQOzp5wV8XFKMPqtuvp",
+							"type": "Expression"
+						}
 					},
 					"columnDelimiter": ",",
+					"rowDelimiter": "\n",
 					"escapeChar": "\\",
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
 				},
-				"schema": []
+				"schema": [
+					{
+						"name": "id_producto",
+						"type": "String"
+					},
+					{
+						"name": "nombre_producto",
+						"type": "String"
+					},
+					{
+						"name": "categoria",
+						"type": "String"
+					}
+				]
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ExcelDrive')]"
+				"[concat(variables('factoryId'), '/linkedServices/HttpServer1')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ExcelDrive')]",
+			"name": "[concat(parameters('factoryName'), '/HttpServer1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
 				"type": "HttpServer",
 				"typeProperties": {
-					"url": "[parameters('ExcelDrive_properties_typeProperties_url')]",
+					"url": "[parameters('HttpServer1_properties_typeProperties_url')]",
 					"enableServerCertificateValidation": true,
 					"authenticationType": "Basic",
-					"userName": "[parameters('ExcelDrive_properties_typeProperties_userName')]",
+					"userName": "[parameters('HttpServer1_properties_typeProperties_userName')]",
 					"password": {
 						"type": "SecureString",
-						"value": "[parameters('ExcelDrive_password')]"
+						"value": "[parameters('HttpServer1_password')]"
 					}
 				}
 			},

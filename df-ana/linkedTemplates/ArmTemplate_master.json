@@ -7,9 +7,9 @@
 			"metadata": "Nombre de instancia de Data Factory",
 			"defaultValue": "df-ana"
 		},
-		"ExcelDrive_password": {
+		"HttpServer1_password": {
 			"type": "secureString",
-			"metadata": "Cadena protegida para \"password\"de \"ExcelDrive\""
+			"metadata": "Cadena protegida para \"password\"de \"HttpServer1\""
 		},
 		"LS_ADLS_Gen2_accountKey": {
 			"type": "secureString",
@@ -23,13 +23,13 @@
 			"type": "secureString",
 			"metadata": "Cadena protegida para \"connectionString\"de \"LS_storage\""
 		},
-		"ExcelDrive_properties_typeProperties_url": {
+		"HttpServer1_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://drive.google.com/file/d/12Dirz5NkXa7QzIQOzp5wV8XFKMPqtuvp/view?usp=sharing"
+			"defaultValue": "https://drive.google.com/"
 		},
-		"ExcelDrive_properties_typeProperties_userName": {
+		"HttpServer1_properties_typeProperties_userName": {
 			"type": "string",
-			"defaultValue": "anaadmin"
+			"defaultValue": "anadmin"
 		},
 		"LS_ADLS_Gen2_properties_typeProperties_url": {
 			"type": "string",
@@ -82,8 +82,8 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"ExcelDrive_password": {
-						"value": "[parameters('ExcelDrive_password')]"
+					"HttpServer1_password": {
+						"value": "[parameters('HttpServer1_password')]"
 					},
 					"LS_ADLS_Gen2_accountKey": {
 						"value": "[parameters('LS_ADLS_Gen2_accountKey')]"
@@ -94,11 +94,11 @@
 					"LS_storage_connectionString": {
 						"value": "[parameters('LS_storage_connectionString')]"
 					},
-					"ExcelDrive_properties_typeProperties_url": {
-						"value": "[parameters('ExcelDrive_properties_typeProperties_url')]"
+					"HttpServer1_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer1_properties_typeProperties_url')]"
 					},
-					"ExcelDrive_properties_typeProperties_userName": {
-						"value": "[parameters('ExcelDrive_properties_typeProperties_userName')]"
+					"HttpServer1_properties_typeProperties_userName": {
+						"value": "[parameters('HttpServer1_properties_typeProperties_userName')]"
 					},
 					"LS_ADLS_Gen2_properties_typeProperties_url": {
 						"value": "[parameters('LS_ADLS_Gen2_properties_typeProperties_url')]"

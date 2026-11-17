@@ -5,7 +5,7 @@
 		"factoryName": {
 			"value": "df-ana"
 		},
-		"ExcelDrive_password": {
+		"HttpServer1_password": {
 			"value": ""
 		},
 		"LS_ADLS_Gen2_accountKey": {
@@ -17,11 +17,11 @@
 		"LS_storage_connectionString": {
 			"value": ""
 		},
-		"ExcelDrive_properties_typeProperties_url": {
-			"value": "https://drive.google.com/file/d/12Dirz5NkXa7QzIQOzp5wV8XFKMPqtuvp/view?usp=sharing"
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "https://drive.google.com/"
 		},
-		"ExcelDrive_properties_typeProperties_userName": {
-			"value": "anaadmin"
+		"HttpServer1_properties_typeProperties_userName": {
+			"value": "anadmin"
 		},
 		"LS_ADLS_Gen2_properties_typeProperties_url": {
 			"value": "https://proyectos2027.dfs.core.windows.net/"
