@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "df-ana"
+		},
+		"ExcelDrive_password": {
+			"value": ""
+		},
+		"LS_ADLS_Gen2_accountKey": {
+			"value": ""
+		},
+		"LS_sql_password": {
+			"value": ""
+		},
+		"LS_storage_connectionString": {
+			"value": ""
+		},
+		"ExcelDrive_properties_typeProperties_url": {
+			"value": "https://drive.google.com/file/d/12Dirz5NkXa7QzIQOzp5wV8XFKMPqtuvp/view?usp=sharing"
+		},
+		"ExcelDrive_properties_typeProperties_userName": {
+			"value": "anaadmin"
+		},
+		"LS_ADLS_Gen2_properties_typeProperties_url": {
+			"value": "https://proyectos2027.dfs.core.windows.net/"
+		},
+		"LS_API_Clientes_properties_typeProperties_url": {
+			"value": "https://jsonplaceholder.typicode.com/"
+		},
+		"LS_Synapse_Artifacts_properties_typeProperties_endpoint": {
+			"value": "https://synapse-ingenieria-demo-2026.dev.azuresynapse.net"
+		},
+		"LS_sql_properties_typeProperties_server": {
+			"value": "sql-server-practica-ana.database.windows.net"
+		},
+		"LS_sql_properties_typeProperties_database": {
+			"value": "practica01"
+		},
+		"LS_sql_properties_typeProperties_userName": {
+			"value": "anaadmin"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

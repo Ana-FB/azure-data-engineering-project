@@ -1,0 +1,126 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Nombre de instancia de Data Factory",
+			"defaultValue": "df-ana"
+		},
+		"ExcelDrive_password": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"password\"de \"ExcelDrive\""
+		},
+		"LS_ADLS_Gen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"accountKey\"de \"LS_ADLS_Gen2\""
+		},
+		"LS_sql_password": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"password\"de \"LS_sql\""
+		},
+		"LS_storage_connectionString": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"connectionString\"de \"LS_storage\""
+		},
+		"ExcelDrive_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://drive.google.com/file/d/12Dirz5NkXa7QzIQOzp5wV8XFKMPqtuvp/view?usp=sharing"
+		},
+		"ExcelDrive_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "anaadmin"
+		},
+		"LS_ADLS_Gen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://proyectos2027.dfs.core.windows.net/"
+		},
+		"LS_API_Clientes_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://jsonplaceholder.typicode.com/"
+		},
+		"LS_Synapse_Artifacts_properties_typeProperties_endpoint": {
+			"type": "string",
+			"defaultValue": "https://synapse-ingenieria-demo-2026.dev.azuresynapse.net"
+		},
+		"LS_sql_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-server-practica-ana.database.windows.net"
+		},
+		"LS_sql_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "practica01"
+		},
+		"LS_sql_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "anaadmin"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI de la cuenta de almacenamiento que contiene las plantillas de ARM vinculadas."
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Token de SAS para la cuenta de almacenamiento que contiene las plantillas de ARM vinculadas"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "df-ana_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ExcelDrive_password": {
+						"value": "[parameters('ExcelDrive_password')]"
+					},
+					"LS_ADLS_Gen2_accountKey": {
+						"value": "[parameters('LS_ADLS_Gen2_accountKey')]"
+					},
+					"LS_sql_password": {
+						"value": "[parameters('LS_sql_password')]"
+					},
+					"LS_storage_connectionString": {
+						"value": "[parameters('LS_storage_connectionString')]"
+					},
+					"ExcelDrive_properties_typeProperties_url": {
+						"value": "[parameters('ExcelDrive_properties_typeProperties_url')]"
+					},
+					"ExcelDrive_properties_typeProperties_userName": {
+						"value": "[parameters('ExcelDrive_properties_typeProperties_userName')]"
+					},
+					"LS_ADLS_Gen2_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_Gen2_properties_typeProperties_url')]"
+					},
+					"LS_API_Clientes_properties_typeProperties_url": {
+						"value": "[parameters('LS_API_Clientes_properties_typeProperties_url')]"
+					},
+					"LS_Synapse_Artifacts_properties_typeProperties_endpoint": {
+						"value": "[parameters('LS_Synapse_Artifacts_properties_typeProperties_endpoint')]"
+					},
+					"LS_sql_properties_typeProperties_server": {
+						"value": "[parameters('LS_sql_properties_typeProperties_server')]"
+					},
+					"LS_sql_properties_typeProperties_database": {
+						"value": "[parameters('LS_sql_properties_typeProperties_database')]"
+					},
+					"LS_sql_properties_typeProperties_userName": {
+						"value": "[parameters('LS_sql_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
