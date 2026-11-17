@@ -1,0 +1,37 @@
+{
+	"name": "DFlow_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_Gen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "productos.csv",
+				"folderPath": "staging/producto",
+				"fileSystem": "datos"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "id_producto",
+				"type": "String"
+			},
+			{
+				"name": "nombre_producto",
+				"type": "String"
+			},
+			{
+				"name": "categoria",
+				"type": "String"
+			}
+		]
+	}
+}
