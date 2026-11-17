@@ -192,13 +192,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_ADLS_SQL_Staging",
+						"referenceName": "DS_ADLS_SQL_Staging2",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_SQL",
+						"referenceName": "SQL_DetallePedido",
 						"type": "DatasetReference"
 					}
 				]

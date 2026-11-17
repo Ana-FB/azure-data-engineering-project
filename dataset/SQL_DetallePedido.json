@@ -1,0 +1,41 @@
+{
+	"name": "SQL_DetallePedido",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_Gen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "detalle_pedido.parquet",
+					"type": "Expression"
+				},
+				"folderPath": "staging/pedido",
+				"fileSystem": "datos"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "id_pedido",
+				"type": "INT32"
+			},
+			{
+				"name": "id_cliente",
+				"type": "INT32"
+			},
+			{
+				"name": "fecha",
+				"type": "DATE"
+			},
+			{
+				"name": "fecha_modificacion_utc",
+				"type": "INT96"
+			}
+		]
+	}
+}
