@@ -40,7 +40,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_API_clientes_staging",
+						"referenceName": "DS_ADLS_API_clientes_staging",
 						"type": "DatasetReference"
 					}
 				]
@@ -98,7 +98,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_Producto_Staging",
+						"referenceName": "DS_ADLS_Producto_Staging",
 						"type": "DatasetReference"
 					}
 				]
@@ -142,7 +142,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "LS_sql",
+						"referenceName": "DS_ADLS_SQL_Staging",
 						"type": "DatasetReference"
 					}
 				],
@@ -154,7 +154,7 @@
 				]
 			},
 			{
-				"name": "SQL_detallepedido",
+				"name": "SQL_DetallePedido",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -192,7 +192,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "LS_sql",
+						"referenceName": "DS_ADLS_SQL_Staging",
 						"type": "DatasetReference"
 					}
 				],
