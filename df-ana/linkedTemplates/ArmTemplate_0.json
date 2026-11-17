@@ -320,10 +320,6 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "detalle_pedido.parquet",
-							"type": "Expression"
-						},
 						"folderPath": "staging/pedido",
 						"fileSystem": "datos"
 					},
