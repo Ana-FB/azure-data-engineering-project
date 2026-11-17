@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "productos.csv",
-				"folderPath": "landing",
+				"folderPath": "staging",
 				"fileSystem": "datos"
 			},
 			"columnDelimiter": ",",
