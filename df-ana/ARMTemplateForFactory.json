@@ -217,7 +217,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_SQL",
+								"referenceName": "DS_SQL_Pedido",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -262,14 +262,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "DS_ADLS_SQL_Staging",
+								"referenceName": "DS_ADLS_SQL_Staging2",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_SQL",
+								"referenceName": "SQL_DetallePedido",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -288,7 +288,9 @@
 				"[concat(variables('factoryId'), '/datasets/http_excel_producto')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Producto_Staging')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_SQL_Staging')]",
-				"[concat(variables('factoryId'), '/datasets/DS_SQL')]"
+				"[concat(variables('factoryId'), '/datasets/DS_SQL_Pedido')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_SQL_Staging2')]",
+				"[concat(variables('factoryId'), '/datasets/SQL_DetallePedido')]"
 			]
 		},
 		{
@@ -466,7 +468,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_SQL')]",
+			"name": "[concat(parameters('factoryName'), '/DS_SQL_Pedido')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -479,6 +481,56 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "pedido.parquet",
+							"type": "Expression"
+						},
+						"folderPath": "staging/pedido",
+						"fileSystem": "datos"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "id_pedido",
+						"type": "INT32"
+					},
+					{
+						"name": "id_cliente",
+						"type": "INT32"
+					},
+					{
+						"name": "fecha",
+						"type": "DATE"
+					},
+					{
+						"name": "fecha_modificacion_utc",
+						"type": "INT96"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SQL_DetallePedido')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ADLS_Gen2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "detalle_pedido.parquet",
+							"type": "Expression"
+						},
 						"folderPath": "staging/pedido",
 						"fileSystem": "datos"
 					},
