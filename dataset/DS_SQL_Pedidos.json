@@ -1,0 +1,32 @@
+{
+	"name": "DS_SQL_Pedidos",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_sql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id_pedido",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "id_cliente",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "fecha",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "demo",
+			"table": "pedidos"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

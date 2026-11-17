@@ -1,0 +1,14 @@
+{
+	"name": "LS_API_Clientes",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Conexión REST a la API pública JSONPlaceholder para extraer datos ficticios de clientes en formato JSON. Utilizada como fuente de datos en el pipeline de ventas y análisis de calidad.",
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://jsonplaceholder.typicode.com/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"name": "df-ana",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "brazilsouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c68fea92-86f6-480e-94b4-1ddc58e294bb",
+		"tenantId": "28af18db-0005-48ee-b4e0-2410ced6b9ad"
+	}
+}
