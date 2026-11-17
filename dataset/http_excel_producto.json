@@ -2,20 +2,38 @@
 	"name": "http_excel_producto",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ExcelDrive",
+			"referenceName": "HttpServer1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "HttpServerLocation"
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "uc?export=download&id=12Dirz5NkXa7QzIQOzp5wV8XFKMPqtuvp",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
+			"rowDelimiter": "\n",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "id_producto",
+				"type": "String"
+			},
+			{
+				"name": "nombre_producto",
+				"type": "String"
+			},
+			{
+				"name": "categoria",
+				"type": "String"
+			}
+		]
 	}
 }
