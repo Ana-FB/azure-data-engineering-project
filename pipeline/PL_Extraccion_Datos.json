@@ -148,7 +148,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_SQL",
+						"referenceName": "DS_SQL_Pedido",
 						"type": "DatasetReference"
 					}
 				]
