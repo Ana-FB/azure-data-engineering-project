@@ -231,10 +231,83 @@
 				},
 				"annotations": [],
 				"type": "AzureSqlTable",
-				"schema": [],
+				"schema": [
+					{
+						"name": "id_pedido",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "id_cliente",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "fecha",
+						"type": "date"
+					},
+					{
+						"name": "fecha_modificacion_utc",
+						"type": "datetime2",
+						"scale": 3
+					}
+				],
 				"typeProperties": {
 					"schema": "demo",
 					"table": "pedidos"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_AzureSQL')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_ADLS_SQL_Staging2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_AzureSQL",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "id_detalle",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "id_pedido",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "id_producto",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "cantidad",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "precio_unitario",
+						"type": "decimal",
+						"precision": 10,
+						"scale": 2
+					},
+					{
+						"name": "fecha_modificacion_utc",
+						"type": "datetime2",
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "demo",
+					"table": "detalle_pedido"
 				}
 			},
 			"dependsOn": [
@@ -265,7 +338,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_SQL_DetallePedido_Source')]",
+			"name": "[concat(parameters('factoryName'), '/DS_SQL')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -301,31 +374,6 @@
 						"type": "INT96"
 					}
 				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_SQL_Pedidos_Source')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_ADLS_Gen2",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": "staging/pedido",
-						"fileSystem": "datos"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
@@ -514,7 +562,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_SQL_Pedidos_Source",
+								"referenceName": "DS_SQL",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -566,7 +614,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_SQL_DetallePedido_Source",
+								"referenceName": "DS_SQL",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -585,8 +633,7 @@
 				"[concat(variables('factoryId'), '/datasets/http_excel_producto')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Producto_Staging')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_SQL_Staging')]",
-				"[concat(variables('factoryId'), '/datasets/DS_SQL_Pedidos_Source')]",
-				"[concat(variables('factoryId'), '/datasets/DS_SQL_DetallePedido_Source')]"
+				"[concat(variables('factoryId'), '/datasets/DS_SQL')]"
 			]
 		}
 	]
