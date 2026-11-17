@@ -14,9 +14,9 @@
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "DFlow_csv",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "LS_ADLS_Gen2",
+						"type": "LinkedServiceReference"
 					},
 					"name": "sink1",
 					"rejectedDataLinkedService": {
@@ -37,11 +37,17 @@
 				"     ignoreNoFilesFound: false) ~> source1",
 				"source1 sink(allowSchemaDrift: true,",
 				"     validateSchema: true,",
-				"     input(",
-				"          id_producto as string,",
-				"          nombre_producto as string,",
-				"          categoria as string",
-				"     ),",
+				"     format: 'delta',",
+				"     fileSystem: 'datos',",
+				"     folderPath: 'bronze/producto',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable: false,",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     upsertable: false,",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
