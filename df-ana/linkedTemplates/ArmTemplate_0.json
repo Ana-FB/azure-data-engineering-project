@@ -296,6 +296,10 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "detalle_pedido.parquet",
+							"type": "Expression"
+						},
 						"folderPath": "staging/pedido",
 						"fileSystem": "datos"
 					},
@@ -518,7 +522,7 @@
 						]
 					},
 					{
-						"name": "SQL_detallepedido",
+						"name": "SQL_DetallePedido",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
