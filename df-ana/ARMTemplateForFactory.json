@@ -105,7 +105,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_ADLS_API_clientes_staging",
+								"referenceName": "DS_API_clientes_staging",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -165,7 +165,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_ADLS_Producto_Staging",
+								"referenceName": "DS_Producto_Staging",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -173,6 +173,58 @@
 					},
 					{
 						"name": "SQL_pedido",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "ParquetWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "LS_sql",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_SQL_Pedidos_Source",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "SQL_DetallePedido",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -232,15 +284,38 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_API_Clientes')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_API_clientes_staging')]",
+				"[concat(variables('factoryId'), '/datasets/DS_API_clientes_staging')]",
 				"[concat(variables('factoryId'), '/datasets/http_excel_producto')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Producto_Staging')]",
+				"[concat(variables('factoryId'), '/datasets/DS_Producto_Staging')]",
 				"[concat(variables('factoryId'), '/datasets/LS_sql')]",
 				"[concat(variables('factoryId'), '/datasets/DS_SQL_Pedidos_Source')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_ADLS_API_clientes_staging')]",
+			"name": "[concat(parameters('factoryName'), '/DS_API_Clientes')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_API_Clientes",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"typeProperties": {
+					"relativeUrl": {
+						"value": "users",
+						"type": "Expression"
+					}
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_API_Clientes')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_API_clientes_staging')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -265,7 +340,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Producto_Staging')]",
+			"name": "[concat(parameters('factoryName'), '/DS_Producto_Staging')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -291,29 +366,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_API_Clientes')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_API_Clientes",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "RestResource",
-				"typeProperties": {
-					"relativeUrl": {
-						"value": "users",
-						"type": "Expression"
-					}
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_API_Clientes')]"
 			]
 		},
 		{
