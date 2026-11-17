@@ -15,9 +15,9 @@
 			"type": "secureString",
 			"metadata": "Cadena protegida para \"accountKey\"de \"LS_ADLS_Gen2\""
 		},
-		"LS_sql_password": {
+		"LS_AzureSQL_password": {
 			"type": "secureString",
-			"metadata": "Cadena protegida para \"password\"de \"LS_sql\""
+			"metadata": "Cadena protegida para \"password\"de \"LS_AzureSQL\""
 		},
 		"LS_storage_connectionString": {
 			"type": "secureString",
@@ -39,21 +39,21 @@
 			"type": "string",
 			"defaultValue": "https://jsonplaceholder.typicode.com/"
 		},
-		"LS_Synapse_Artifacts_properties_typeProperties_endpoint": {
-			"type": "string",
-			"defaultValue": "https://synapse-ingenieria-demo-2026.dev.azuresynapse.net"
-		},
-		"LS_sql_properties_typeProperties_server": {
+		"LS_AzureSQL_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "sql-server-practica-ana.database.windows.net"
 		},
-		"LS_sql_properties_typeProperties_database": {
+		"LS_AzureSQL_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "practica01"
 		},
-		"LS_sql_properties_typeProperties_userName": {
+		"LS_AzureSQL_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "anaadmin"
+		},
+		"LS_Synapse_Artifacts_properties_typeProperties_endpoint": {
+			"type": "string",
+			"defaultValue": "https://synapse-ingenieria-demo-2026.dev.azuresynapse.net"
 		}
 	},
 	"variables": {
@@ -88,12 +88,10 @@
 							"sink": {
 								"type": "JsonSink",
 								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings",
-									"copyBehavior": "PreserveHierarchy"
+									"type": "AzureBlobFSWriteSettings"
 								},
 								"formatSettings": {
-									"type": "JsonWriteSettings",
-									"filePattern": "arrayOfObjects"
+									"type": "JsonWriteSettings"
 								}
 							},
 							"enableStaging": false
@@ -107,18 +105,9 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_BLOB_Clientes_JSON",
+								"referenceName": "DS_ADLS_API_clientes_staging",
 								"type": "DatasetReference",
-								"parameters": {
-									"p_carpeta": {
-										"value": "bronze/Cliente",
-										"type": "Expression"
-									},
-									"p_archivo": {
-										"value": "clientes_api.json",
-										"type": "Expression"
-									}
-								}
+								"parameters": {}
 							}
 						]
 					},
@@ -191,7 +180,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_API_Clientes')]",
-				"[concat(variables('factoryId'), '/datasets/DS_BLOB_Clientes_JSON')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_API_clientes_staging')]",
 				"[concat(variables('factoryId'), '/datasets/http_excel_producto')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Producto_Staging')]"
 			]
@@ -211,7 +200,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"fileName": "productos.csv",
-						"folderPath": "landing",
+						"folderPath": "staging",
 						"fileSystem": "datos"
 					},
 					"columnDelimiter": ",",
@@ -246,155 +235,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_API_Clientes')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_BLOB_Clientes_JSON')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_storage",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"p_carpeta": {
-						"type": "string"
-					},
-					"p_archivo": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": {
-							"value": "@dataset().p_archivo",
-							"type": "Expression"
-						},
-						"folderPath": {
-							"value": "@dataset().p_carpeta",
-							"type": "Expression"
-						},
-						"container": "datos"
-					}
-				},
-				"schema": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_storage')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_BLOB_Pedidos_Parquet')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_storage",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "pedidos.parquet",
-						"folderPath": "bronze/pedidos",
-						"container": "datos"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_storage')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_SQL_DetallePedido')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_sql",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "id_detalle",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "id_pedido",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "id_producto",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "cantidad",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "precio_unitario",
-						"type": "decimal",
-						"precision": 10,
-						"scale": 2
-					}
-				],
-				"typeProperties": {
-					"schema": "demo",
-					"table": "detalle_pedido"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_sql')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_SQL_Pedidos')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_sql",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "id_pedido",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "id_cliente",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "fecha",
-						"type": "date"
-					}
-				],
-				"typeProperties": {
-					"schema": "demo",
-					"table": "pedidos"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_sql')]"
 			]
 		},
 		{
@@ -477,6 +317,28 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/LS_AzureSQL')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"server": "[parameters('LS_AzureSQL_properties_typeProperties_server')]",
+					"database": "[parameters('LS_AzureSQL_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_AzureSQL_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_AzureSQL_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LS_Synapse_Artifacts')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -487,28 +349,6 @@
 					"endpoint": "[parameters('LS_Synapse_Artifacts_properties_typeProperties_endpoint')]",
 					"authentication": "MSI",
 					"workspaceResourceId": "/subscriptions/3eac8f23-88c8-4ed3-85d4-adc05237fc61/resourceGroups/miGrupoDeRecursos/providers/Microsoft.Synapse/workspaces/synapse-ingenieria-demo-2026"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_sql')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"server": "[parameters('LS_sql_properties_typeProperties_server')]",
-					"database": "[parameters('LS_sql_properties_typeProperties_database')]",
-					"encrypt": "mandatory",
-					"trustServerCertificate": false,
-					"authenticationType": "SQL",
-					"userName": "[parameters('LS_sql_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('LS_sql_password')]"
-					}
 				}
 			},
 			"dependsOn": []
@@ -525,6 +365,49 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_ADLS_API_clientes_staging')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ADLS_Gen2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "cliente.json",
+						"folderPath": "staging/cliente",
+						"fileSystem": "datos"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_sql')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_AzureSQL",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_AzureSQL')]"
+			]
 		}
 	]
 }

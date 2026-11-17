@@ -11,7 +11,7 @@
 		"LS_ADLS_Gen2_accountKey": {
 			"value": ""
 		},
-		"LS_sql_password": {
+		"LS_AzureSQL_password": {
 			"value": ""
 		},
 		"LS_storage_connectionString": {
@@ -29,17 +29,17 @@
 		"LS_API_Clientes_properties_typeProperties_url": {
 			"value": "https://jsonplaceholder.typicode.com/"
 		},
-		"LS_Synapse_Artifacts_properties_typeProperties_endpoint": {
-			"value": "https://synapse-ingenieria-demo-2026.dev.azuresynapse.net"
-		},
-		"LS_sql_properties_typeProperties_server": {
+		"LS_AzureSQL_properties_typeProperties_server": {
 			"value": "sql-server-practica-ana.database.windows.net"
 		},
-		"LS_sql_properties_typeProperties_database": {
+		"LS_AzureSQL_properties_typeProperties_database": {
 			"value": "practica01"
 		},
-		"LS_sql_properties_typeProperties_userName": {
+		"LS_AzureSQL_properties_typeProperties_userName": {
 			"value": "anaadmin"
+		},
+		"LS_Synapse_Artifacts_properties_typeProperties_endpoint": {
+			"value": "https://synapse-ingenieria-demo-2026.dev.azuresynapse.net"
 		}
 	}
 }
