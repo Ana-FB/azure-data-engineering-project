@@ -1,5 +1,5 @@
 {
-	"name": "DF_Bronze_Producto",
+	"name": "DF_Staging_Bronze",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -10,6 +10,27 @@
 						"type": "DatasetReference"
 					},
 					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "DS_ADLS_API_clientes_staging",
+						"type": "DatasetReference"
+					},
+					"name": "sourceClientes"
+				},
+				{
+					"dataset": {
+						"referenceName": "DS_ADLS_SQL_Staging",
+						"type": "DatasetReference"
+					},
+					"name": "sourcePedido"
+				},
+				{
+					"dataset": {
+						"referenceName": "DS_ADLS_SQL_Staging2",
+						"type": "DatasetReference"
+					},
+					"name": "sourceDetallePedido"
 				}
 			],
 			"sinks": [
@@ -19,6 +40,39 @@
 						"type": "LinkedServiceReference"
 					},
 					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "LS_ADLS_Gen2",
+						"type": "LinkedServiceReference"
+					}
+				},
+				{
+					"linkedService": {
+						"referenceName": "LS_ADLS_Gen2",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink2",
+					"rejectedDataLinkedService": {
+						"referenceName": "LS_ADLS_Gen2",
+						"type": "LinkedServiceReference"
+					}
+				},
+				{
+					"linkedService": {
+						"referenceName": "LS_ADLS_Gen2",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink3",
+					"rejectedDataLinkedService": {
+						"referenceName": "LS_ADLS_Gen2",
+						"type": "LinkedServiceReference"
+					}
+				},
+				{
+					"linkedService": {
+						"referenceName": "LS_ADLS_Gen2",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink4",
 					"rejectedDataLinkedService": {
 						"referenceName": "LS_ADLS_Gen2",
 						"type": "LinkedServiceReference"
@@ -35,6 +89,42 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     ignoreNoFilesFound: false) ~> source1",
+				"source(output(",
+				"          address as (city as string, geo as (lat as double, lng as double), street as string, suite as string, zipcode as string),",
+				"          company as (bs as string, catchPhrase as string, name as string),",
+				"          email as string,",
+				"          id as short,",
+				"          name as string,",
+				"          phone as string,",
+				"          username as string,",
+				"          website as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> sourceClientes",
+				"source(output(",
+				"          id_pedido as integer,",
+				"          id_cliente as integer,",
+				"          fecha as date,",
+				"          fecha_modificacion_utc as timestamp",
+				"     ),",
+				"     allowSchemaDrift: false,",
+				"     validateSchema: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> sourcePedido",
+				"source(output(",
+				"          id_detalle as integer,",
+				"          id_pedido as integer,",
+				"          id_producto as integer,",
+				"          cantidad as integer,",
+				"          precio_unitario as decimal(10,2),",
+				"          fecha_modificacion_utc as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> sourceDetallePedido",
 				"source1 sink(allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     format: 'delta',",
@@ -42,7 +132,7 @@
 				"     folderPath: 'bronze/producto',",
 				"     mergeSchema: false,",
 				"     autoCompact: false,",
-				"     optimizedWrite: false,",
+				"     optimizedWrite: true,",
 				"     vacuum: 0,",
 				"     deletable: false,",
 				"     insertable: true,",
@@ -53,7 +143,61 @@
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     saveOrder: 1) ~> sink1"
+				"     saveOrder: 1) ~> sink1",
+				"sourceClientes sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'datos',",
+				"     folderPath: 'bronze/cliente',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: true,",
+				"     vacuum: 0,",
+				"     deletable: false,",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     upsertable: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink2",
+				"sourcePedido sink(allowSchemaDrift: false,",
+				"     validateSchema: true,",
+				"     format: 'delta',",
+				"     fileSystem: 'datos',",
+				"     folderPath: 'bronze/pedido',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: true,",
+				"     vacuum: 0,",
+				"     deletable: false,",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     upsertable: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink3",
+				"sourceDetallePedido sink(allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     format: 'delta',",
+				"     fileSystem: 'datos',",
+				"     folderPath: 'bronze/pedido',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: true,",
+				"     vacuum: 0,",
+				"     deletable: false,",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     upsertable: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink4"
 			]
 		}
 	}
