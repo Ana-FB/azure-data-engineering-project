@@ -10,8 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "productos.csv",
-				"folderPath": "staging",
+				"folderPath": "staging/producto",
 				"fileSystem": "datos"
 			},
 			"columnDelimiter": ",",

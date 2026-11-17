@@ -1,0 +1,20 @@
+{
+	"name": "DS_SQL_Pedidos_Source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_Gen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "staging/pedido",
+				"fileSystem": "datos"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
