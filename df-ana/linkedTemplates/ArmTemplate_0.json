@@ -521,6 +521,219 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DF_Staging_Bronze')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "DFlow_csv",
+								"type": "DatasetReference"
+							},
+							"name": "source1"
+						},
+						{
+							"dataset": {
+								"referenceName": "DS_ADLS_API_clientes_staging",
+								"type": "DatasetReference"
+							},
+							"name": "sourceClientes"
+						},
+						{
+							"dataset": {
+								"referenceName": "DS_ADLS_SQL_Staging",
+								"type": "DatasetReference"
+							},
+							"name": "sourcePedido"
+						},
+						{
+							"dataset": {
+								"referenceName": "DS_ADLS_SQL_Staging2",
+								"type": "DatasetReference"
+							},
+							"name": "sourceDetallePedido"
+						}
+					],
+					"sinks": [
+						{
+							"linkedService": {
+								"referenceName": "LS_ADLS_Gen2",
+								"type": "LinkedServiceReference"
+							},
+							"name": "sink1",
+							"rejectedDataLinkedService": {
+								"referenceName": "LS_ADLS_Gen2",
+								"type": "LinkedServiceReference"
+							}
+						},
+						{
+							"linkedService": {
+								"referenceName": "LS_ADLS_Gen2",
+								"type": "LinkedServiceReference"
+							},
+							"name": "sink2",
+							"rejectedDataLinkedService": {
+								"referenceName": "LS_ADLS_Gen2",
+								"type": "LinkedServiceReference"
+							}
+						},
+						{
+							"linkedService": {
+								"referenceName": "LS_ADLS_Gen2",
+								"type": "LinkedServiceReference"
+							},
+							"name": "sink3",
+							"rejectedDataLinkedService": {
+								"referenceName": "LS_ADLS_Gen2",
+								"type": "LinkedServiceReference"
+							}
+						},
+						{
+							"linkedService": {
+								"referenceName": "LS_ADLS_Gen2",
+								"type": "LinkedServiceReference"
+							},
+							"name": "sink4",
+							"rejectedDataLinkedService": {
+								"referenceName": "LS_ADLS_Gen2",
+								"type": "LinkedServiceReference"
+							}
+						}
+					],
+					"transformations": [],
+					"scriptLines": [
+						"source(output(",
+						"          id_producto as string,",
+						"          nombre_producto as string,",
+						"          categoria as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: true,",
+						"     ignoreNoFilesFound: false) ~> source1",
+						"source(output(",
+						"          address as (city as string, geo as (lat as double, lng as double), street as string, suite as string, zipcode as string),",
+						"          company as (bs as string, catchPhrase as string, name as string),",
+						"          email as string,",
+						"          id as short,",
+						"          name as string,",
+						"          phone as string,",
+						"          username as string,",
+						"          website as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false,",
+						"     documentForm: 'documentPerLine') ~> sourceClientes",
+						"source(output(",
+						"          id_pedido as integer,",
+						"          id_cliente as integer,",
+						"          fecha as date,",
+						"          fecha_modificacion_utc as timestamp",
+						"     ),",
+						"     allowSchemaDrift: false,",
+						"     validateSchema: true,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     format: 'table') ~> sourcePedido",
+						"source(output(",
+						"          id_detalle as integer,",
+						"          id_pedido as integer,",
+						"          id_producto as integer,",
+						"          cantidad as integer,",
+						"          precio_unitario as decimal(10,2),",
+						"          fecha_modificacion_utc as timestamp",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: true,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     format: 'table') ~> sourceDetallePedido",
+						"source1 sink(allowSchemaDrift: true,",
+						"     validateSchema: true,",
+						"     format: 'delta',",
+						"     fileSystem: 'datos',",
+						"     folderPath: 'bronze/producto',",
+						"     mergeSchema: false,",
+						"     autoCompact: false,",
+						"     optimizedWrite: true,",
+						"     vacuum: 0,",
+						"     deletable: false,",
+						"     insertable: true,",
+						"     updateable: false,",
+						"     upsertable: false,",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     saveOrder: 1) ~> sink1",
+						"sourceClientes sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     format: 'delta',",
+						"     fileSystem: 'datos',",
+						"     folderPath: 'bronze/cliente',",
+						"     mergeSchema: false,",
+						"     autoCompact: false,",
+						"     optimizedWrite: true,",
+						"     vacuum: 0,",
+						"     deletable: false,",
+						"     insertable: true,",
+						"     updateable: false,",
+						"     upsertable: false,",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink2",
+						"sourcePedido sink(allowSchemaDrift: false,",
+						"     validateSchema: true,",
+						"     format: 'delta',",
+						"     fileSystem: 'datos',",
+						"     folderPath: 'bronze/pedido',",
+						"     mergeSchema: false,",
+						"     autoCompact: false,",
+						"     optimizedWrite: true,",
+						"     vacuum: 0,",
+						"     deletable: false,",
+						"     insertable: true,",
+						"     updateable: false,",
+						"     upsertable: false,",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink3",
+						"sourceDetallePedido sink(allowSchemaDrift: true,",
+						"     validateSchema: true,",
+						"     format: 'delta',",
+						"     fileSystem: 'datos',",
+						"     folderPath: 'bronze/pedido',",
+						"     mergeSchema: false,",
+						"     autoCompact: false,",
+						"     optimizedWrite: true,",
+						"     vacuum: 0,",
+						"     deletable: false,",
+						"     insertable: true,",
+						"     updateable: false,",
+						"     upsertable: false,",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink4"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DFlow_csv')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_API_clientes_staging')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_SQL_Staging')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_SQL_Staging2')]",
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/PL_Extraccion_Datos')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -821,6 +1034,67 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "DF_ingestabronze",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "CSV_producto",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "API_Clientes",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "SQL_pedido",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "SQL_DetallePedido",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "DF_Staging_Bronze",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"source1": {},
+									"sourceClientes": {},
+									"sourcePedido": {},
+									"sourceDetallePedido": {},
+									"sink1": {},
+									"sink2": {},
+									"sink3": {},
+									"sink4": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
 					}
 				],
 				"policy": {
@@ -837,73 +1111,8 @@
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_SQL_Staging')]",
 				"[concat(variables('factoryId'), '/datasets/DS_SQL_Pedido')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_SQL_Staging2')]",
-				"[concat(variables('factoryId'), '/datasets/SQL_DetallePedido')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DF_Bronze_Producto')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "DFlow_csv",
-								"type": "DatasetReference"
-							},
-							"name": "source1"
-						}
-					],
-					"sinks": [
-						{
-							"linkedService": {
-								"referenceName": "LS_ADLS_Gen2",
-								"type": "LinkedServiceReference"
-							},
-							"name": "sink1",
-							"rejectedDataLinkedService": {
-								"referenceName": "LS_ADLS_Gen2",
-								"type": "LinkedServiceReference"
-							}
-						}
-					],
-					"transformations": [],
-					"scriptLines": [
-						"source(output(",
-						"          id_producto as string,",
-						"          nombre_producto as string,",
-						"          categoria as string",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: true,",
-						"     ignoreNoFilesFound: false) ~> source1",
-						"source1 sink(allowSchemaDrift: true,",
-						"     validateSchema: true,",
-						"     format: 'delta',",
-						"     fileSystem: 'datos',",
-						"     folderPath: 'bronze/producto',",
-						"     mergeSchema: false,",
-						"     autoCompact: false,",
-						"     optimizedWrite: false,",
-						"     vacuum: 0,",
-						"     deletable: false,",
-						"     insertable: true,",
-						"     updateable: false,",
-						"     upsertable: false,",
-						"     umask: 0022,",
-						"     preCommands: [],",
-						"     postCommands: [],",
-						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true,",
-						"     saveOrder: 1) ~> sink1"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DFlow_csv')]",
-				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
+				"[concat(variables('factoryId'), '/datasets/SQL_DetallePedido')]",
+				"[concat(variables('factoryId'), '/dataflows/DF_Staging_Bronze')]"
 			]
 		}
 	]
