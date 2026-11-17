@@ -10,7 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "producto",
+				"fileName": {
+					"value": "productos.csv",
+					"type": "Expression"
+				},
 				"folderPath": "staging/producto",
 				"fileSystem": "datos"
 			},
