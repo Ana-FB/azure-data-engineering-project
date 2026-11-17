@@ -148,7 +148,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_SQL_Pedidos_Source",
+						"referenceName": "DS_SQL",
 						"type": "DatasetReference"
 					}
 				]
@@ -180,25 +180,11 @@
 							"type": "ParquetWriteSettings"
 						}
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
 						"referenceName": "DS_ADLS_SQL_Staging",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DS_SQL_DetallePedido_Source",
 						"type": "DatasetReference"
 					}
 				]
