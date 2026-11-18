@@ -330,7 +330,13 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "DF_Staging_Bronze",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"parameters": {
+							"p_id_lote": {
+								"value": "'@{pipeline().RunId}'",
+								"type": "Expression"
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,
