@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "API_Clientes",
+				"name": "CP_API_Clientes_Staging",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -46,7 +46,7 @@
 				]
 			},
 			{
-				"name": "CSV_producto",
+				"name": "CP_CSV_Productos_Staging",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -142,7 +142,7 @@
 				]
 			},
 			{
-				"name": "SQL_pedido",
+				"name": "CP_SQL_Pedidos_Staging",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -241,7 +241,7 @@
 				]
 			},
 			{
-				"name": "SQL_DetallePedido",
+				"name": "CP_SQL_DetallePedido_Staging",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -291,29 +291,29 @@
 				]
 			},
 			{
-				"name": "DF_ingestabronze",
+				"name": "DF_Staging_Bronze",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "CSV_producto",
+						"activity": "CP_CSV_Productos_Staging",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					},
 					{
-						"activity": "API_Clientes",
+						"activity": "CP_API_Clientes_Staging",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					},
 					{
-						"activity": "SQL_pedido",
+						"activity": "CP_SQL_Pedidos_Staging",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					},
 					{
-						"activity": "SQL_DetallePedido",
+						"activity": "CP_SQL_DetallePedido_Staging",
 						"dependencyConditions": [
 							"Succeeded"
 						]
