@@ -136,7 +136,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_ADLS_Staging_Productos_Binary",
+						"referenceName": "DS_ADLS_Staging_Productos_CSV",
 						"type": "DatasetReference"
 					}
 				]
