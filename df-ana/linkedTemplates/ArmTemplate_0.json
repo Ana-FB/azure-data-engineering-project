@@ -283,43 +283,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Staging_Productos_Binary')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_ADLS_Gen2",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "productos.csv",
-							"type": "Expression"
-						},
-						"folderPath": "staging/producto",
-						"fileSystem": "datos"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "<!DOCTYPE html><html dir=\"ltr\"><head><script nonce=\"m7hVRQhPzMsiE7IaG2RO2w\"> window['_DRIVE_VIEWER_ctiming']={}; </script><meta name=\"google\" content=\"notranslate\"><style nonce=\"P5o5HO5jQ5zA2YdpkkXGxQ\">@font-face{font-family:'Roboto';font-style:italic;font-weight:400;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOKCnqEu92Fr1Mu53ZEC9_Vu3r1gIhOszmOClHrs6ljXfMMLoHQuAj-lg.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWuaabVmUiA8.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbVmUiA8.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWub2bVmUiA8.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWuYjalmUiA8.ttf)format('truetype');}@font-face{font-family:'Google Sans';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrwEIJllpyw.ttf)format('truetype');}@font-face{font-family:'Google Sans';font-style:normal;font-weight:500;src:url(//fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrw2IJllpyw.ttf)format('truetype');}@font-face{font-family:'Google Sans';font-style:normal;font-weight:700;src:url(//fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrzjJ5llpyw.ttf)format('truetype');}</style><meta name=\"referrer\" content=\"origin\"><title>productos_demo3.csv - Google Drive</title><script nonce=\"m7hVRQhPzMsiE7IaG2RO2w\">",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Staging_Productos_CSV')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -876,7 +839,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_ADLS_Staging_Productos_Binary",
+								"referenceName": "DS_ADLS_Staging_Productos_CSV",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -1107,7 +1070,7 @@
 				"[concat(variables('factoryId'), '/datasets/DS_REST_Clientes')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Clientes_JSON')]",
 				"[concat(variables('factoryId'), '/datasets/DS_HTTP_Productos')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Productos_Binary')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Productos_CSV')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Pedidos')]",
 				"[concat(variables('factoryId'), '/datasets/DS_SQL_Pedidos')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_DetallePedido')]",
