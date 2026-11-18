@@ -566,8 +566,24 @@
 							}
 						}
 					],
-					"transformations": [],
+					"transformations": [
+						{
+							"name": "drvIngestaProductos"
+						},
+						{
+							"name": "drvIngestaClientes"
+						},
+						{
+							"name": "drvIngestaPedidos"
+						},
+						{
+							"name": "drvIngestaDetallePedido"
+						}
+					],
 					"scriptLines": [
+						"parameters{",
+						"     p_id_lote as string",
+						"}",
 						"source(output(",
 						"          id_producto as string,",
 						"          nombre_producto as string,",
@@ -612,7 +628,15 @@
 						"     validateSchema: true,",
 						"     isolationLevel: 'READ_UNCOMMITTED',",
 						"     format: 'table') ~> srcStagingDetallePedido",
-						"srcStagingProductos sink(allowSchemaDrift: true,",
+						"srcStagingProductos derive(fecha_ingesta = currentDate('America/Argentina/Buenos_Aires'),",
+						"          id_lote = $p_id_lote) ~> drvIngestaProductos",
+						"srcStagingClientes derive(fecha_ingesta = currentDate('America/Argentina/Buenos_Aires'),",
+						"          id_lote = $p_id_lote) ~> drvIngestaClientes",
+						"srcStagingPedidos derive(fecha_ingesta = currentDate('America/Argentina/Buenos_Aires'),",
+						"          id_lote = $p_id_lote) ~> drvIngestaPedidos",
+						"srcStagingDetallePedido derive(fecha_ingesta = currentDate('America/Argentina/Buenos_Aires'),",
+						"          id_lote = $p_id_lote) ~> drvIngestaDetallePedido",
+						"drvIngestaProductos sink(allowSchemaDrift: true,",
 						"     validateSchema: true,",
 						"     format: 'delta',",
 						"     fileSystem: 'datos',",
@@ -630,8 +654,12 @@
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
-						"     saveOrder: 1) ~> snkBronzeProductos",
-						"srcStagingClientes sink(allowSchemaDrift: true,",
+						"     saveOrder: 1,",
+						"     partitionBy('key',",
+						"          0,",
+						"          fecha_ingesta",
+						"     )) ~> snkBronzeProductos",
+						"drvIngestaClientes sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     format: 'delta',",
 						"     fileSystem: 'datos',",
@@ -648,8 +676,12 @@
 						"     preCommands: [],",
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> snkBronzeClientes",
-						"srcStagingPedidos sink(allowSchemaDrift: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     partitionBy('key',",
+						"          0,",
+						"          fecha_ingesta",
+						"     )) ~> snkBronzeClientes",
+						"drvIngestaPedidos sink(allowSchemaDrift: true,",
 						"     validateSchema: true,",
 						"     format: 'delta',",
 						"     fileSystem: 'datos',",
@@ -666,8 +698,12 @@
 						"     preCommands: [],",
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> snkBronzePedidos",
-						"srcStagingDetallePedido sink(allowSchemaDrift: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     partitionBy('key',",
+						"          0,",
+						"          fecha_ingesta",
+						"     )) ~> snkBronzePedidos",
+						"drvIngestaDetallePedido sink(allowSchemaDrift: true,",
 						"     validateSchema: true,",
 						"     format: 'delta',",
 						"     fileSystem: 'datos',",
@@ -684,7 +720,11 @@
 						"     preCommands: [],",
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> snkBronzeDetallePedido"
+						"     skipDuplicateMapOutputs: true,",
+						"     partitionBy('key',",
+						"          0,",
+						"          fecha_ingesta",
+						"     )) ~> snkBronzeDetallePedido"
 					]
 				}
 			},
@@ -1039,7 +1079,12 @@
 							"dataflow": {
 								"referenceName": "DF_Staging_Bronze",
 								"type": "DataFlowReference",
-								"parameters": {},
+								"parameters": {
+									"p_id_lote": {
+										"value": "'@{pipeline().RunId}'",
+										"type": "Expression"
+									}
+								},
 								"datasetParameters": {
 									"srcStagingProductos": {},
 									"srcStagingClientes": {},
