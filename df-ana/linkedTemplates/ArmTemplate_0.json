@@ -496,28 +496,28 @@
 								"referenceName": "DS_ADLS_Staging_Productos_CSV",
 								"type": "DatasetReference"
 							},
-							"name": "source1"
+							"name": "srcStagingProductos"
 						},
 						{
 							"dataset": {
 								"referenceName": "DS_ADLS_Staging_Clientes_JSON",
 								"type": "DatasetReference"
 							},
-							"name": "sourceClientes"
+							"name": "srcStagingClientes"
 						},
 						{
 							"dataset": {
 								"referenceName": "DS_ADLS_Staging_Pedidos",
 								"type": "DatasetReference"
 							},
-							"name": "sourcePedido"
+							"name": "srcStagingPedidos"
 						},
 						{
 							"dataset": {
 								"referenceName": "DS_ADLS_Staging_DetallePedido",
 								"type": "DatasetReference"
 							},
-							"name": "sourceDetallePedido"
+							"name": "srcStagingDetallePedido"
 						}
 					],
 					"sinks": [
@@ -526,7 +526,7 @@
 								"referenceName": "LS_ADLS_Gen2",
 								"type": "LinkedServiceReference"
 							},
-							"name": "sink1",
+							"name": "snkBronzeProductos",
 							"rejectedDataLinkedService": {
 								"referenceName": "LS_ADLS_Gen2",
 								"type": "LinkedServiceReference"
@@ -537,7 +537,7 @@
 								"referenceName": "LS_ADLS_Gen2",
 								"type": "LinkedServiceReference"
 							},
-							"name": "sink2",
+							"name": "snkBronzeClientes",
 							"rejectedDataLinkedService": {
 								"referenceName": "LS_ADLS_Gen2",
 								"type": "LinkedServiceReference"
@@ -548,7 +548,7 @@
 								"referenceName": "LS_ADLS_Gen2",
 								"type": "LinkedServiceReference"
 							},
-							"name": "sink3",
+							"name": "snkBronzePedidos",
 							"rejectedDataLinkedService": {
 								"referenceName": "LS_ADLS_Gen2",
 								"type": "LinkedServiceReference"
@@ -559,7 +559,7 @@
 								"referenceName": "LS_ADLS_Gen2",
 								"type": "LinkedServiceReference"
 							},
-							"name": "sink4",
+							"name": "snkBronzeDetallePedido",
 							"rejectedDataLinkedService": {
 								"referenceName": "LS_ADLS_Gen2",
 								"type": "LinkedServiceReference"
@@ -575,7 +575,7 @@
 						"     ),",
 						"     allowSchemaDrift: true,",
 						"     validateSchema: true,",
-						"     ignoreNoFilesFound: false) ~> source1",
+						"     ignoreNoFilesFound: false) ~> srcStagingProductos",
 						"source(output(",
 						"          address as (city as string, geo as (lat as double, lng as double), street as string, suite as string, zipcode as string),",
 						"          company as (bs as string, catchPhrase as string, name as string),",
@@ -589,7 +589,7 @@
 						"     allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     ignoreNoFilesFound: false,",
-						"     documentForm: 'documentPerLine') ~> sourceClientes",
+						"     documentForm: 'documentPerLine') ~> srcStagingClientes",
 						"source(output(",
 						"          id_pedido as integer,",
 						"          id_cliente as integer,",
@@ -599,7 +599,7 @@
 						"     allowSchemaDrift: true,",
 						"     validateSchema: true,",
 						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     format: 'table') ~> sourcePedido",
+						"     format: 'table') ~> srcStagingPedidos",
 						"source(output(",
 						"          id_detalle as integer,",
 						"          id_pedido as integer,",
@@ -611,8 +611,8 @@
 						"     allowSchemaDrift: true,",
 						"     validateSchema: true,",
 						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     format: 'table') ~> sourceDetallePedido",
-						"source1 sink(allowSchemaDrift: true,",
+						"     format: 'table') ~> srcStagingDetallePedido",
+						"srcStagingProductos sink(allowSchemaDrift: true,",
 						"     validateSchema: true,",
 						"     format: 'delta',",
 						"     fileSystem: 'datos',",
@@ -630,8 +630,8 @@
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
-						"     saveOrder: 1) ~> sink1",
-						"sourceClientes sink(allowSchemaDrift: true,",
+						"     saveOrder: 1) ~> snkBronzeProductos",
+						"srcStagingClientes sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     format: 'delta',",
 						"     fileSystem: 'datos',",
@@ -648,8 +648,8 @@
 						"     preCommands: [],",
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> sink2",
-						"sourcePedido sink(allowSchemaDrift: true,",
+						"     skipDuplicateMapOutputs: true) ~> snkBronzeClientes",
+						"srcStagingPedidos sink(allowSchemaDrift: true,",
 						"     validateSchema: true,",
 						"     format: 'delta',",
 						"     fileSystem: 'datos',",
@@ -666,8 +666,8 @@
 						"     preCommands: [],",
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> sink3",
-						"sourceDetallePedido sink(allowSchemaDrift: true,",
+						"     skipDuplicateMapOutputs: true) ~> snkBronzePedidos",
+						"srcStagingDetallePedido sink(allowSchemaDrift: true,",
 						"     validateSchema: true,",
 						"     format: 'delta',",
 						"     fileSystem: 'datos',",
@@ -684,7 +684,7 @@
 						"     preCommands: [],",
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> sink4"
+						"     skipDuplicateMapOutputs: true) ~> snkBronzeDetallePedido"
 					]
 				}
 			},
@@ -703,7 +703,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "API_Clientes",
+						"name": "CP_API_Clientes_Staging",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -748,7 +748,7 @@
 						]
 					},
 					{
-						"name": "CSV_producto",
+						"name": "CP_CSV_Productos_Staging",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -846,7 +846,7 @@
 						]
 					},
 					{
-						"name": "SQL_pedido",
+						"name": "CP_SQL_Pedidos_Staging",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -947,7 +947,7 @@
 						]
 					},
 					{
-						"name": "SQL_DetallePedido",
+						"name": "CP_SQL_DetallePedido_Staging",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -999,29 +999,29 @@
 						]
 					},
 					{
-						"name": "DF_ingestabronze",
+						"name": "DF_Staging_Bronze",
 						"type": "ExecuteDataFlow",
 						"dependsOn": [
 							{
-								"activity": "CSV_producto",
+								"activity": "CP_CSV_Productos_Staging",
 								"dependencyConditions": [
 									"Succeeded"
 								]
 							},
 							{
-								"activity": "API_Clientes",
+								"activity": "CP_API_Clientes_Staging",
 								"dependencyConditions": [
 									"Succeeded"
 								]
 							},
 							{
-								"activity": "SQL_pedido",
+								"activity": "CP_SQL_Pedidos_Staging",
 								"dependencyConditions": [
 									"Succeeded"
 								]
 							},
 							{
-								"activity": "SQL_DetallePedido",
+								"activity": "CP_SQL_DetallePedido_Staging",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -1041,14 +1041,14 @@
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
-									"source1": {},
-									"sourceClientes": {},
-									"sourcePedido": {},
-									"sourceDetallePedido": {},
-									"sink1": {},
-									"sink2": {},
-									"sink3": {},
-									"sink4": {}
+									"srcStagingProductos": {},
+									"srcStagingClientes": {},
+									"srcStagingPedidos": {},
+									"srcStagingDetallePedido": {},
+									"snkBronzeProductos": {},
+									"snkBronzeClientes": {},
+									"snkBronzePedidos": {},
+									"snkBronzeDetallePedido": {}
 								}
 							},
 							"staging": {},
