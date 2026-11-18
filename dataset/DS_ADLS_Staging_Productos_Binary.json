@@ -1,5 +1,5 @@
 {
-	"name": "DS_ADLS_Producto_Staging",
+	"name": "DS_ADLS_Staging_Productos_Binary",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_ADLS_Gen2",

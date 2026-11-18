@@ -6,28 +6,28 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "DFlow_csv",
+						"referenceName": "DS_ADLS_Staging_Productos_CSV",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
 				},
 				{
 					"dataset": {
-						"referenceName": "DS_ADLS_API_clientes_staging",
+						"referenceName": "DS_ADLS_Staging_Clientes_JSON",
 						"type": "DatasetReference"
 					},
 					"name": "sourceClientes"
 				},
 				{
 					"dataset": {
-						"referenceName": "DS_ADLS_SQL_Staging",
+						"referenceName": "DS_ADLS_Staging_Pedidos",
 						"type": "DatasetReference"
 					},
 					"name": "sourcePedido"
 				},
 				{
 					"dataset": {
-						"referenceName": "DS_ADLS_SQL_Staging2",
+						"referenceName": "DS_ADLS_Staging_DetallePedido",
 						"type": "DatasetReference"
 					},
 					"name": "sourceDetallePedido"

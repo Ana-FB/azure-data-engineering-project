@@ -1,5 +1,5 @@
 {
-	"name": "DS_ADLS_API_clientes_staging",
+	"name": "DS_ADLS_Staging_Clientes_JSON",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_ADLS_Gen2",

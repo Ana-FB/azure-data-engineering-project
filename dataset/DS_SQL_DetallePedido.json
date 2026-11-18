@@ -1,5 +1,5 @@
 {
-	"name": "SQL_DetallePedido",
+	"name": "DS_SQL_DetallePedido",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_ADLS_Gen2",

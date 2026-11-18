@@ -1,5 +1,5 @@
 {
-	"name": "DFlow_csv",
+	"name": "DS_ADLS_Staging_Productos_CSV",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_ADLS_Gen2",

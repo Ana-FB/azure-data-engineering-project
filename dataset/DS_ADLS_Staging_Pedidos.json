@@ -1,5 +1,5 @@
 {
-	"name": "DS_ADLS_SQL_Staging",
+	"name": "DS_ADLS_Staging_Pedidos",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_AzureSQL",

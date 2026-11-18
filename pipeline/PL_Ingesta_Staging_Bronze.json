@@ -1,5 +1,5 @@
 {
-	"name": "PL_Extraccion_Datos",
+	"name": "PL_Ingesta_Staging_Bronze",
 	"properties": {
 		"activities": [
 			{
@@ -34,13 +34,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_API_Clientes",
+						"referenceName": "DS_REST_Clientes",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_ADLS_API_clientes_staging",
+						"referenceName": "DS_ADLS_Staging_Clientes_JSON",
 						"type": "DatasetReference"
 					}
 				]
@@ -130,13 +130,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "http_excel_producto",
+						"referenceName": "DS_HTTP_Productos",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_ADLS_Producto_Staging",
+						"referenceName": "DS_ADLS_Staging_Productos_Binary",
 						"type": "DatasetReference"
 					}
 				]
@@ -229,13 +229,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_ADLS_SQL_Staging",
+						"referenceName": "DS_ADLS_Staging_Pedidos",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_SQL_Pedido",
+						"referenceName": "DS_SQL_Pedidos",
 						"type": "DatasetReference"
 					}
 				]
@@ -279,13 +279,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_ADLS_SQL_Staging2",
+						"referenceName": "DS_ADLS_Staging_DetallePedido",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "SQL_DetallePedido",
+						"referenceName": "DS_SQL_DetallePedido",
 						"type": "DatasetReference"
 					}
 				]

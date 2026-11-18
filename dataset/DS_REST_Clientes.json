@@ -1,5 +1,5 @@
 {
-	"name": "DS_API_Clientes",
+	"name": "DS_REST_Clientes",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_API_Clientes",
