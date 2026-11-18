@@ -61,7 +61,7 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/PL_Extraccion_Datos')]",
+			"name": "[concat(parameters('factoryName'), '/PL_Ingesta_Staging_Bronze')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -98,14 +98,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "DS_API_Clientes",
+								"referenceName": "DS_REST_Clientes",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_ADLS_API_clientes_staging",
+								"referenceName": "DS_ADLS_Staging_Clientes_JSON",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -196,14 +196,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "http_excel_producto",
+								"referenceName": "DS_HTTP_Productos",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_ADLS_Producto_Staging",
+								"referenceName": "DS_ADLS_Staging_Productos_Binary",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -297,14 +297,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "DS_ADLS_SQL_Staging",
+								"referenceName": "DS_ADLS_Staging_Pedidos",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_SQL_Pedido",
+								"referenceName": "DS_SQL_Pedidos",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -349,14 +349,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "DS_ADLS_SQL_Staging2",
+								"referenceName": "DS_ADLS_Staging_DetallePedido",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "SQL_DetallePedido",
+								"referenceName": "DS_SQL_DetallePedido",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -431,61 +431,19 @@
 				"lastPublishTime": "2026-11-12T02:13:37Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_API_Clientes')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_API_clientes_staging')]",
-				"[concat(variables('factoryId'), '/datasets/http_excel_producto')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Producto_Staging')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_SQL_Staging')]",
-				"[concat(variables('factoryId'), '/datasets/DS_SQL_Pedido')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_SQL_Staging2')]",
-				"[concat(variables('factoryId'), '/datasets/SQL_DetallePedido')]",
+				"[concat(variables('factoryId'), '/datasets/DS_REST_Clientes')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Clientes_JSON')]",
+				"[concat(variables('factoryId'), '/datasets/DS_HTTP_Productos')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Productos_Binary')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Pedidos')]",
+				"[concat(variables('factoryId'), '/datasets/DS_SQL_Pedidos')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_DetallePedido')]",
+				"[concat(variables('factoryId'), '/datasets/DS_SQL_DetallePedido')]",
 				"[concat(variables('factoryId'), '/dataflows/DF_Staging_Bronze')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DFlow_csv')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_ADLS_Gen2",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": "productos.csv",
-						"folderPath": "staging/producto",
-						"fileSystem": "datos"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "id_producto",
-						"type": "String"
-					},
-					{
-						"name": "nombre_producto",
-						"type": "String"
-					},
-					{
-						"name": "categoria",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_ADLS_API_clientes_staging')]",
+			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Staging_Clientes_JSON')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -510,85 +468,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Producto_Staging')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_ADLS_Gen2",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "productos.csv",
-							"type": "Expression"
-						},
-						"folderPath": "staging/producto",
-						"fileSystem": "datos"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "<!DOCTYPE html><html dir=\"ltr\"><head><script nonce=\"m7hVRQhPzMsiE7IaG2RO2w\"> window['_DRIVE_VIEWER_ctiming']={}; </script><meta name=\"google\" content=\"notranslate\"><style nonce=\"P5o5HO5jQ5zA2YdpkkXGxQ\">@font-face{font-family:'Roboto';font-style:italic;font-weight:400;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOKCnqEu92Fr1Mu53ZEC9_Vu3r1gIhOszmOClHrs6ljXfMMLoHQuAj-lg.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWuaabVmUiA8.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbVmUiA8.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWub2bVmUiA8.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWuYjalmUiA8.ttf)format('truetype');}@font-face{font-family:'Google Sans';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrwEIJllpyw.ttf)format('truetype');}@font-face{font-family:'Google Sans';font-style:normal;font-weight:500;src:url(//fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrw2IJllpyw.ttf)format('truetype');}@font-face{font-family:'Google Sans';font-style:normal;font-weight:700;src:url(//fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrzjJ5llpyw.ttf)format('truetype');}</style><meta name=\"referrer\" content=\"origin\"><title>productos_demo3.csv - Google Drive</title><script nonce=\"m7hVRQhPzMsiE7IaG2RO2w\">",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_ADLS_SQL_Staging')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_AzureSQL",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "id_pedido",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "id_cliente",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "fecha",
-						"type": "date"
-					},
-					{
-						"name": "fecha_modificacion_utc",
-						"type": "datetime2",
-						"scale": 3
-					}
-				],
-				"typeProperties": {
-					"schema": "demo",
-					"table": "pedidos"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_AzureSQL')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_ADLS_SQL_Staging2')]",
+			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Staging_DetallePedido')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -641,7 +521,171 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_API_Clientes')]",
+			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Staging_Pedidos')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_AzureSQL",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "id_pedido",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "id_cliente",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "fecha",
+						"type": "date"
+					},
+					{
+						"name": "fecha_modificacion_utc",
+						"type": "datetime2",
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "demo",
+					"table": "pedidos"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_AzureSQL')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Staging_Productos_Binary')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ADLS_Gen2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "productos.csv",
+							"type": "Expression"
+						},
+						"folderPath": "staging/producto",
+						"fileSystem": "datos"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "<!DOCTYPE html><html dir=\"ltr\"><head><script nonce=\"m7hVRQhPzMsiE7IaG2RO2w\"> window['_DRIVE_VIEWER_ctiming']={}; </script><meta name=\"google\" content=\"notranslate\"><style nonce=\"P5o5HO5jQ5zA2YdpkkXGxQ\">@font-face{font-family:'Roboto';font-style:italic;font-weight:400;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOKCnqEu92Fr1Mu53ZEC9_Vu3r1gIhOszmOClHrs6ljXfMMLoHQuAj-lg.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWuaabVmUiA8.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbVmUiA8.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWub2bVmUiA8.ttf)format('truetype');}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;font-stretch:normal;src:url(//fonts.gstatic.com/s/roboto/v48/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWuYjalmUiA8.ttf)format('truetype');}@font-face{font-family:'Google Sans';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrwEIJllpyw.ttf)format('truetype');}@font-face{font-family:'Google Sans';font-style:normal;font-weight:500;src:url(//fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrw2IJllpyw.ttf)format('truetype');}@font-face{font-family:'Google Sans';font-style:normal;font-weight:700;src:url(//fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrzjJ5llpyw.ttf)format('truetype');}</style><meta name=\"referrer\" content=\"origin\"><title>productos_demo3.csv - Google Drive</title><script nonce=\"m7hVRQhPzMsiE7IaG2RO2w\">",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Staging_Productos_CSV')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ADLS_Gen2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "productos.csv",
+						"folderPath": "staging/producto",
+						"fileSystem": "datos"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "id_producto",
+						"type": "String"
+					},
+					{
+						"name": "nombre_producto",
+						"type": "String"
+					},
+					{
+						"name": "categoria",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_HTTP_Productos')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "HttpServer1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation",
+						"relativeUrl": {
+							"value": "uc?export=download&id=12Dirz5NkXa7QzIQOzp5wV8XFKMPqtuvp",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": ",",
+					"rowDelimiter": "\n",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "id_producto",
+						"type": "String"
+					},
+					{
+						"name": "nombre_producto",
+						"type": "String"
+					},
+					{
+						"name": "categoria",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/HttpServer1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_REST_Clientes')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -664,53 +708,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_SQL_Pedido')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_ADLS_Gen2",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "pedido.parquet",
-							"type": "Expression"
-						},
-						"folderPath": "staging/pedido",
-						"fileSystem": "datos"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": [
-					{
-						"name": "id_pedido",
-						"type": "INT32"
-					},
-					{
-						"name": "id_cliente",
-						"type": "INT32"
-					},
-					{
-						"name": "fecha",
-						"type": "DATE"
-					},
-					{
-						"name": "fecha_modificacion_utc",
-						"type": "INT96"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SQL_DetallePedido')]",
+			"name": "[concat(parameters('factoryName'), '/DS_SQL_DetallePedido')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -756,47 +754,49 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/http_excel_producto')]",
+			"name": "[concat(parameters('factoryName'), '/DS_SQL_Pedidos')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "HttpServer1",
+					"referenceName": "LS_ADLS_Gen2",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
-				"type": "DelimitedText",
+				"type": "Parquet",
 				"typeProperties": {
 					"location": {
-						"type": "HttpServerLocation",
-						"relativeUrl": {
-							"value": "uc?export=download&id=12Dirz5NkXa7QzIQOzp5wV8XFKMPqtuvp",
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "pedido.parquet",
 							"type": "Expression"
-						}
+						},
+						"folderPath": "staging/pedido",
+						"fileSystem": "datos"
 					},
-					"columnDelimiter": ",",
-					"rowDelimiter": "\n",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
+					"compressionCodec": "snappy"
 				},
 				"schema": [
 					{
-						"name": "id_producto",
-						"type": "String"
+						"name": "id_pedido",
+						"type": "INT32"
 					},
 					{
-						"name": "nombre_producto",
-						"type": "String"
+						"name": "id_cliente",
+						"type": "INT32"
 					},
 					{
-						"name": "categoria",
-						"type": "String"
+						"name": "fecha",
+						"type": "DATE"
+					},
+					{
+						"name": "fecha_modificacion_utc",
+						"type": "INT96"
 					}
 				]
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/HttpServer1')]"
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
 			]
 		},
 		{
@@ -912,28 +912,28 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "DFlow_csv",
+								"referenceName": "DS_ADLS_Staging_Productos_CSV",
 								"type": "DatasetReference"
 							},
 							"name": "source1"
 						},
 						{
 							"dataset": {
-								"referenceName": "DS_ADLS_API_clientes_staging",
+								"referenceName": "DS_ADLS_Staging_Clientes_JSON",
 								"type": "DatasetReference"
 							},
 							"name": "sourceClientes"
 						},
 						{
 							"dataset": {
-								"referenceName": "DS_ADLS_SQL_Staging",
+								"referenceName": "DS_ADLS_Staging_Pedidos",
 								"type": "DatasetReference"
 							},
 							"name": "sourcePedido"
 						},
 						{
 							"dataset": {
-								"referenceName": "DS_ADLS_SQL_Staging2",
+								"referenceName": "DS_ADLS_Staging_DetallePedido",
 								"type": "DatasetReference"
 							},
 							"name": "sourceDetallePedido"
@@ -1108,10 +1108,10 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DFlow_csv')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_API_clientes_staging')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_SQL_Staging')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_SQL_Staging2')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Productos_CSV')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Clientes_JSON')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Pedidos')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_DetallePedido')]",
 				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
 			]
 		}
