@@ -142,155 +142,6 @@
 				]
 			},
 			{
-				"name": "CP_SQL_Pedidos_Staging",
-				"type": "Copy",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.00:30:00",
-					"retry": 3,
-					"retryIntervalInSeconds": 60,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "AzureSqlSource",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
-					},
-					"sink": {
-						"type": "ParquetSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"name": "id_pedido",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "id_pedido",
-									"type": "Int32",
-									"physicalType": "INT_32"
-								}
-							},
-							{
-								"source": {
-									"name": "id_cliente",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "id_cliente",
-									"type": "Int32",
-									"physicalType": "INT_32"
-								}
-							},
-							{
-								"source": {
-									"name": "fecha",
-									"type": "Date",
-									"physicalType": "date"
-								},
-								"sink": {
-									"name": "fecha",
-									"type": "Date"
-								}
-							},
-							{
-								"source": {
-									"name": "fecha_modificacion_utc",
-									"type": "DateTime",
-									"physicalType": "datetime2"
-								},
-								"sink": {
-									"name": "fecha_modificacion_utc",
-									"type": "DateTime",
-									"physicalType": "INT_96"
-								}
-							}
-						],
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "DS_ADLS_Staging_Pedidos",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DS_SQL_Pedidos",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
-				"name": "CP_SQL_DetallePedido_Staging",
-				"type": "Copy",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.00:30:00",
-					"retry": 3,
-					"retryIntervalInSeconds": 60,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "AzureSqlSource",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
-					},
-					"sink": {
-						"type": "ParquetSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "DS_ADLS_Staging_DetallePedido",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DS_SQL_DetallePedido",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
 				"name": "DF_Staging_Bronze",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
@@ -307,13 +158,7 @@
 						]
 					},
 					{
-						"activity": "CP_SQL_Pedidos_Staging",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "CP_SQL_DetallePedido_Staging",
+						"activity": "FE_Ingesta_SQL",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -491,11 +336,88 @@
 									}
 								}
 							]
+						},
+						{
+							"name": "Append variable1",
+							"type": "AppendVariable",
+							"dependsOn": [
+								{
+									"activity": "CP_SQL_Staging",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "v_watermarks_pendientes",
+								"value": {
+									"value": "@json(concat(\n    '{\"nombre_fuente\":\"',\n    item().id_fuente,\n    '\",\"nuevo_watermark\":\"',\n    activity('LK_Limite_SQL').output.firstRow.nuevo_watermark,\n    '\"}'\n))",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "DF_Staging_Bronze",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('v_watermarks_pendientes')",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Script1",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "LS_AzureSQL",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "NonQuery",
+										"text": {
+											"value": "@concat(\n    'UPDATE control.control_watermarks ',\n    'SET ultimo_watermark = CONVERT(datetime2(7), ''',\n    item().nuevo_watermark,\n    '''), ultima_ejecucion_exitosa_utc = SYSUTCDATETIME() ',\n    'WHERE nombre_fuente = ''',\n    item().nombre_fuente,\n    ''' AND ultimo_watermark <= CONVERT(datetime2(7), ''',\n    item().nuevo_watermark,\n    ''');'\n)",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
 						}
 					]
 				}
 			}
 		],
+		"variables": {
+			"v_watermarks_pendientes": {
+				"type": "Array",
+				"defaultValue": []
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2026-11-12T02:13:37Z"
 	},
