@@ -226,7 +226,8 @@
 					"dataset": {
 						"referenceName": "DS_SQL",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
@@ -263,7 +264,10 @@
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
-									"sqlReaderQuery": "@concat(\n    'SELECT COALESCE(MAX(',\n    item().columna_watermark,\n    '), CAST(''1900-01-01'' AS datetime2(7))) AS nuevo_watermark FROM ',\n    item().origen\n)",
+									"sqlReaderQuery": {
+										"value": "@concat(\n    'SELECT COALESCE(MAX(',\n    item().columna_watermark,\n    '), CAST(''1900-01-01'' AS datetime2(7))) AS nuevo_watermark FROM ',\n    item().origen\n)",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -295,7 +299,10 @@
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
-									"sqlReaderQuery": "@concat(\n    'SELECT * FROM ',\n    item().origen,\n    ' WHERE ',\n    item().columna_watermark,\n    ' > ''',\n    item().ultimo_watermark,\n    ''' AND ',\n    item().columna_watermark,\n    ' <= ''',\n    activity('LK_Limite_SQL').output.firstRow.nuevo_watermark,\n    ''''\n)",
+									"sqlReaderQuery": {
+										"value": "@concat(\n    'SELECT * FROM ',\n    item().origen,\n    ' WHERE ',\n    item().columna_watermark,\n    ' > ''',\n    item().ultimo_watermark,\n    ''' AND ',\n    item().columna_watermark,\n    ' <= ''',\n    activity('LK_Limite_SQL').output.firstRow.nuevo_watermark,\n    ''''\n)",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
