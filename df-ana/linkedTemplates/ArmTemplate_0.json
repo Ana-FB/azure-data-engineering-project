@@ -831,7 +831,8 @@
 								"referenceName": "DS_SQL",
 								"type": "DatasetReference",
 								"parameters": {}
-							}
+							},
+							"firstRowOnly": false
 						}
 					},
 					{
