@@ -1,0 +1,28 @@
+{
+	"name": "DS_ADLS_Staging_SQL_Parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_Gen2",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_carpeta": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@dataset().p_carpeta",
+					"type": "Expression"
+				},
+				"fileSystem": "datos"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

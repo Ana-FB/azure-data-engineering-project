@@ -336,6 +336,20 @@
 								"value": "'@{pipeline().RunId}'",
 								"type": "Expression"
 							}
+						},
+						"datasetParameters": {
+							"srcStagingPedidos": {
+								"p_carpeta": {
+									"value": "@concat('staging/pedidos/', pipeline().RunId)",
+									"type": "Expression"
+								}
+							},
+							"srcStagingDetallePedido": {
+								"p_carpeta": {
+									"value": "@concat('staging/detalle_pedido/', pipeline().RunId)",
+									"type": "Expression"
+								}
+							}
 						}
 					},
 					"compute": {
@@ -343,6 +357,142 @@
 						"computeType": "General"
 					},
 					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "LK_Config_SQL",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT\n    c.id_fuente,\n    c.origen,\n    c.columna_watermark,\n    c.ruta_bronze,\n    w.ultimo_watermark\nFROM control.config_ingesta AS c\nINNER JOIN control.control_watermarks AS w\n    ON w.nombre_fuente = c.id_fuente\nWHERE c.activo = 1\n  AND c.tipo_fuente = 'SQL'\n  AND c.estrategia = 'WATERMARK';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_SQL",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "FE_Ingesta_SQL",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "LK_Config_SQL",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('LK_Config_SQL').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "LK_Limite_SQL",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": "@concat(\n    'SELECT COALESCE(MAX(',\n    item().columna_watermark,\n    '), CAST(''1900-01-01'' AS datetime2(7))) AS nuevo_watermark FROM ',\n    item().origen\n)",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "DS_SQL",
+									"type": "DatasetReference"
+								}
+							}
+						},
+						{
+							"name": "CP_SQL_Staging",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "LK_Limite_SQL",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": "@concat(\n    'SELECT * FROM ',\n    item().origen,\n    ' WHERE ',\n    item().columna_watermark,\n    ' > ''',\n    item().ultimo_watermark,\n    ''' AND ',\n    item().columna_watermark,\n    ' <= ''',\n    activity('LK_Limite_SQL').output.firstRow.nuevo_watermark,\n    ''''\n)",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_SQL",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_ADLS_Staging_SQL_Parquet",
+									"type": "DatasetReference",
+									"parameters": {
+										"p_carpeta": {
+											"value": "@concat('staging/', item().id_fuente, '/', pipeline().RunId)",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
 				}
 			}
 		],
