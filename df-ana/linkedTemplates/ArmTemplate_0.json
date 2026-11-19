@@ -189,100 +189,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Staging_DetallePedido')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_AzureSQL",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "id_detalle",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "id_pedido",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "id_producto",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "cantidad",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "precio_unitario",
-						"type": "decimal",
-						"precision": 10,
-						"scale": 2
-					},
-					{
-						"name": "fecha_modificacion_utc",
-						"type": "datetime2",
-						"scale": 3
-					}
-				],
-				"typeProperties": {
-					"schema": "demo",
-					"table": "detalle_pedido"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_AzureSQL')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Staging_Pedidos')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_AzureSQL",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "id_pedido",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "id_cliente",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "fecha",
-						"type": "date"
-					},
-					{
-						"name": "fecha_modificacion_utc",
-						"type": "datetime2",
-						"scale": 3
-					}
-				],
-				"typeProperties": {
-					"schema": "demo",
-					"table": "pedidos"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_AzureSQL')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Staging_Productos_CSV')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -319,6 +225,39 @@
 						"type": "String"
 					}
 				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Staging_SQL_Parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ADLS_Gen2",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"p_carpeta": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": {
+							"value": "@dataset().p_carpeta",
+							"type": "Expression"
+						},
+						"fileSystem": "datos"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
@@ -392,95 +331,21 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_SQL_DetallePedido')]",
+			"name": "[concat(parameters('factoryName'), '/DS_SQL')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "LS_ADLS_Gen2",
+					"referenceName": "LS_AzureSQL",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "detalle_pedido.parquet",
-							"type": "Expression"
-						},
-						"folderPath": "staging/pedido",
-						"fileSystem": "datos"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": [
-					{
-						"name": "id_pedido",
-						"type": "INT32"
-					},
-					{
-						"name": "id_cliente",
-						"type": "INT32"
-					},
-					{
-						"name": "fecha",
-						"type": "DATE"
-					},
-					{
-						"name": "fecha_modificacion_utc",
-						"type": "INT96"
-					}
-				]
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_SQL_Pedidos')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_ADLS_Gen2",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "pedido.parquet",
-							"type": "Expression"
-						},
-						"folderPath": "staging/pedido",
-						"fileSystem": "datos"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": [
-					{
-						"name": "id_pedido",
-						"type": "INT32"
-					},
-					{
-						"name": "id_cliente",
-						"type": "INT32"
-					},
-					{
-						"name": "fecha",
-						"type": "DATE"
-					},
-					{
-						"name": "fecha_modificacion_utc",
-						"type": "INT96"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
+				"[concat(variables('factoryId'), '/linkedServices/LS_AzureSQL')]"
 			]
 		},
 		{
@@ -507,14 +372,14 @@
 						},
 						{
 							"dataset": {
-								"referenceName": "DS_ADLS_Staging_Pedidos",
+								"referenceName": "DS_ADLS_Staging_SQL_Parquet",
 								"type": "DatasetReference"
 							},
 							"name": "srcStagingPedidos"
 						},
 						{
 							"dataset": {
-								"referenceName": "DS_ADLS_Staging_DetallePedido",
+								"referenceName": "DS_ADLS_Staging_SQL_Parquet",
 								"type": "DatasetReference"
 							},
 							"name": "srcStagingDetallePedido"
@@ -606,28 +471,14 @@
 						"     validateSchema: false,",
 						"     ignoreNoFilesFound: false,",
 						"     documentForm: 'documentPerLine') ~> srcStagingClientes",
-						"source(output(",
-						"          id_pedido as integer,",
-						"          id_cliente as integer,",
-						"          fecha as date,",
-						"          fecha_modificacion_utc as timestamp",
-						"     ),",
-						"     allowSchemaDrift: true,",
+						"source(allowSchemaDrift: true,",
 						"     validateSchema: true,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     format: 'table') ~> srcStagingPedidos",
-						"source(output(",
-						"          id_detalle as integer,",
-						"          id_pedido as integer,",
-						"          id_producto as integer,",
-						"          cantidad as integer,",
-						"          precio_unitario as decimal(10,2),",
-						"          fecha_modificacion_utc as timestamp",
-						"     ),",
-						"     allowSchemaDrift: true,",
+						"     ignoreNoFilesFound: false,",
+						"     format: 'parquet') ~> srcStagingPedidos",
+						"source(allowSchemaDrift: true,",
 						"     validateSchema: true,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     format: 'table') ~> srcStagingDetallePedido",
+						"     ignoreNoFilesFound: false,",
+						"     format: 'parquet') ~> srcStagingDetallePedido",
 						"srcStagingProductos derive(fecha_ingesta = currentDate('America/Argentina/Buenos_Aires'),",
 						"          id_lote = $p_id_lote) ~> drvIngestaProductos",
 						"srcStagingClientes derive(fecha_ingesta = currentDate('America/Argentina/Buenos_Aires'),",
@@ -677,6 +528,7 @@
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
+						"     saveOrder: 2,",
 						"     partitionBy('key',",
 						"          0,",
 						"          fecha_ingesta",
@@ -699,6 +551,7 @@
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
+						"     saveOrder: 3,",
 						"     partitionBy('key',",
 						"          0,",
 						"          fecha_ingesta",
@@ -721,6 +574,7 @@
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
+						"     saveOrder: 4,",
 						"     partitionBy('key',",
 						"          0,",
 						"          fecha_ingesta",
@@ -731,8 +585,7 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Productos_CSV')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Clientes_JSON')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Pedidos')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_DetallePedido')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_SQL_Parquet')]",
 				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS_Gen2')]"
 			]
 		},
@@ -886,159 +739,6 @@
 						]
 					},
 					{
-						"name": "CP_SQL_Pedidos_Staging",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.00:30:00",
-							"retry": 3,
-							"retryIntervalInSeconds": 60,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"sink": {
-								"type": "ParquetSink",
-								"storeSettings": {
-									"type": "AzureBlobFSWriteSettings"
-								},
-								"formatSettings": {
-									"type": "ParquetWriteSettings"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id_pedido",
-											"type": "Int32",
-											"physicalType": "int"
-										},
-										"sink": {
-											"name": "id_pedido",
-											"type": "Int32",
-											"physicalType": "INT_32"
-										}
-									},
-									{
-										"source": {
-											"name": "id_cliente",
-											"type": "Int32",
-											"physicalType": "int"
-										},
-										"sink": {
-											"name": "id_cliente",
-											"type": "Int32",
-											"physicalType": "INT_32"
-										}
-									},
-									{
-										"source": {
-											"name": "fecha",
-											"type": "Date",
-											"physicalType": "date"
-										},
-										"sink": {
-											"name": "fecha",
-											"type": "Date"
-										}
-									},
-									{
-										"source": {
-											"name": "fecha_modificacion_utc",
-											"type": "DateTime",
-											"physicalType": "datetime2"
-										},
-										"sink": {
-											"name": "fecha_modificacion_utc",
-											"type": "DateTime",
-											"physicalType": "INT_96"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "DS_ADLS_Staging_Pedidos",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "DS_SQL_Pedidos",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "CP_SQL_DetallePedido_Staging",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.00:30:00",
-							"retry": 3,
-							"retryIntervalInSeconds": 60,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"sink": {
-								"type": "ParquetSink",
-								"storeSettings": {
-									"type": "AzureBlobFSWriteSettings"
-								},
-								"formatSettings": {
-									"type": "ParquetWriteSettings"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "DS_ADLS_Staging_DetallePedido",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "DS_SQL_DetallePedido",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
 						"name": "DF_Staging_Bronze",
 						"type": "ExecuteDataFlow",
 						"dependsOn": [
@@ -1055,13 +755,7 @@
 								]
 							},
 							{
-								"activity": "CP_SQL_Pedidos_Staging",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "CP_SQL_DetallePedido_Staging",
+								"activity": "FE_Ingesta_SQL",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -1088,8 +782,18 @@
 								"datasetParameters": {
 									"srcStagingProductos": {},
 									"srcStagingClientes": {},
-									"srcStagingPedidos": {},
-									"srcStagingDetallePedido": {},
+									"srcStagingPedidos": {
+										"p_carpeta": {
+											"value": "@concat('staging/pedidos/', pipeline().RunId)",
+											"type": "Expression"
+										}
+									},
+									"srcStagingDetallePedido": {
+										"p_carpeta": {
+											"value": "@concat('staging/detalle_pedido/', pipeline().RunId)",
+											"type": "Expression"
+										}
+									},
 									"snkBronzeProductos": {},
 									"snkBronzeClientes": {},
 									"snkBronzePedidos": {},
@@ -1103,10 +807,232 @@
 							},
 							"traceLevel": "Fine"
 						}
+					},
+					{
+						"name": "LK_Config_SQL",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT\n    c.id_fuente,\n    c.origen,\n    c.columna_watermark,\n    c.ruta_bronze,\n    w.ultimo_watermark\nFROM control.config_ingesta AS c\nINNER JOIN control.control_watermarks AS w\n    ON w.nombre_fuente = c.id_fuente\nWHERE c.activo = 1\n  AND c.tipo_fuente = 'SQL'\n  AND c.estrategia = 'WATERMARK';",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "DS_SQL",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "FE_Ingesta_SQL",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "LK_Config_SQL",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('LK_Config_SQL').output.value",
+								"type": "Expression"
+							},
+							"isSequential": true,
+							"activities": [
+								{
+									"name": "LK_Limite_SQL",
+									"type": "Lookup",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "AzureSqlSource",
+											"sqlReaderQuery": {
+												"value": "@concat(\n    'SELECT COALESCE(MAX(',\n    item().columna_watermark,\n    '), CAST(''1900-01-01'' AS datetime2(7))) AS nuevo_watermark FROM ',\n    item().origen\n)",
+												"type": "Expression"
+											},
+											"queryTimeout": "02:00:00",
+											"partitionOption": "None"
+										},
+										"dataset": {
+											"referenceName": "DS_SQL",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									}
+								},
+								{
+									"name": "CP_SQL_Staging",
+									"type": "Copy",
+									"dependsOn": [
+										{
+											"activity": "LK_Limite_SQL",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "AzureSqlSource",
+											"sqlReaderQuery": {
+												"value": "@concat(\n    'SELECT * FROM ',\n    item().origen,\n    ' WHERE ',\n    item().columna_watermark,\n    ' > ''',\n    item().ultimo_watermark,\n    ''' AND ',\n    item().columna_watermark,\n    ' <= ''',\n    activity('LK_Limite_SQL').output.firstRow.nuevo_watermark,\n    ''''\n)",
+												"type": "Expression"
+											},
+											"queryTimeout": "02:00:00",
+											"partitionOption": "None"
+										},
+										"sink": {
+											"type": "ParquetSink",
+											"storeSettings": {
+												"type": "AzureBlobFSWriteSettings"
+											},
+											"formatSettings": {
+												"type": "ParquetWriteSettings"
+											}
+										},
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"typeConversion": true,
+											"typeConversionSettings": {
+												"allowDataTruncation": true,
+												"treatBooleanAsNumber": false
+											}
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "DS_SQL",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DS_ADLS_Staging_SQL_Parquet",
+											"type": "DatasetReference",
+											"parameters": {
+												"p_carpeta": {
+													"value": "@concat('staging/', item().id_fuente, '/', pipeline().RunId)",
+													"type": "Expression"
+												}
+											}
+										}
+									]
+								},
+								{
+									"name": "Append variable1",
+									"type": "AppendVariable",
+									"dependsOn": [
+										{
+											"activity": "CP_SQL_Staging",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "v_watermarks_pendientes",
+										"value": {
+											"value": "@json(concat(\n    '{\"nombre_fuente\":\"',\n    item().id_fuente,\n    '\",\"nuevo_watermark\":\"',\n    activity('LK_Limite_SQL').output.firstRow.nuevo_watermark,\n    '\"}'\n))",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "ForEach1",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "DF_Staging_Bronze",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@variables('v_watermarks_pendientes')",
+								"type": "Expression"
+							},
+							"isSequential": true,
+							"activities": [
+								{
+									"name": "Script1",
+									"type": "Script",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "LS_AzureSQL",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "NonQuery",
+												"text": {
+													"value": "@concat(\n    'UPDATE control.control_watermarks ',\n    'SET ultimo_watermark = CONVERT(datetime2(7), ''',\n    item().nuevo_watermark,\n    '''), ultima_ejecucion_exitosa_utc = SYSUTCDATETIME() ',\n    'WHERE nombre_fuente = ''',\n    item().nombre_fuente,\n    ''' AND ultimo_watermark <= CONVERT(datetime2(7), ''',\n    item().nuevo_watermark,\n    ''');'\n)",
+													"type": "Expression"
+												}
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								}
+							]
+						}
 					}
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"variables": {
+					"v_watermarks_pendientes": {
+						"type": "Array",
+						"defaultValue": []
+					}
 				},
 				"annotations": [],
 				"lastPublishTime": "2026-11-12T02:13:37Z"
@@ -1116,11 +1042,10 @@
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Clientes_JSON')]",
 				"[concat(variables('factoryId'), '/datasets/DS_HTTP_Productos')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Productos_CSV')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Pedidos')]",
-				"[concat(variables('factoryId'), '/datasets/DS_SQL_Pedidos')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_DetallePedido')]",
-				"[concat(variables('factoryId'), '/datasets/DS_SQL_DetallePedido')]",
-				"[concat(variables('factoryId'), '/dataflows/DF_Staging_Bronze')]"
+				"[concat(variables('factoryId'), '/dataflows/DF_Staging_Bronze')]",
+				"[concat(variables('factoryId'), '/datasets/DS_SQL')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_SQL_Parquet')]",
+				"[concat(variables('factoryId'), '/linkedServices/LS_AzureSQL')]"
 			]
 		}
 	]
