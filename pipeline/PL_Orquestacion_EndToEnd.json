@@ -1,6 +1,162 @@
 {
 	"name": "PL_Orquestacion_EndToEnd",
 	"properties": {
+		"description": "Orquesta el proceso completo de ingesta y transformación de datos: ejecuta el pipeline de ingesta a Bronze, transforma los datos de Bronze a Silver, realiza controles de calidad y cuarentena, valida las tablas Silver y genera las tablas Gold.",
+		"activities": [
+			{
+				"name": "PL_Ingesta_Staging_Bronze",
+				"description": "Ejecutar el pipeline de ingesta",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Ingesta_Staging_Bronze",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "NB_Bronze_a_Silver",
+				"description": "Notebook Bronze a Silver",
+				"type": "SynapseNotebook",
+				"dependsOn": [
+					{
+						"activity": "PL_Ingesta_Staging_Bronze",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebook": {
+						"referenceName": "NB_Bronze_a_Silver",
+						"type": "NotebookReference"
+					},
+					"snapshot": true,
+					"sparkPool": {
+						"referenceName": "sparkDemo",
+						"type": "BigDataPoolReference"
+					},
+					"executorSize": "Small",
+					"driverSize": "Small"
+				}
+			},
+			{
+				"name": "NB_Calidad_Cuarentena_Silver",
+				"description": "Notebook de calidad y cuarentena",
+				"type": "SynapseNotebook",
+				"dependsOn": [
+					{
+						"activity": "NB_Bronze_a_Silver",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebook": {
+						"referenceName": "NB_Silver_Cuarentena_DataQuality",
+						"type": "NotebookReference"
+					},
+					"snapshot": true,
+					"sparkPool": {
+						"referenceName": "sparkDemo",
+						"type": "BigDataPoolReference"
+					},
+					"executorSize": "Small",
+					"driverSize": "Small"
+				}
+			},
+			{
+				"name": "NB_Test_Silver",
+				"description": "Notebook de pruebas Silver",
+				"type": "SynapseNotebook",
+				"dependsOn": [
+					{
+						"activity": "NB_Calidad_Cuarentena_Silver",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebook": {
+						"referenceName": "NB_Test_Silver",
+						"type": "NotebookReference"
+					},
+					"snapshot": true,
+					"sparkPool": {
+						"referenceName": "sparkDemo",
+						"type": "BigDataPoolReference"
+					},
+					"executorSize": "Small",
+					"driverSize": "Small"
+				}
+			},
+			{
+				"name": "NB_Silver_a_Gold",
+				"description": "Notebook Silver a Gold",
+				"type": "SynapseNotebook",
+				"dependsOn": [
+					{
+						"activity": "NB_Test_Silver",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebook": {
+						"referenceName": "NB_Silver_a_Gold",
+						"type": "NotebookReference"
+					},
+					"snapshot": true,
+					"sparkPool": {
+						"referenceName": "sparkDemo",
+						"type": "BigDataPoolReference"
+					},
+					"executorSize": "Small",
+					"driverSize": "Small"
+				}
+			}
+		],
 		"annotations": []
 	}
 }
