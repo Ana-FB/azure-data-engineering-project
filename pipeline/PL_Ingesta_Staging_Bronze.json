@@ -345,7 +345,7 @@
 							]
 						},
 						{
-							"name": "Append variable1",
+							"name": "Append",
 							"type": "AppendVariable",
 							"dependsOn": [
 								{
