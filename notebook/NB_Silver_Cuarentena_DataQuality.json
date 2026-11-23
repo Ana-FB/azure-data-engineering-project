@@ -1,0 +1,461 @@
+{
+	"name": "NB_Silver_Cuarentena_DataQuality",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkDemo",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "693a2c87-c463-42e3-94c9-4927a8438757"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1",
+				"state": {
+					"8b57df15-cbfa-4809-82db-1d3f88a0fbd7": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "999",
+										"1": "8",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "Cliente nulo o no encontrado en Silver"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_cliente",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "id_pedido",
+										"type": "int"
+									},
+									{
+										"key": "2",
+										"name": "fecha",
+										"type": "date"
+									},
+									{
+										"key": "3",
+										"name": "fecha_modificacion_utc",
+										"type": "timestamp"
+									},
+									{
+										"key": "4",
+										"name": "motivo_cuarentena",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"candidateVariableNames": [
+									"pedidos_cuarentena"
+								],
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"742863b3-b439-4506-913b-7dfd39868d02": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "999",
+										"1": "6",
+										"2": "6",
+										"3": "1",
+										"4": "90.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "Producto relacionado no encontrado en Silver"
+									},
+									{
+										"0": "103",
+										"1": "7",
+										"2": "7",
+										"3": "1",
+										"4": "-50.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "Precio unitario negativo; requiere revisión"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_producto",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "id_pedido",
+										"type": "int"
+									},
+									{
+										"key": "2",
+										"name": "id_detalle",
+										"type": "int"
+									},
+									{
+										"key": "3",
+										"name": "cantidad",
+										"type": "int"
+									},
+									{
+										"key": "4",
+										"name": "precio_unitario",
+										"type": "decimal"
+									},
+									{
+										"key": "5",
+										"name": "fecha_modificacion_utc",
+										"type": "timestamp"
+									},
+									{
+										"key": "6",
+										"name": "motivo_cuarentena",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"candidateVariableNames": [
+									"detalles_cuarentena",
+									"df"
+								],
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					}
+				}
+			},
+			"enableDebugMode": false,
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/3eac8f23-88c8-4ed3-85d4-adc05237fc61/resourceGroups/miGrupoDeRecursos/providers/Microsoft.Synapse/workspaces/synapse-ingenieria-demo-2026/bigDataPools/sparkDemo",
+				"name": "sparkDemo",
+				"type": "Spark",
+				"endpoint": "https://synapse-ingenieria-demo-2026.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkDemo",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.5",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# Notebook de cuarentena"
+				]
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Identifica registros de Silver con datos inválidos o referencias inexistentes y los guarda en cuarentena para su revisión"
+				]
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"from pyspark.sql import functions as F\n",
+					"from delta.tables import DeltaTable"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"base_silver = (\n",
+					"    \"abfss://datos@proyectos2027.dfs.core.windows.net/silver\"\n",
+					")\n",
+					"\n",
+					"base_cuarentena = f\"{base_silver}/cuarentena\"\n",
+					"\n",
+					"\n",
+					"# Busca cuál de las rutas posibles existe como tabla Delta.\n",
+					"def encontrar_tabla_silver(nombre, candidatos):\n",
+					"    for carpeta in candidatos:\n",
+					"        ruta = f\"{base_silver}/{carpeta}\"\n",
+					"\n",
+					"        if DeltaTable.isDeltaTable(spark, ruta):\n",
+					"            print(f\"{nombre}: {ruta}\")\n",
+					"            return ruta\n",
+					"\n",
+					"    raise Exception(\n",
+					"        f\"No encontré la tabla Delta de {nombre}. \"\n",
+					"        f\"Revisá las carpetas en Silver: {candidatos}\"\n",
+					"    )\n",
+					"\n",
+					"\n",
+					"# Detecta las rutas guardadas por tus notebooks Silver.\n",
+					"ruta_clientes = encontrar_tabla_silver(\n",
+					"    \"clientes\",\n",
+					"    [\"cliente\", \"clientes\"]\n",
+					")\n",
+					"\n",
+					"ruta_productos = encontrar_tabla_silver(\n",
+					"    \"productos\",\n",
+					"    [\"producto\", \"productos\"]\n",
+					")\n",
+					"\n",
+					"ruta_pedidos = encontrar_tabla_silver(\n",
+					"    \"pedidos\",\n",
+					"    [\"pedido\", \"pedidos\"]\n",
+					")\n",
+					"\n",
+					"ruta_detalle = encontrar_tabla_silver(\n",
+					"    \"detalle de pedido\",\n",
+					"    [\"detalle_pedido\", \"detallePedido\"]\n",
+					")\n",
+					"\n",
+					"\n",
+					"# Leer las tablas Silver\n",
+					"clientes = spark.read.format(\"delta\").load(ruta_clientes)\n",
+					"productos = spark.read.format(\"delta\").load(ruta_productos)\n",
+					"pedidos = spark.read.format(\"delta\").load(ruta_pedidos)\n",
+					"detalles = spark.read.format(\"delta\").load(ruta_detalle)\n",
+					"\n",
+					"\n",
+					"# IDs existentes en Silver\n",
+					"ids_clientes = (\n",
+					"    clientes\n",
+					"    .select(\"id_cliente\")\n",
+					"    .filter(F.col(\"id_cliente\").isNotNull())\n",
+					"    .distinct()\n",
+					"    .withColumn(\"_cliente_encontrado\", F.lit(True))\n",
+					")\n",
+					"\n",
+					"ids_productos = (\n",
+					"    productos\n",
+					"    .select(\"id_producto\")\n",
+					"    .filter(F.col(\"id_producto\").isNotNull())\n",
+					"    .distinct()\n",
+					"    .withColumn(\"_producto_encontrado\", F.lit(True))\n",
+					")\n",
+					"\n",
+					"ids_pedidos = (\n",
+					"    pedidos\n",
+					"    .select(\"id_pedido\")\n",
+					"    .filter(F.col(\"id_pedido\").isNotNull())\n",
+					"    .distinct()\n",
+					"    .withColumn(\"_pedido_encontrado\", F.lit(True))\n",
+					")\n",
+					"\n",
+					"\n",
+					"# CLIENTES: ID nulo o nombre nulo/vacío\n",
+					"clientes_cuarentena = (\n",
+					"    clientes\n",
+					"    .withColumn(\n",
+					"        \"motivo_cuarentena\",\n",
+					"        F.concat_ws(\n",
+					"            \"; \",\n",
+					"            F.when(F.col(\"id_cliente\").isNull(), \"ID de cliente nulo\"),\n",
+					"            F.when(\n",
+					"                F.col(\"nombre\").isNull() | (F.trim(F.col(\"nombre\")) == \"\"),\n",
+					"                \"Nombre nulo o vacío\"\n",
+					"            )\n",
+					"        )\n",
+					"    )\n",
+					"    .filter(F.col(\"motivo_cuarentena\") != \"\")\n",
+					")\n",
+					"\n",
+					"\n",
+					"# PRODUCTOS: ID nulo o nombre nulo/vacío\n",
+					"productos_cuarentena = (\n",
+					"    productos\n",
+					"    .withColumn(\n",
+					"        \"motivo_cuarentena\",\n",
+					"        F.concat_ws(\n",
+					"            \"; \",\n",
+					"            F.when(F.col(\"id_producto\").isNull(), \"ID de producto nulo\"),\n",
+					"            F.when(\n",
+					"                F.col(\"nombre_producto\").isNull()\n",
+					"                | (F.trim(F.col(\"nombre_producto\")) == \"\"),\n",
+					"                \"Nombre de producto nulo o vacío\"\n",
+					"            )\n",
+					"        )\n",
+					"    )\n",
+					"    .filter(F.col(\"motivo_cuarentena\") != \"\")\n",
+					")\n",
+					"\n",
+					"\n",
+					"# PEDIDOS: cliente nulo o inexistente en Silver\n",
+					"pedidos_cuarentena = (\n",
+					"    pedidos\n",
+					"    .join(ids_clientes, on=\"id_cliente\", how=\"left\")\n",
+					"    .withColumn(\n",
+					"        \"motivo_cuarentena\",\n",
+					"        F.concat_ws(\n",
+					"            \"; \",\n",
+					"            F.when(F.col(\"id_pedido\").isNull(), \"ID de pedido nulo\"),\n",
+					"            F.when(\n",
+					"                F.col(\"id_cliente\").isNull()\n",
+					"                | F.col(\"_cliente_encontrado\").isNull(),\n",
+					"                \"Cliente nulo o no encontrado en Silver\"\n",
+					"            )\n",
+					"        )\n",
+					"    )\n",
+					"    .filter(F.col(\"motivo_cuarentena\") != \"\")\n",
+					"    .drop(\"_cliente_encontrado\")\n",
+					")\n",
+					"\n",
+					"\n",
+					"# DETALLES: referencias inexistentes, cantidad inválida o precio negativo\n",
+					"detalles_cuarentena = (\n",
+					"    detalles\n",
+					"    .join(ids_pedidos, on=\"id_pedido\", how=\"left\")\n",
+					"    .join(ids_productos, on=\"id_producto\", how=\"left\")\n",
+					"    .withColumn(\n",
+					"        \"motivo_cuarentena\",\n",
+					"        F.concat_ws(\n",
+					"            \"; \",\n",
+					"            F.when(F.col(\"id_detalle\").isNull(), \"ID de detalle nulo\"),\n",
+					"            F.when(\n",
+					"                F.col(\"_pedido_encontrado\").isNull(),\n",
+					"                \"Pedido relacionado no encontrado en Silver\"\n",
+					"            ),\n",
+					"            F.when(\n",
+					"                F.col(\"_producto_encontrado\").isNull(),\n",
+					"                \"Producto relacionado no encontrado en Silver\"\n",
+					"            ),\n",
+					"            F.when(\n",
+					"                F.col(\"cantidad\").isNull() | (F.col(\"cantidad\") <= 0),\n",
+					"                \"Cantidad nula o menor/igual a cero\"\n",
+					"            ),\n",
+					"            F.when(\n",
+					"                F.col(\"precio_unitario\").isNull(),\n",
+					"                \"Precio unitario nulo\"\n",
+					"            ),\n",
+					"            F.when(\n",
+					"                F.col(\"precio_unitario\") < 0,\n",
+					"                \"Precio unitario negativo; requiere revisión\"\n",
+					"            )\n",
+					"        )\n",
+					"    )\n",
+					"    .filter(F.col(\"motivo_cuarentena\") != \"\")\n",
+					"    .drop(\"_pedido_encontrado\", \"_producto_encontrado\")\n",
+					")\n",
+					"\n",
+					"\n",
+					"# Guardar cada conjunto como una tabla Delta independiente\n",
+					"tablas_cuarentena = [\n",
+					"    (clientes_cuarentena, f\"{base_cuarentena}/clientes\"),\n",
+					"    (productos_cuarentena, f\"{base_cuarentena}/productos\"),\n",
+					"    (pedidos_cuarentena, f\"{base_cuarentena}/pedidos\"),\n",
+					"    (detalles_cuarentena, f\"{base_cuarentena}/detalle_pedido\")\n",
+					"]\n",
+					"\n",
+					"for df, ruta in tablas_cuarentena:\n",
+					"    cantidad = df.count()\n",
+					"\n",
+					"    if cantidad > 0:\n",
+					"        (\n",
+					"            df.write\n",
+					"            .format(\"delta\")\n",
+					"            .mode(\"overwrite\")\n",
+					"            .option(\"overwriteSchema\", \"true\")\n",
+					"            .save(ruta)\n",
+					"        )\n",
+					"        print(f\"Guardada: {ruta} | filas: {cantidad}\")\n",
+					"    else:\n",
+					"        if mssparkutils.fs.exists(ruta):\n",
+					"            mssparkutils.fs.rm(ruta, True)\n",
+					"\n",
+					"        print(f\"Sin filas; no se creó la carpeta: {ruta}\")\n",
+					"\n",
+					"\n",
+					"# Mostrar las excepciones principales\n",
+					"print(\"Pedidos en cuarentena:\", pedidos_cuarentena.count())\n",
+					"print(\"Detalles en cuarentena:\", detalles_cuarentena.count())\n",
+					"\n",
+					"display(pedidos_cuarentena)\n",
+					"display(detalles_cuarentena)"
+				],
+				"execution_count": 7
+			}
+		]
+	}
+}

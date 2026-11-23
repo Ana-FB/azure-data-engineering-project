@@ -1,0 +1,5871 @@
+{
+	"name": "NB_Exploracion_Bronze",
+	"properties": {
+		"description": "Exploración de datos Bronze: clientes, productos, pedidos y detalle de pedido.",
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkDemo",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "a873a663-76b2-43f9-9656-6239199c5707"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1",
+				"state": {
+					"f380e6bb-5bac-46c4-85cd-2bbfd60ea0f7": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "1",
+										"1": "3",
+										"2": "1",
+										"3": [
+											"Leanne Graham"
+										]
+									},
+									{
+										"0": "2",
+										"1": "3",
+										"2": "1",
+										"3": [
+											"Ervin Howell"
+										]
+									},
+									{
+										"0": "3",
+										"1": "3",
+										"2": "1",
+										"3": [
+											"Clementine Bauch"
+										]
+									},
+									{
+										"0": "4",
+										"1": "3",
+										"2": "1",
+										"3": [
+											"Patricia Lebsack"
+										]
+									},
+									{
+										"0": "5",
+										"1": "3",
+										"2": "1",
+										"3": [
+											"Chelsey Dietrich"
+										]
+									},
+									{
+										"0": "6",
+										"1": "3",
+										"2": "1",
+										"3": [
+											"Mrs. Dennis Schulist"
+										]
+									},
+									{
+										"0": "7",
+										"1": "3",
+										"2": "1",
+										"3": [
+											"Kurtis Weissnat"
+										]
+									},
+									{
+										"0": "8",
+										"1": "3",
+										"2": "1",
+										"3": [
+											"Nicholas Runolfsdottir V"
+										]
+									},
+									{
+										"0": "9",
+										"1": "3",
+										"2": "1",
+										"3": [
+											"Glenna Reichert"
+										]
+									},
+									{
+										"0": "10",
+										"1": "3",
+										"2": "1",
+										"3": [
+											"Clementina DuBuque"
+										]
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id",
+										"type": "smallint"
+									},
+									{
+										"key": "1",
+										"name": "filas",
+										"type": "bigint"
+									},
+									{
+										"key": "2",
+										"name": "nombres_distintos",
+										"type": "bigint"
+									},
+									{
+										"key": "3",
+										"name": "nombres",
+										"type": "ArrayType(StringType,false)"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"candidateVariableNames": [
+									"ids_repetidos"
+								],
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"56a9d5ae-4233-4415-8bd4-df11ffad6da9": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "1",
+										"1": {
+											"city": "Gwenborough",
+											"zipcode": "92998-3874",
+											"geo": {
+												"lat": -37.3159,
+												"lng": 81.1496
+											},
+											"street": "Kulas Light",
+											"suite": "Apt. 556"
+										},
+										"2": {
+											"bs": "harness real-time e-markets",
+											"catchPhrase": "Multi-layered client-server neural-net",
+											"name": "Romaguera-Crona"
+										},
+										"3": "Sincere@april.biz",
+										"4": "Leanne Graham",
+										"5": "1-770-736-8031 x56442",
+										"6": "Bret",
+										"7": "hildegard.org",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "1",
+										"1": {
+											"city": "Gwenborough",
+											"zipcode": "92998-3874",
+											"geo": {
+												"lat": -37.3159,
+												"lng": 81.1496
+											},
+											"street": "Kulas Light",
+											"suite": "Apt. 556"
+										},
+										"2": {
+											"bs": "harness real-time e-markets",
+											"catchPhrase": "Multi-layered client-server neural-net",
+											"name": "Romaguera-Crona"
+										},
+										"3": "Sincere@april.biz",
+										"4": "Leanne Graham",
+										"5": "1-770-736-8031 x56442",
+										"6": "Bret",
+										"7": "hildegard.org",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "1",
+										"1": {
+											"city": "Gwenborough",
+											"zipcode": "92998-3874",
+											"geo": {
+												"lat": -37.3159,
+												"lng": 81.1496
+											},
+											"street": "Kulas Light",
+											"suite": "Apt. 556"
+										},
+										"2": {
+											"bs": "harness real-time e-markets",
+											"catchPhrase": "Multi-layered client-server neural-net",
+											"name": "Romaguera-Crona"
+										},
+										"3": "Sincere@april.biz",
+										"4": "Leanne Graham",
+										"5": "1-770-736-8031 x56442",
+										"6": "Bret",
+										"7": "hildegard.org",
+										"8": "2026-11-19",
+										"9": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "2",
+										"1": {
+											"city": "Wisokyburgh",
+											"zipcode": "90566-7771",
+											"geo": {
+												"lat": -43.9509,
+												"lng": -34.4618
+											},
+											"street": "Victor Plains",
+											"suite": "Suite 879"
+										},
+										"2": {
+											"bs": "synergize scalable supply-chains",
+											"catchPhrase": "Proactive didactic contingency",
+											"name": "Deckow-Crist"
+										},
+										"3": "Shanna@melissa.tv",
+										"4": "Ervin Howell",
+										"5": "010-692-6593 x09125",
+										"6": "Antonette",
+										"7": "anastasia.net",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "2",
+										"1": {
+											"city": "Wisokyburgh",
+											"zipcode": "90566-7771",
+											"geo": {
+												"lat": -43.9509,
+												"lng": -34.4618
+											},
+											"street": "Victor Plains",
+											"suite": "Suite 879"
+										},
+										"2": {
+											"bs": "synergize scalable supply-chains",
+											"catchPhrase": "Proactive didactic contingency",
+											"name": "Deckow-Crist"
+										},
+										"3": "Shanna@melissa.tv",
+										"4": "Ervin Howell",
+										"5": "010-692-6593 x09125",
+										"6": "Antonette",
+										"7": "anastasia.net",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "2",
+										"1": {
+											"city": "Wisokyburgh",
+											"zipcode": "90566-7771",
+											"geo": {
+												"lat": -43.9509,
+												"lng": -34.4618
+											},
+											"street": "Victor Plains",
+											"suite": "Suite 879"
+										},
+										"2": {
+											"bs": "synergize scalable supply-chains",
+											"catchPhrase": "Proactive didactic contingency",
+											"name": "Deckow-Crist"
+										},
+										"3": "Shanna@melissa.tv",
+										"4": "Ervin Howell",
+										"5": "010-692-6593 x09125",
+										"6": "Antonette",
+										"7": "anastasia.net",
+										"8": "2026-11-19",
+										"9": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "3",
+										"1": {
+											"city": "McKenziehaven",
+											"zipcode": "59590-4157",
+											"geo": {
+												"lat": -68.6102,
+												"lng": -47.0653
+											},
+											"street": "Douglas Extension",
+											"suite": "Suite 847"
+										},
+										"2": {
+											"bs": "e-enable strategic applications",
+											"catchPhrase": "Face to face bifurcated interface",
+											"name": "Romaguera-Jacobson"
+										},
+										"3": "Nathan@yesenia.net",
+										"4": "Clementine Bauch",
+										"5": "1-463-123-4447",
+										"6": "Samantha",
+										"7": "ramiro.info",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "3",
+										"1": {
+											"city": "McKenziehaven",
+											"zipcode": "59590-4157",
+											"geo": {
+												"lat": -68.6102,
+												"lng": -47.0653
+											},
+											"street": "Douglas Extension",
+											"suite": "Suite 847"
+										},
+										"2": {
+											"bs": "e-enable strategic applications",
+											"catchPhrase": "Face to face bifurcated interface",
+											"name": "Romaguera-Jacobson"
+										},
+										"3": "Nathan@yesenia.net",
+										"4": "Clementine Bauch",
+										"5": "1-463-123-4447",
+										"6": "Samantha",
+										"7": "ramiro.info",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "3",
+										"1": {
+											"city": "McKenziehaven",
+											"zipcode": "59590-4157",
+											"geo": {
+												"lat": -68.6102,
+												"lng": -47.0653
+											},
+											"street": "Douglas Extension",
+											"suite": "Suite 847"
+										},
+										"2": {
+											"bs": "e-enable strategic applications",
+											"catchPhrase": "Face to face bifurcated interface",
+											"name": "Romaguera-Jacobson"
+										},
+										"3": "Nathan@yesenia.net",
+										"4": "Clementine Bauch",
+										"5": "1-463-123-4447",
+										"6": "Samantha",
+										"7": "ramiro.info",
+										"8": "2026-11-19",
+										"9": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "4",
+										"1": {
+											"city": "South Elvis",
+											"zipcode": "53919-4257",
+											"geo": {
+												"lat": 29.4572,
+												"lng": -164.299
+											},
+											"street": "Hoeger Mall",
+											"suite": "Apt. 692"
+										},
+										"2": {
+											"bs": "transition cutting-edge web services",
+											"catchPhrase": "Multi-tiered zero tolerance productivity",
+											"name": "Robel-Corkery"
+										},
+										"3": "Julianne.OConner@kory.org",
+										"4": "Patricia Lebsack",
+										"5": "493-170-9623 x156",
+										"6": "Karianne",
+										"7": "kale.biz",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "4",
+										"1": {
+											"city": "South Elvis",
+											"zipcode": "53919-4257",
+											"geo": {
+												"lat": 29.4572,
+												"lng": -164.299
+											},
+											"street": "Hoeger Mall",
+											"suite": "Apt. 692"
+										},
+										"2": {
+											"bs": "transition cutting-edge web services",
+											"catchPhrase": "Multi-tiered zero tolerance productivity",
+											"name": "Robel-Corkery"
+										},
+										"3": "Julianne.OConner@kory.org",
+										"4": "Patricia Lebsack",
+										"5": "493-170-9623 x156",
+										"6": "Karianne",
+										"7": "kale.biz",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "4",
+										"1": {
+											"city": "South Elvis",
+											"zipcode": "53919-4257",
+											"geo": {
+												"lat": 29.4572,
+												"lng": -164.299
+											},
+											"street": "Hoeger Mall",
+											"suite": "Apt. 692"
+										},
+										"2": {
+											"bs": "transition cutting-edge web services",
+											"catchPhrase": "Multi-tiered zero tolerance productivity",
+											"name": "Robel-Corkery"
+										},
+										"3": "Julianne.OConner@kory.org",
+										"4": "Patricia Lebsack",
+										"5": "493-170-9623 x156",
+										"6": "Karianne",
+										"7": "kale.biz",
+										"8": "2026-11-19",
+										"9": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "5",
+										"1": {
+											"city": "Roscoeview",
+											"zipcode": "33263",
+											"geo": {
+												"lat": -31.8129,
+												"lng": 62.5342
+											},
+											"street": "Skiles Walks",
+											"suite": "Suite 351"
+										},
+										"2": {
+											"bs": "revolutionize end-to-end systems",
+											"catchPhrase": "User-centric fault-tolerant solution",
+											"name": "Keebler LLC"
+										},
+										"3": "Lucio_Hettinger@annie.ca",
+										"4": "Chelsey Dietrich",
+										"5": "(254)954-1289",
+										"6": "Kamren",
+										"7": "demarco.info",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "5",
+										"1": {
+											"city": "Roscoeview",
+											"zipcode": "33263",
+											"geo": {
+												"lat": -31.8129,
+												"lng": 62.5342
+											},
+											"street": "Skiles Walks",
+											"suite": "Suite 351"
+										},
+										"2": {
+											"bs": "revolutionize end-to-end systems",
+											"catchPhrase": "User-centric fault-tolerant solution",
+											"name": "Keebler LLC"
+										},
+										"3": "Lucio_Hettinger@annie.ca",
+										"4": "Chelsey Dietrich",
+										"5": "(254)954-1289",
+										"6": "Kamren",
+										"7": "demarco.info",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "5",
+										"1": {
+											"city": "Roscoeview",
+											"zipcode": "33263",
+											"geo": {
+												"lat": -31.8129,
+												"lng": 62.5342
+											},
+											"street": "Skiles Walks",
+											"suite": "Suite 351"
+										},
+										"2": {
+											"bs": "revolutionize end-to-end systems",
+											"catchPhrase": "User-centric fault-tolerant solution",
+											"name": "Keebler LLC"
+										},
+										"3": "Lucio_Hettinger@annie.ca",
+										"4": "Chelsey Dietrich",
+										"5": "(254)954-1289",
+										"6": "Kamren",
+										"7": "demarco.info",
+										"8": "2026-11-19",
+										"9": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "6",
+										"1": {
+											"city": "South Christy",
+											"zipcode": "23505-1337",
+											"geo": {
+												"lat": -71.4197,
+												"lng": 71.7478
+											},
+											"street": "Norberto Crossing",
+											"suite": "Apt. 950"
+										},
+										"2": {
+											"bs": "e-enable innovative applications",
+											"catchPhrase": "Synchronised bottom-line interface",
+											"name": "Considine-Lockman"
+										},
+										"3": "Karley_Dach@jasper.info",
+										"4": "Mrs. Dennis Schulist",
+										"5": "1-477-935-8478 x6430",
+										"6": "Leopoldo_Corkery",
+										"7": "ola.org",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "6",
+										"1": {
+											"city": "South Christy",
+											"zipcode": "23505-1337",
+											"geo": {
+												"lat": -71.4197,
+												"lng": 71.7478
+											},
+											"street": "Norberto Crossing",
+											"suite": "Apt. 950"
+										},
+										"2": {
+											"bs": "e-enable innovative applications",
+											"catchPhrase": "Synchronised bottom-line interface",
+											"name": "Considine-Lockman"
+										},
+										"3": "Karley_Dach@jasper.info",
+										"4": "Mrs. Dennis Schulist",
+										"5": "1-477-935-8478 x6430",
+										"6": "Leopoldo_Corkery",
+										"7": "ola.org",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "6",
+										"1": {
+											"city": "South Christy",
+											"zipcode": "23505-1337",
+											"geo": {
+												"lat": -71.4197,
+												"lng": 71.7478
+											},
+											"street": "Norberto Crossing",
+											"suite": "Apt. 950"
+										},
+										"2": {
+											"bs": "e-enable innovative applications",
+											"catchPhrase": "Synchronised bottom-line interface",
+											"name": "Considine-Lockman"
+										},
+										"3": "Karley_Dach@jasper.info",
+										"4": "Mrs. Dennis Schulist",
+										"5": "1-477-935-8478 x6430",
+										"6": "Leopoldo_Corkery",
+										"7": "ola.org",
+										"8": "2026-11-19",
+										"9": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "7",
+										"1": {
+											"city": "Howemouth",
+											"zipcode": "58804-1099",
+											"geo": {
+												"lat": 24.8918,
+												"lng": 21.8984
+											},
+											"street": "Rex Trail",
+											"suite": "Suite 280"
+										},
+										"2": {
+											"bs": "generate enterprise e-tailers",
+											"catchPhrase": "Configurable multimedia task-force",
+											"name": "Johns Group"
+										},
+										"3": "Telly.Hoeger@billy.biz",
+										"4": "Kurtis Weissnat",
+										"5": "210.067.6132",
+										"6": "Elwyn.Skiles",
+										"7": "elvis.io",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "7",
+										"1": {
+											"city": "Howemouth",
+											"zipcode": "58804-1099",
+											"geo": {
+												"lat": 24.8918,
+												"lng": 21.8984
+											},
+											"street": "Rex Trail",
+											"suite": "Suite 280"
+										},
+										"2": {
+											"bs": "generate enterprise e-tailers",
+											"catchPhrase": "Configurable multimedia task-force",
+											"name": "Johns Group"
+										},
+										"3": "Telly.Hoeger@billy.biz",
+										"4": "Kurtis Weissnat",
+										"5": "210.067.6132",
+										"6": "Elwyn.Skiles",
+										"7": "elvis.io",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "7",
+										"1": {
+											"city": "Howemouth",
+											"zipcode": "58804-1099",
+											"geo": {
+												"lat": 24.8918,
+												"lng": 21.8984
+											},
+											"street": "Rex Trail",
+											"suite": "Suite 280"
+										},
+										"2": {
+											"bs": "generate enterprise e-tailers",
+											"catchPhrase": "Configurable multimedia task-force",
+											"name": "Johns Group"
+										},
+										"3": "Telly.Hoeger@billy.biz",
+										"4": "Kurtis Weissnat",
+										"5": "210.067.6132",
+										"6": "Elwyn.Skiles",
+										"7": "elvis.io",
+										"8": "2026-11-19",
+										"9": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "8",
+										"1": {
+											"city": "Aliyaview",
+											"zipcode": "45169",
+											"geo": {
+												"lat": -14.399,
+												"lng": -120.7677
+											},
+											"street": "Ellsworth Summit",
+											"suite": "Suite 729"
+										},
+										"2": {
+											"bs": "e-enable extensible e-tailers",
+											"catchPhrase": "Implemented secondary concept",
+											"name": "Abernathy Group"
+										},
+										"3": "Sherwood@rosamond.me",
+										"4": "Nicholas Runolfsdottir V",
+										"5": "586.493.6943 x140",
+										"6": "Maxime_Nienow",
+										"7": "jacynthe.com",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "8",
+										"1": {
+											"city": "Aliyaview",
+											"zipcode": "45169",
+											"geo": {
+												"lat": -14.399,
+												"lng": -120.7677
+											},
+											"street": "Ellsworth Summit",
+											"suite": "Suite 729"
+										},
+										"2": {
+											"bs": "e-enable extensible e-tailers",
+											"catchPhrase": "Implemented secondary concept",
+											"name": "Abernathy Group"
+										},
+										"3": "Sherwood@rosamond.me",
+										"4": "Nicholas Runolfsdottir V",
+										"5": "586.493.6943 x140",
+										"6": "Maxime_Nienow",
+										"7": "jacynthe.com",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "8",
+										"1": {
+											"city": "Aliyaview",
+											"zipcode": "45169",
+											"geo": {
+												"lat": -14.399,
+												"lng": -120.7677
+											},
+											"street": "Ellsworth Summit",
+											"suite": "Suite 729"
+										},
+										"2": {
+											"bs": "e-enable extensible e-tailers",
+											"catchPhrase": "Implemented secondary concept",
+											"name": "Abernathy Group"
+										},
+										"3": "Sherwood@rosamond.me",
+										"4": "Nicholas Runolfsdottir V",
+										"5": "586.493.6943 x140",
+										"6": "Maxime_Nienow",
+										"7": "jacynthe.com",
+										"8": "2026-11-19",
+										"9": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "9",
+										"1": {
+											"city": "Bartholomebury",
+											"zipcode": "76495-3109",
+											"geo": {
+												"lat": 24.6463,
+												"lng": -168.8889
+											},
+											"street": "Dayna Park",
+											"suite": "Suite 449"
+										},
+										"2": {
+											"bs": "aggregate real-time technologies",
+											"catchPhrase": "Switchable contextually-based project",
+											"name": "Yost and Sons"
+										},
+										"3": "Chaim_McDermott@dana.io",
+										"4": "Glenna Reichert",
+										"5": "(775)976-6794 x41206",
+										"6": "Delphine",
+										"7": "conrad.com",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "9",
+										"1": {
+											"city": "Bartholomebury",
+											"zipcode": "76495-3109",
+											"geo": {
+												"lat": 24.6463,
+												"lng": -168.8889
+											},
+											"street": "Dayna Park",
+											"suite": "Suite 449"
+										},
+										"2": {
+											"bs": "aggregate real-time technologies",
+											"catchPhrase": "Switchable contextually-based project",
+											"name": "Yost and Sons"
+										},
+										"3": "Chaim_McDermott@dana.io",
+										"4": "Glenna Reichert",
+										"5": "(775)976-6794 x41206",
+										"6": "Delphine",
+										"7": "conrad.com",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "9",
+										"1": {
+											"city": "Bartholomebury",
+											"zipcode": "76495-3109",
+											"geo": {
+												"lat": 24.6463,
+												"lng": -168.8889
+											},
+											"street": "Dayna Park",
+											"suite": "Suite 449"
+										},
+										"2": {
+											"bs": "aggregate real-time technologies",
+											"catchPhrase": "Switchable contextually-based project",
+											"name": "Yost and Sons"
+										},
+										"3": "Chaim_McDermott@dana.io",
+										"4": "Glenna Reichert",
+										"5": "(775)976-6794 x41206",
+										"6": "Delphine",
+										"7": "conrad.com",
+										"8": "2026-11-19",
+										"9": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "10",
+										"1": {
+											"city": "Lebsackbury",
+											"zipcode": "31428-2261",
+											"geo": {
+												"lat": -38.2386,
+												"lng": 57.2232
+											},
+											"street": "Kattie Turnpike",
+											"suite": "Suite 198"
+										},
+										"2": {
+											"bs": "target end-to-end models",
+											"catchPhrase": "Centralized empowering task-force",
+											"name": "Hoeger LLC"
+										},
+										"3": "Rey.Padberg@karina.biz",
+										"4": "Clementina DuBuque",
+										"5": "024-648-3804",
+										"6": "Moriah.Stanton",
+										"7": "ambrose.net",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "10",
+										"1": {
+											"city": "Lebsackbury",
+											"zipcode": "31428-2261",
+											"geo": {
+												"lat": -38.2386,
+												"lng": 57.2232
+											},
+											"street": "Kattie Turnpike",
+											"suite": "Suite 198"
+										},
+										"2": {
+											"bs": "target end-to-end models",
+											"catchPhrase": "Centralized empowering task-force",
+											"name": "Hoeger LLC"
+										},
+										"3": "Rey.Padberg@karina.biz",
+										"4": "Clementina DuBuque",
+										"5": "024-648-3804",
+										"6": "Moriah.Stanton",
+										"7": "ambrose.net",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "10",
+										"1": {
+											"city": "Lebsackbury",
+											"zipcode": "31428-2261",
+											"geo": {
+												"lat": -38.2386,
+												"lng": 57.2232
+											},
+											"street": "Kattie Turnpike",
+											"suite": "Suite 198"
+										},
+										"2": {
+											"bs": "target end-to-end models",
+											"catchPhrase": "Centralized empowering task-force",
+											"name": "Hoeger LLC"
+										},
+										"3": "Rey.Padberg@karina.biz",
+										"4": "Clementina DuBuque",
+										"5": "024-648-3804",
+										"6": "Moriah.Stanton",
+										"7": "ambrose.net",
+										"8": "2026-11-19",
+										"9": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id",
+										"type": "smallint"
+									},
+									{
+										"key": "1",
+										"name": "address",
+										"type": "StructType(StructField(city,StringType,true),StructField(geo,StructType(StructField(lat,DoubleType,true),StructField(lng,DoubleType,true)),true),StructField(street,StringType,true),StructField(suite,StringType,true),StructField(zipcode,StringType,true))"
+									},
+									{
+										"key": "2",
+										"name": "company",
+										"type": "StructType(StructField(bs,StringType,true),StructField(catchPhrase,StringType,true),StructField(name,StringType,true))"
+									},
+									{
+										"key": "3",
+										"name": "email",
+										"type": "string"
+									},
+									{
+										"key": "4",
+										"name": "name",
+										"type": "string"
+									},
+									{
+										"key": "5",
+										"name": "phone",
+										"type": "string"
+									},
+									{
+										"key": "6",
+										"name": "username",
+										"type": "string"
+									},
+									{
+										"key": "7",
+										"name": "website",
+										"type": "string"
+									},
+									{
+										"key": "8",
+										"name": "fecha_ingesta",
+										"type": "date"
+									},
+									{
+										"key": "9",
+										"name": "id_lote",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"3"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"c7318ef8-a7a6-4db0-b7e8-bfb0c095fb0f": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [],
+								"schema": [
+									{
+										"key": "0",
+										"name": "nombre_normalizado",
+										"type": "string"
+									},
+									{
+										"key": "1",
+										"name": "cantidad_ids",
+										"type": "bigint"
+									},
+									{
+										"key": "2",
+										"name": "ids",
+										"type": "ArrayType(ShortType,false)"
+									},
+									{
+										"key": "3",
+										"name": "nombres",
+										"type": "ArrayType(StringType,false)"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"candidateVariableNames": [
+									"nombres_con_varios_ids"
+								],
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"1"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"3fd7e13c-1e8c-4b46-bb70-c16ee1057c19": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "Chaim_McDermott@dana.io"
+									},
+									{
+										"0": "Julianne.OConner@kory.org"
+									},
+									{
+										"0": "Karley_Dach@jasper.info"
+									},
+									{
+										"0": "Lucio_Hettinger@annie.ca"
+									},
+									{
+										"0": "Nathan@yesenia.net"
+									},
+									{
+										"0": "Rey.Padberg@karina.biz"
+									},
+									{
+										"0": "Shanna@melissa.tv"
+									},
+									{
+										"0": "Sherwood@rosamond.me"
+									},
+									{
+										"0": "Sincere@april.biz"
+									},
+									{
+										"0": "Telly.Hoeger@billy.biz"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "email",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"d021f3a9-968e-4c9d-b55b-e633e5bd200a": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "Chelsey Dietrich"
+									},
+									{
+										"0": "Clementina DuBuque"
+									},
+									{
+										"0": "Clementine Bauch"
+									},
+									{
+										"0": "Ervin Howell"
+									},
+									{
+										"0": "Glenna Reichert"
+									},
+									{
+										"0": "Kurtis Weissnat"
+									},
+									{
+										"0": "Leanne Graham"
+									},
+									{
+										"0": "Mrs. Dennis Schulist"
+									},
+									{
+										"0": "Nicholas Runolfsdottir V"
+									},
+									{
+										"0": "Patricia Lebsack"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "name",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"9f1edeb3-da17-4a5d-ad37-4f3d83b0b93f": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "(254)954-1289"
+									},
+									{
+										"0": "(775)976-6794 x41206"
+									},
+									{
+										"0": "010-692-6593 x09125"
+									},
+									{
+										"0": "024-648-3804"
+									},
+									{
+										"0": "1-463-123-4447"
+									},
+									{
+										"0": "1-477-935-8478 x6430"
+									},
+									{
+										"0": "1-770-736-8031 x56442"
+									},
+									{
+										"0": "210.067.6132"
+									},
+									{
+										"0": "493-170-9623 x156"
+									},
+									{
+										"0": "586.493.6943 x140"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "phone",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"97232158-33ee-451c-acdf-3ce3e2638740": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "Antonette"
+									},
+									{
+										"0": "Bret"
+									},
+									{
+										"0": "Delphine"
+									},
+									{
+										"0": "Elwyn.Skiles"
+									},
+									{
+										"0": "Kamren"
+									},
+									{
+										"0": "Karianne"
+									},
+									{
+										"0": "Leopoldo_Corkery"
+									},
+									{
+										"0": "Maxime_Nienow"
+									},
+									{
+										"0": "Moriah.Stanton"
+									},
+									{
+										"0": "Samantha"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "username",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"4366eb70-84e6-4d7e-8381-6dc8f977193e": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "ambrose.net"
+									},
+									{
+										"0": "anastasia.net"
+									},
+									{
+										"0": "conrad.com"
+									},
+									{
+										"0": "demarco.info"
+									},
+									{
+										"0": "elvis.io"
+									},
+									{
+										"0": "hildegard.org"
+									},
+									{
+										"0": "jacynthe.com"
+									},
+									{
+										"0": "kale.biz"
+									},
+									{
+										"0": "ola.org"
+									},
+									{
+										"0": "ramiro.info"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "website",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"55f75114-e751-49ba-a003-0c75128ee514": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_lote",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"384c49ec-0779-4340-97a7-af88cda76979": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "101",
+										"1": "3",
+										"2": "1",
+										"3": "1"
+									},
+									{
+										"0": "102",
+										"1": "3",
+										"2": "1",
+										"3": "1"
+									},
+									{
+										"0": "103",
+										"1": "3",
+										"2": "1",
+										"3": "1"
+									},
+									{
+										"0": "104",
+										"1": "3",
+										"2": "1",
+										"3": "1"
+									},
+									{
+										"0": "105",
+										"1": "3",
+										"2": "1",
+										"3": "1"
+									},
+									{
+										"0": "106",
+										"1": "3",
+										"2": "1",
+										"3": "1"
+									},
+									{
+										"0": "107",
+										"1": "3",
+										"2": "1",
+										"3": "1"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_producto",
+										"type": "string"
+									},
+									{
+										"key": "1",
+										"name": "cantidad_filas",
+										"type": "bigint"
+									},
+									{
+										"key": "2",
+										"name": "nombres_distintos",
+										"type": "bigint"
+									},
+									{
+										"key": "3",
+										"name": "categorias_distintas",
+										"type": "bigint"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"1"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"dc076edf-2442-4d1c-adc0-7e73d85071c0": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "101",
+										"1": "Notebook",
+										"2": "Tecnologia",
+										"3": "3"
+									},
+									{
+										"0": "102",
+										"1": "Mouse",
+										"2": "Accesorios",
+										"3": "3"
+									},
+									{
+										"0": "103",
+										"1": "Teclado",
+										"2": "Accesorios",
+										"3": "3"
+									},
+									{
+										"0": "104",
+										"1": "Monitor",
+										"2": "Tecnologia",
+										"3": "3"
+									},
+									{
+										"0": "105",
+										"1": "Auriculares",
+										"2": "Accesorios",
+										"3": "3"
+									},
+									{
+										"0": "106",
+										"1": "Webcam",
+										"2": "Accesorios",
+										"3": "3"
+									},
+									{
+										"0": "107",
+										"1": "Silla Ergonomica",
+										"2": "Muebles",
+										"3": "3"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_producto",
+										"type": "string"
+									},
+									{
+										"key": "1",
+										"name": "nombre_producto",
+										"type": "string"
+									},
+									{
+										"key": "2",
+										"name": "categoria",
+										"type": "string"
+									},
+									{
+										"key": "3",
+										"name": "count",
+										"type": "bigint"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"candidateVariableNames": [
+									"duplicados_producto"
+								],
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"3"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"8d30f1e1-9049-4354-b885-b4d718db1c28": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "101",
+										"1": "Notebook",
+										"2": "Tecnologia",
+										"3": "3"
+									},
+									{
+										"0": "102",
+										"1": "Mouse",
+										"2": "Accesorios",
+										"3": "3"
+									},
+									{
+										"0": "103",
+										"1": "Teclado",
+										"2": "Accesorios",
+										"3": "3"
+									},
+									{
+										"0": "104",
+										"1": "Monitor",
+										"2": "Tecnologia",
+										"3": "3"
+									},
+									{
+										"0": "105",
+										"1": "Auriculares",
+										"2": "Accesorios",
+										"3": "3"
+									},
+									{
+										"0": "106",
+										"1": "Webcam",
+										"2": "Accesorios",
+										"3": "3"
+									},
+									{
+										"0": "107",
+										"1": "Silla Ergonomica",
+										"2": "Muebles",
+										"3": "3"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_producto",
+										"type": "string"
+									},
+									{
+										"key": "1",
+										"name": "nombre_producto",
+										"type": "string"
+									},
+									{
+										"key": "2",
+										"name": "categoria",
+										"type": "string"
+									},
+									{
+										"key": "3",
+										"name": "count",
+										"type": "bigint"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"3"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"0e6a9aff-efc9-402d-883b-ec2feeaa6517": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "101",
+										"1": "Notebook",
+										"2": "Tecnologia",
+										"3": "2026-11-18",
+										"4": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "101",
+										"1": "Notebook",
+										"2": "Tecnologia",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "101",
+										"1": "Notebook",
+										"2": "Tecnologia",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "102",
+										"1": "Mouse",
+										"2": "Accesorios",
+										"3": "2026-11-18",
+										"4": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "102",
+										"1": "Mouse",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "102",
+										"1": "Mouse",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "103",
+										"1": "Teclado",
+										"2": "Accesorios",
+										"3": "2026-11-18",
+										"4": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "103",
+										"1": "Teclado",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "103",
+										"1": "Teclado",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "104",
+										"1": "Monitor",
+										"2": "Tecnologia",
+										"3": "2026-11-18",
+										"4": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "104",
+										"1": "Monitor",
+										"2": "Tecnologia",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "104",
+										"1": "Monitor",
+										"2": "Tecnologia",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "105",
+										"1": "Auriculares",
+										"2": "Accesorios",
+										"3": "2026-11-18",
+										"4": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "105",
+										"1": "Auriculares",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "105",
+										"1": "Auriculares",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "106",
+										"1": "Webcam",
+										"2": "Accesorios",
+										"3": "2026-11-18",
+										"4": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "106",
+										"1": "Webcam",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "106",
+										"1": "Webcam",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "107",
+										"1": "Silla Ergonomica",
+										"2": "Muebles",
+										"3": "2026-11-18",
+										"4": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "107",
+										"1": "Silla Ergonomica",
+										"2": "Muebles",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "107",
+										"1": "Silla Ergonomica",
+										"2": "Muebles",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_producto",
+										"type": "string"
+									},
+									{
+										"key": "1",
+										"name": "nombre_producto",
+										"type": "string"
+									},
+									{
+										"key": "2",
+										"name": "categoria",
+										"type": "string"
+									},
+									{
+										"key": "3",
+										"name": "fecha_ingesta",
+										"type": "date"
+									},
+									{
+										"key": "4",
+										"name": "id_lote",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"0e3f9a16-a660-43de-a2e7-ab1b442fec5d": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "Auriculares"
+									},
+									{
+										"0": "Monitor"
+									},
+									{
+										"0": "Mouse"
+									},
+									{
+										"0": "Notebook"
+									},
+									{
+										"0": "Silla Ergonomica"
+									},
+									{
+										"0": "Teclado"
+									},
+									{
+										"0": "Webcam"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "valor",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"b85a3d08-b458-4172-bc54-ae206fed8542": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "Accesorios"
+									},
+									{
+										"0": "Muebles"
+									},
+									{
+										"0": "Tecnologia"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "valor",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"5a9c791a-37fd-42df-94ab-750f9cda2ba3": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "Silla Ergonomica"
+									},
+									{
+										"0": "Webcam"
+									},
+									{
+										"0": "Mouse"
+									},
+									{
+										"0": "Auriculares"
+									},
+									{
+										"0": "Notebook"
+									},
+									{
+										"0": "Monitor"
+									},
+									{
+										"0": "Teclado"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "nombre_producto",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"6b0e7100-e6fe-4de1-9664-909ef968eebe": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "Accesorios"
+									},
+									{
+										"0": "Muebles"
+									},
+									{
+										"0": "Tecnologia"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "categoria",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"6bf68f37-2df5-49d1-bcbf-5f85a192f61f": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "Accesorios",
+										"1": "12"
+									},
+									{
+										"0": "Tecnologia",
+										"1": "6"
+									},
+									{
+										"0": "Muebles",
+										"1": "3"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "categoria",
+										"type": "string"
+									},
+									{
+										"key": "1",
+										"name": "count",
+										"type": "bigint"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"1"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"afa8df69-228d-4308-a6df-7641a5dc0a99": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_producto",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"ccda6dbc-b3fe-4852-a918-660926a0b13e": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_producto",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"a16232b6-a6c5-4eae-91e1-d57139950d1c": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "2026-11-01",
+										"1": "2027-01-01",
+										"2": "2026-11-05 18:31:06.994",
+										"3": "2026-11-19 21:20:38.929"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "fecha_pedido_mas_antigua",
+										"type": "date"
+									},
+									{
+										"key": "1",
+										"name": "fecha_pedido_mas_reciente",
+										"type": "date"
+									},
+									{
+										"key": "2",
+										"name": "modificacion_mas_antigua_utc",
+										"type": "timestamp"
+									},
+									{
+										"key": "3",
+										"name": "modificacion_mas_reciente_utc",
+										"type": "timestamp"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"60897e01-b898-4a16-9d01-4a62ac77f1f5": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "2026-11-05 18:31:18.949",
+										"1": "2026-11-19 21:20:38.93"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "modificacion_mas_antigua_utc",
+										"type": "timestamp"
+									},
+									{
+										"key": "1",
+										"name": "modificacion_mas_reciente_utc",
+										"type": "timestamp"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"8dd726a1-990b-43d9-be41-640b26e45f64": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "1",
+										"1": "2"
+									},
+									{
+										"0": "2",
+										"1": "2"
+									},
+									{
+										"0": "3",
+										"1": "2"
+									},
+									{
+										"0": "4",
+										"1": "2"
+									},
+									{
+										"0": "5",
+										"1": "2"
+									},
+									{
+										"0": "6",
+										"1": "2"
+									},
+									{
+										"0": "7",
+										"1": "2"
+									},
+									{
+										"0": "8",
+										"1": "2"
+									},
+									{
+										"0": "9",
+										"1": "2"
+									},
+									{
+										"0": "10",
+										"1": "2"
+									},
+									{
+										"0": "11",
+										"1": "2"
+									},
+									{
+										"0": "12",
+										"1": "2"
+									},
+									{
+										"0": "13",
+										"1": "2"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_pedido",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "count",
+										"type": "bigint"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"candidateVariableNames": [
+									"ids_repetidos"
+								],
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"1f4f98d2-521f-43a7-85b4-9747ecba16b7": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "1",
+										"1": "2"
+									},
+									{
+										"0": "2",
+										"1": "2"
+									},
+									{
+										"0": "3",
+										"1": "2"
+									},
+									{
+										"0": "4",
+										"1": "2"
+									},
+									{
+										"0": "5",
+										"1": "2"
+									},
+									{
+										"0": "6",
+										"1": "2"
+									},
+									{
+										"0": "7",
+										"1": "2"
+									},
+									{
+										"0": "8",
+										"1": "2"
+									},
+									{
+										"0": "9",
+										"1": "2"
+									},
+									{
+										"0": "10",
+										"1": "2"
+									},
+									{
+										"0": "11",
+										"1": "2"
+									},
+									{
+										"0": "12",
+										"1": "2"
+									},
+									{
+										"0": "13",
+										"1": "2"
+									},
+									{
+										"0": "14",
+										"1": "2"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_detalle",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "count",
+										"type": "bigint"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"candidateVariableNames": [
+									"ids_repetidos"
+								],
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"d0851ff1-3e03-4f25-9d37-54b338ac530e": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "1",
+										"1": "1",
+										"2": "2026-11-01",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "1",
+										"1": "1",
+										"2": "2026-11-01",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "2",
+										"1": "2",
+										"2": "2026-11-01",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "2",
+										"1": "2",
+										"2": "2026-11-01",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "3",
+										"1": "1",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "3",
+										"1": "1",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "4",
+										"1": "3",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "4",
+										"1": "3",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "5",
+										"1": "4",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "5",
+										"1": "4",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "6",
+										"1": "5",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "6",
+										"1": "5",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "7",
+										"1": "2",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "7",
+										"1": "2",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "8",
+										"1": "999",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "8",
+										"1": "999",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "9",
+										"1": "3",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "9",
+										"1": "3",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "10",
+										"1": "4",
+										"2": "2027-01-01",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "10",
+										"1": "4",
+										"2": "2027-01-01",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "11",
+										"1": "1",
+										"2": "2026-11-12",
+										"3": "2026-11-12 23:05:26.115",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "11",
+										"1": "1",
+										"2": "2026-11-12",
+										"3": "2026-11-12 23:05:26.115",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "12",
+										"1": "2",
+										"2": "2026-11-12",
+										"3": "2026-11-12 23:05:26.115",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "12",
+										"1": "2",
+										"2": "2026-11-12",
+										"3": "2026-11-12 23:05:26.115",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "13",
+										"1": "3",
+										"2": "2026-11-12",
+										"3": "2026-11-12 23:05:26.115",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "13",
+										"1": "3",
+										"2": "2026-11-12",
+										"3": "2026-11-12 23:05:26.115",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_pedido",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "id_cliente",
+										"type": "int"
+									},
+									{
+										"key": "2",
+										"name": "fecha",
+										"type": "date"
+									},
+									{
+										"key": "3",
+										"name": "fecha_modificacion_utc",
+										"type": "timestamp"
+									},
+									{
+										"key": "4",
+										"name": "fecha_ingesta",
+										"type": "date"
+									},
+									{
+										"key": "5",
+										"name": "id_lote",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"23ca3acb-9dcc-4716-9ce5-2441f268fd8d": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "1",
+										"1": "1",
+										"2": "101",
+										"3": "1",
+										"4": "100.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "1",
+										"1": "1",
+										"2": "101",
+										"3": "1",
+										"4": "100.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "2",
+										"1": "2",
+										"2": "102",
+										"3": "1",
+										"4": "200.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "2",
+										"1": "2",
+										"2": "102",
+										"3": "1",
+										"4": "200.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "3",
+										"1": "3",
+										"2": "102",
+										"3": "1",
+										"4": "80.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "3",
+										"1": "3",
+										"2": "102",
+										"3": "1",
+										"4": "80.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "4",
+										"1": "4",
+										"2": "103",
+										"3": "1",
+										"4": "120.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "4",
+										"1": "4",
+										"2": "103",
+										"3": "1",
+										"4": "120.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "5",
+										"1": "5",
+										"2": "101",
+										"3": "1",
+										"4": "150.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "5",
+										"1": "5",
+										"2": "101",
+										"3": "1",
+										"4": "150.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "6",
+										"1": "6",
+										"2": "999",
+										"3": "1",
+										"4": "90.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "6",
+										"1": "6",
+										"2": "999",
+										"3": "1",
+										"4": "90.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "7",
+										"1": "7",
+										"2": "103",
+										"3": "1",
+										"4": "-50.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "7",
+										"1": "7",
+										"2": "103",
+										"3": "1",
+										"4": "-50.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "8",
+										"1": "8",
+										"2": "101",
+										"3": "1",
+										"4": "30.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "8",
+										"1": "8",
+										"2": "101",
+										"3": "1",
+										"4": "30.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "9",
+										"1": "9",
+										"2": "104",
+										"3": "1",
+										"4": "75.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "9",
+										"1": "9",
+										"2": "104",
+										"3": "1",
+										"4": "75.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "10",
+										"1": "10",
+										"2": "102",
+										"3": "1",
+										"4": "40.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "10",
+										"1": "10",
+										"2": "102",
+										"3": "1",
+										"4": "40.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "11",
+										"1": "11",
+										"2": "105",
+										"3": "2",
+										"4": "45.90",
+										"5": "2026-11-12 23:05:26.115",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "11",
+										"1": "11",
+										"2": "105",
+										"3": "2",
+										"4": "45.90",
+										"5": "2026-11-12 23:05:26.115",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "12",
+										"1": "11",
+										"2": "106",
+										"3": "1",
+										"4": "72.50",
+										"5": "2026-11-12 23:05:26.115",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "12",
+										"1": "11",
+										"2": "106",
+										"3": "1",
+										"4": "72.50",
+										"5": "2026-11-12 23:05:26.115",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "13",
+										"1": "12",
+										"2": "107",
+										"3": "1",
+										"4": "210.00",
+										"5": "2026-11-12 23:05:26.115",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "13",
+										"1": "12",
+										"2": "107",
+										"3": "1",
+										"4": "210.00",
+										"5": "2026-11-12 23:05:26.115",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "14",
+										"1": "13",
+										"2": "101",
+										"3": "1",
+										"4": "950.00",
+										"5": "2026-11-12 23:05:26.115",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "14",
+										"1": "13",
+										"2": "101",
+										"3": "1",
+										"4": "950.00",
+										"5": "2026-11-12 23:05:26.115",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_detalle",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "id_pedido",
+										"type": "int"
+									},
+									{
+										"key": "2",
+										"name": "id_producto",
+										"type": "int"
+									},
+									{
+										"key": "3",
+										"name": "cantidad",
+										"type": "int"
+									},
+									{
+										"key": "4",
+										"name": "precio_unitario",
+										"type": "decimal"
+									},
+									{
+										"key": "5",
+										"name": "fecha_modificacion_utc",
+										"type": "timestamp"
+									},
+									{
+										"key": "6",
+										"name": "fecha_ingesta",
+										"type": "date"
+									},
+									{
+										"key": "7",
+										"name": "id_lote",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"13ca443b-dc1f-4c18-80e9-3b6a83fa5414": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "8",
+										"1": "999"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_pedido",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "id_cliente",
+										"type": "int"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"cbcb0bc1-215a-4c43-9dc3-4a6e59a1af8a": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_detalle",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "id_pedido",
+										"type": "int"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"cf0e2d0d-46b5-4cfb-b986-49fae7b36b94": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "6",
+										"1": "999"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_detalle",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "id_producto",
+										"type": "int"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"e454ca33-2e83-40d8-8761-061835368e8d": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "0",
+										"1": "0",
+										"2": "0",
+										"3": "0",
+										"4": "0",
+										"5": "0",
+										"6": "0",
+										"7": "0",
+										"8": "0",
+										"9": "0"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "address",
+										"type": "bigint"
+									},
+									{
+										"key": "1",
+										"name": "company",
+										"type": "bigint"
+									},
+									{
+										"key": "2",
+										"name": "email",
+										"type": "bigint"
+									},
+									{
+										"key": "3",
+										"name": "id",
+										"type": "bigint"
+									},
+									{
+										"key": "4",
+										"name": "name",
+										"type": "bigint"
+									},
+									{
+										"key": "5",
+										"name": "phone",
+										"type": "bigint"
+									},
+									{
+										"key": "6",
+										"name": "username",
+										"type": "bigint"
+									},
+									{
+										"key": "7",
+										"name": "website",
+										"type": "bigint"
+									},
+									{
+										"key": "8",
+										"name": "fecha_ingesta",
+										"type": "bigint"
+									},
+									{
+										"key": "9",
+										"name": "id_lote",
+										"type": "bigint"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"66c972e7-2df0-45e0-ac03-6945640e740e": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "0",
+										"1": "0",
+										"2": "0",
+										"3": "0",
+										"4": "0"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_producto",
+										"type": "bigint"
+									},
+									{
+										"key": "1",
+										"name": "nombre_producto",
+										"type": "bigint"
+									},
+									{
+										"key": "2",
+										"name": "categoria",
+										"type": "bigint"
+									},
+									{
+										"key": "3",
+										"name": "fecha_ingesta",
+										"type": "bigint"
+									},
+									{
+										"key": "4",
+										"name": "id_lote",
+										"type": "bigint"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"927fef3d-5946-4609-ab2d-3be05c35fc98": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "0",
+										"1": "0",
+										"2": "0",
+										"3": "0",
+										"4": "0",
+										"5": "0"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_pedido",
+										"type": "bigint"
+									},
+									{
+										"key": "1",
+										"name": "id_cliente",
+										"type": "bigint"
+									},
+									{
+										"key": "2",
+										"name": "fecha",
+										"type": "bigint"
+									},
+									{
+										"key": "3",
+										"name": "fecha_modificacion_utc",
+										"type": "bigint"
+									},
+									{
+										"key": "4",
+										"name": "fecha_ingesta",
+										"type": "bigint"
+									},
+									{
+										"key": "5",
+										"name": "id_lote",
+										"type": "bigint"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"f6f4c158-2289-4714-baf2-fc68676836d3": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "0",
+										"1": "0",
+										"2": "0",
+										"3": "0",
+										"4": "0",
+										"5": "0",
+										"6": "0",
+										"7": "0"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_detalle",
+										"type": "bigint"
+									},
+									{
+										"key": "1",
+										"name": "id_pedido",
+										"type": "bigint"
+									},
+									{
+										"key": "2",
+										"name": "id_producto",
+										"type": "bigint"
+									},
+									{
+										"key": "3",
+										"name": "cantidad",
+										"type": "bigint"
+									},
+									{
+										"key": "4",
+										"name": "precio_unitario",
+										"type": "bigint"
+									},
+									{
+										"key": "5",
+										"name": "fecha_modificacion_utc",
+										"type": "bigint"
+									},
+									{
+										"key": "6",
+										"name": "fecha_ingesta",
+										"type": "bigint"
+									},
+									{
+										"key": "7",
+										"name": "id_lote",
+										"type": "bigint"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"4ccf78f3-0da1-4d3b-86d3-0d94cbc960b4": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "0",
+										"1": "0",
+										"2": "0",
+										"3": "0",
+										"4": "0",
+										"5": "0"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_pedido",
+										"type": "bigint"
+									},
+									{
+										"key": "1",
+										"name": "id_cliente",
+										"type": "bigint"
+									},
+									{
+										"key": "2",
+										"name": "fecha",
+										"type": "bigint"
+									},
+									{
+										"key": "3",
+										"name": "fecha_modificacion_utc",
+										"type": "bigint"
+									},
+									{
+										"key": "4",
+										"name": "fecha_ingesta",
+										"type": "bigint"
+									},
+									{
+										"key": "5",
+										"name": "id_lote",
+										"type": "bigint"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"fa897133-5b52-4ff1-8378-2c6d6fdf845c": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "0",
+										"1": "0",
+										"2": "0",
+										"3": "0",
+										"4": "0",
+										"5": "0",
+										"6": "0",
+										"7": "0"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_detalle",
+										"type": "bigint"
+									},
+									{
+										"key": "1",
+										"name": "id_pedido",
+										"type": "bigint"
+									},
+									{
+										"key": "2",
+										"name": "id_producto",
+										"type": "bigint"
+									},
+									{
+										"key": "3",
+										"name": "cantidad",
+										"type": "bigint"
+									},
+									{
+										"key": "4",
+										"name": "precio_unitario",
+										"type": "bigint"
+									},
+									{
+										"key": "5",
+										"name": "fecha_modificacion_utc",
+										"type": "bigint"
+									},
+									{
+										"key": "6",
+										"name": "fecha_ingesta",
+										"type": "bigint"
+									},
+									{
+										"key": "7",
+										"name": "id_lote",
+										"type": "bigint"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"0967dc53-1420-4dc8-9cfa-3f875a355291": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": {
+											"city": "Gwenborough",
+											"zipcode": "92998-3874",
+											"geo": {
+												"lat": -37.3159,
+												"lng": 81.1496
+											},
+											"street": "Kulas Light",
+											"suite": "Apt. 556"
+										},
+										"1": {
+											"bs": "harness real-time e-markets",
+											"catchPhrase": "Multi-layered client-server neural-net",
+											"name": "Romaguera-Crona"
+										},
+										"2": "Sincere@april.biz",
+										"3": "1",
+										"4": "Leanne Graham",
+										"5": "1-770-736-8031 x56442",
+										"6": "Bret",
+										"7": "hildegard.org",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": {
+											"city": "Wisokyburgh",
+											"zipcode": "90566-7771",
+											"geo": {
+												"lat": -43.9509,
+												"lng": -34.4618
+											},
+											"street": "Victor Plains",
+											"suite": "Suite 879"
+										},
+										"1": {
+											"bs": "synergize scalable supply-chains",
+											"catchPhrase": "Proactive didactic contingency",
+											"name": "Deckow-Crist"
+										},
+										"2": "Shanna@melissa.tv",
+										"3": "2",
+										"4": "Ervin Howell",
+										"5": "010-692-6593 x09125",
+										"6": "Antonette",
+										"7": "anastasia.net",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": {
+											"city": "McKenziehaven",
+											"zipcode": "59590-4157",
+											"geo": {
+												"lat": -68.6102,
+												"lng": -47.0653
+											},
+											"street": "Douglas Extension",
+											"suite": "Suite 847"
+										},
+										"1": {
+											"bs": "e-enable strategic applications",
+											"catchPhrase": "Face to face bifurcated interface",
+											"name": "Romaguera-Jacobson"
+										},
+										"2": "Nathan@yesenia.net",
+										"3": "3",
+										"4": "Clementine Bauch",
+										"5": "1-463-123-4447",
+										"6": "Samantha",
+										"7": "ramiro.info",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": {
+											"city": "South Elvis",
+											"zipcode": "53919-4257",
+											"geo": {
+												"lat": 29.4572,
+												"lng": -164.299
+											},
+											"street": "Hoeger Mall",
+											"suite": "Apt. 692"
+										},
+										"1": {
+											"bs": "transition cutting-edge web services",
+											"catchPhrase": "Multi-tiered zero tolerance productivity",
+											"name": "Robel-Corkery"
+										},
+										"2": "Julianne.OConner@kory.org",
+										"3": "4",
+										"4": "Patricia Lebsack",
+										"5": "493-170-9623 x156",
+										"6": "Karianne",
+										"7": "kale.biz",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": {
+											"city": "Roscoeview",
+											"zipcode": "33263",
+											"geo": {
+												"lat": -31.8129,
+												"lng": 62.5342
+											},
+											"street": "Skiles Walks",
+											"suite": "Suite 351"
+										},
+										"1": {
+											"bs": "revolutionize end-to-end systems",
+											"catchPhrase": "User-centric fault-tolerant solution",
+											"name": "Keebler LLC"
+										},
+										"2": "Lucio_Hettinger@annie.ca",
+										"3": "5",
+										"4": "Chelsey Dietrich",
+										"5": "(254)954-1289",
+										"6": "Kamren",
+										"7": "demarco.info",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": {
+											"city": "South Christy",
+											"zipcode": "23505-1337",
+											"geo": {
+												"lat": -71.4197,
+												"lng": 71.7478
+											},
+											"street": "Norberto Crossing",
+											"suite": "Apt. 950"
+										},
+										"1": {
+											"bs": "e-enable innovative applications",
+											"catchPhrase": "Synchronised bottom-line interface",
+											"name": "Considine-Lockman"
+										},
+										"2": "Karley_Dach@jasper.info",
+										"3": "6",
+										"4": "Mrs. Dennis Schulist",
+										"5": "1-477-935-8478 x6430",
+										"6": "Leopoldo_Corkery",
+										"7": "ola.org",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": {
+											"city": "Howemouth",
+											"zipcode": "58804-1099",
+											"geo": {
+												"lat": 24.8918,
+												"lng": 21.8984
+											},
+											"street": "Rex Trail",
+											"suite": "Suite 280"
+										},
+										"1": {
+											"bs": "generate enterprise e-tailers",
+											"catchPhrase": "Configurable multimedia task-force",
+											"name": "Johns Group"
+										},
+										"2": "Telly.Hoeger@billy.biz",
+										"3": "7",
+										"4": "Kurtis Weissnat",
+										"5": "210.067.6132",
+										"6": "Elwyn.Skiles",
+										"7": "elvis.io",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": {
+											"city": "Aliyaview",
+											"zipcode": "45169",
+											"geo": {
+												"lat": -14.399,
+												"lng": -120.7677
+											},
+											"street": "Ellsworth Summit",
+											"suite": "Suite 729"
+										},
+										"1": {
+											"bs": "e-enable extensible e-tailers",
+											"catchPhrase": "Implemented secondary concept",
+											"name": "Abernathy Group"
+										},
+										"2": "Sherwood@rosamond.me",
+										"3": "8",
+										"4": "Nicholas Runolfsdottir V",
+										"5": "586.493.6943 x140",
+										"6": "Maxime_Nienow",
+										"7": "jacynthe.com",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": {
+											"city": "Bartholomebury",
+											"zipcode": "76495-3109",
+											"geo": {
+												"lat": 24.6463,
+												"lng": -168.8889
+											},
+											"street": "Dayna Park",
+											"suite": "Suite 449"
+										},
+										"1": {
+											"bs": "aggregate real-time technologies",
+											"catchPhrase": "Switchable contextually-based project",
+											"name": "Yost and Sons"
+										},
+										"2": "Chaim_McDermott@dana.io",
+										"3": "9",
+										"4": "Glenna Reichert",
+										"5": "(775)976-6794 x41206",
+										"6": "Delphine",
+										"7": "conrad.com",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": {
+											"city": "Lebsackbury",
+											"zipcode": "31428-2261",
+											"geo": {
+												"lat": -38.2386,
+												"lng": 57.2232
+											},
+											"street": "Kattie Turnpike",
+											"suite": "Suite 198"
+										},
+										"1": {
+											"bs": "target end-to-end models",
+											"catchPhrase": "Centralized empowering task-force",
+											"name": "Hoeger LLC"
+										},
+										"2": "Rey.Padberg@karina.biz",
+										"3": "10",
+										"4": "Clementina DuBuque",
+										"5": "024-648-3804",
+										"6": "Moriah.Stanton",
+										"7": "ambrose.net",
+										"8": "2026-11-18",
+										"9": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": {
+											"city": "Gwenborough",
+											"zipcode": "92998-3874",
+											"geo": {
+												"lat": -37.3159,
+												"lng": 81.1496
+											},
+											"street": "Kulas Light",
+											"suite": "Apt. 556"
+										},
+										"1": {
+											"bs": "harness real-time e-markets",
+											"catchPhrase": "Multi-layered client-server neural-net",
+											"name": "Romaguera-Crona"
+										},
+										"2": "Sincere@april.biz",
+										"3": "1",
+										"4": "Leanne Graham",
+										"5": "1-770-736-8031 x56442",
+										"6": "Bret",
+										"7": "hildegard.org",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": {
+											"city": "Wisokyburgh",
+											"zipcode": "90566-7771",
+											"geo": {
+												"lat": -43.9509,
+												"lng": -34.4618
+											},
+											"street": "Victor Plains",
+											"suite": "Suite 879"
+										},
+										"1": {
+											"bs": "synergize scalable supply-chains",
+											"catchPhrase": "Proactive didactic contingency",
+											"name": "Deckow-Crist"
+										},
+										"2": "Shanna@melissa.tv",
+										"3": "2",
+										"4": "Ervin Howell",
+										"5": "010-692-6593 x09125",
+										"6": "Antonette",
+										"7": "anastasia.net",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": {
+											"city": "McKenziehaven",
+											"zipcode": "59590-4157",
+											"geo": {
+												"lat": -68.6102,
+												"lng": -47.0653
+											},
+											"street": "Douglas Extension",
+											"suite": "Suite 847"
+										},
+										"1": {
+											"bs": "e-enable strategic applications",
+											"catchPhrase": "Face to face bifurcated interface",
+											"name": "Romaguera-Jacobson"
+										},
+										"2": "Nathan@yesenia.net",
+										"3": "3",
+										"4": "Clementine Bauch",
+										"5": "1-463-123-4447",
+										"6": "Samantha",
+										"7": "ramiro.info",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": {
+											"city": "South Elvis",
+											"zipcode": "53919-4257",
+											"geo": {
+												"lat": 29.4572,
+												"lng": -164.299
+											},
+											"street": "Hoeger Mall",
+											"suite": "Apt. 692"
+										},
+										"1": {
+											"bs": "transition cutting-edge web services",
+											"catchPhrase": "Multi-tiered zero tolerance productivity",
+											"name": "Robel-Corkery"
+										},
+										"2": "Julianne.OConner@kory.org",
+										"3": "4",
+										"4": "Patricia Lebsack",
+										"5": "493-170-9623 x156",
+										"6": "Karianne",
+										"7": "kale.biz",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": {
+											"city": "Roscoeview",
+											"zipcode": "33263",
+											"geo": {
+												"lat": -31.8129,
+												"lng": 62.5342
+											},
+											"street": "Skiles Walks",
+											"suite": "Suite 351"
+										},
+										"1": {
+											"bs": "revolutionize end-to-end systems",
+											"catchPhrase": "User-centric fault-tolerant solution",
+											"name": "Keebler LLC"
+										},
+										"2": "Lucio_Hettinger@annie.ca",
+										"3": "5",
+										"4": "Chelsey Dietrich",
+										"5": "(254)954-1289",
+										"6": "Kamren",
+										"7": "demarco.info",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": {
+											"city": "South Christy",
+											"zipcode": "23505-1337",
+											"geo": {
+												"lat": -71.4197,
+												"lng": 71.7478
+											},
+											"street": "Norberto Crossing",
+											"suite": "Apt. 950"
+										},
+										"1": {
+											"bs": "e-enable innovative applications",
+											"catchPhrase": "Synchronised bottom-line interface",
+											"name": "Considine-Lockman"
+										},
+										"2": "Karley_Dach@jasper.info",
+										"3": "6",
+										"4": "Mrs. Dennis Schulist",
+										"5": "1-477-935-8478 x6430",
+										"6": "Leopoldo_Corkery",
+										"7": "ola.org",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": {
+											"city": "Howemouth",
+											"zipcode": "58804-1099",
+											"geo": {
+												"lat": 24.8918,
+												"lng": 21.8984
+											},
+											"street": "Rex Trail",
+											"suite": "Suite 280"
+										},
+										"1": {
+											"bs": "generate enterprise e-tailers",
+											"catchPhrase": "Configurable multimedia task-force",
+											"name": "Johns Group"
+										},
+										"2": "Telly.Hoeger@billy.biz",
+										"3": "7",
+										"4": "Kurtis Weissnat",
+										"5": "210.067.6132",
+										"6": "Elwyn.Skiles",
+										"7": "elvis.io",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": {
+											"city": "Aliyaview",
+											"zipcode": "45169",
+											"geo": {
+												"lat": -14.399,
+												"lng": -120.7677
+											},
+											"street": "Ellsworth Summit",
+											"suite": "Suite 729"
+										},
+										"1": {
+											"bs": "e-enable extensible e-tailers",
+											"catchPhrase": "Implemented secondary concept",
+											"name": "Abernathy Group"
+										},
+										"2": "Sherwood@rosamond.me",
+										"3": "8",
+										"4": "Nicholas Runolfsdottir V",
+										"5": "586.493.6943 x140",
+										"6": "Maxime_Nienow",
+										"7": "jacynthe.com",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": {
+											"city": "Bartholomebury",
+											"zipcode": "76495-3109",
+											"geo": {
+												"lat": 24.6463,
+												"lng": -168.8889
+											},
+											"street": "Dayna Park",
+											"suite": "Suite 449"
+										},
+										"1": {
+											"bs": "aggregate real-time technologies",
+											"catchPhrase": "Switchable contextually-based project",
+											"name": "Yost and Sons"
+										},
+										"2": "Chaim_McDermott@dana.io",
+										"3": "9",
+										"4": "Glenna Reichert",
+										"5": "(775)976-6794 x41206",
+										"6": "Delphine",
+										"7": "conrad.com",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": {
+											"city": "Lebsackbury",
+											"zipcode": "31428-2261",
+											"geo": {
+												"lat": -38.2386,
+												"lng": 57.2232
+											},
+											"street": "Kattie Turnpike",
+											"suite": "Suite 198"
+										},
+										"1": {
+											"bs": "target end-to-end models",
+											"catchPhrase": "Centralized empowering task-force",
+											"name": "Hoeger LLC"
+										},
+										"2": "Rey.Padberg@karina.biz",
+										"3": "10",
+										"4": "Clementina DuBuque",
+										"5": "024-648-3804",
+										"6": "Moriah.Stanton",
+										"7": "ambrose.net",
+										"8": "2026-11-19",
+										"9": "00f47254-9102-4005-bc83-03d207f73311"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "address",
+										"type": "StructType(StructField(city,StringType,true),StructField(geo,StructType(StructField(lat,DoubleType,true),StructField(lng,DoubleType,true)),true),StructField(street,StringType,true),StructField(suite,StringType,true),StructField(zipcode,StringType,true))"
+									},
+									{
+										"key": "1",
+										"name": "company",
+										"type": "StructType(StructField(bs,StringType,true),StructField(catchPhrase,StringType,true),StructField(name,StringType,true))"
+									},
+									{
+										"key": "2",
+										"name": "email",
+										"type": "string"
+									},
+									{
+										"key": "3",
+										"name": "id",
+										"type": "smallint"
+									},
+									{
+										"key": "4",
+										"name": "name",
+										"type": "string"
+									},
+									{
+										"key": "5",
+										"name": "phone",
+										"type": "string"
+									},
+									{
+										"key": "6",
+										"name": "username",
+										"type": "string"
+									},
+									{
+										"key": "7",
+										"name": "website",
+										"type": "string"
+									},
+									{
+										"key": "8",
+										"name": "fecha_ingesta",
+										"type": "date"
+									},
+									{
+										"key": "9",
+										"name": "id_lote",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"2"
+									],
+									"seriesFieldKeys": [
+										"3"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"671f5e46-c851-4fad-9ab7-da983d796a7a": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "101",
+										"1": "Notebook",
+										"2": "Tecnologia",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "102",
+										"1": "Mouse",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "103",
+										"1": "Teclado",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "104",
+										"1": "Monitor",
+										"2": "Tecnologia",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "105",
+										"1": "Auriculares",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "106",
+										"1": "Webcam",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "107",
+										"1": "Silla Ergonomica",
+										"2": "Muebles",
+										"3": "2026-11-19",
+										"4": "00f47254-9102-4005-bc83-03d207f73311"
+									},
+									{
+										"0": "101",
+										"1": "Notebook",
+										"2": "Tecnologia",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "102",
+										"1": "Mouse",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "103",
+										"1": "Teclado",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "104",
+										"1": "Monitor",
+										"2": "Tecnologia",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "105",
+										"1": "Auriculares",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "106",
+										"1": "Webcam",
+										"2": "Accesorios",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "107",
+										"1": "Silla Ergonomica",
+										"2": "Muebles",
+										"3": "2026-11-19",
+										"4": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "101",
+										"1": "Notebook",
+										"2": "Tecnologia",
+										"3": "2026-11-18",
+										"4": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "102",
+										"1": "Mouse",
+										"2": "Accesorios",
+										"3": "2026-11-18",
+										"4": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "103",
+										"1": "Teclado",
+										"2": "Accesorios",
+										"3": "2026-11-18",
+										"4": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "104",
+										"1": "Monitor",
+										"2": "Tecnologia",
+										"3": "2026-11-18",
+										"4": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "105",
+										"1": "Auriculares",
+										"2": "Accesorios",
+										"3": "2026-11-18",
+										"4": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "106",
+										"1": "Webcam",
+										"2": "Accesorios",
+										"3": "2026-11-18",
+										"4": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_producto",
+										"type": "string"
+									},
+									{
+										"key": "1",
+										"name": "nombre_producto",
+										"type": "string"
+									},
+									{
+										"key": "2",
+										"name": "categoria",
+										"type": "string"
+									},
+									{
+										"key": "3",
+										"name": "fecha_ingesta",
+										"type": "date"
+									},
+									{
+										"key": "4",
+										"name": "id_lote",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"f299df79-38d0-4d15-8c3a-c9e929eb0e5d": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "1",
+										"1": "1",
+										"2": "2026-11-01",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "2",
+										"1": "2",
+										"2": "2026-11-01",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "3",
+										"1": "1",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "4",
+										"1": "3",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "5",
+										"1": "4",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "6",
+										"1": "5",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "7",
+										"1": "2",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "8",
+										"1": "999",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "9",
+										"1": "3",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "10",
+										"1": "4",
+										"2": "2027-01-01",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "11",
+										"1": "1",
+										"2": "2026-11-12",
+										"3": "2026-11-12 23:05:26.115",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "12",
+										"1": "2",
+										"2": "2026-11-12",
+										"3": "2026-11-12 23:05:26.115",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "13",
+										"1": "3",
+										"2": "2026-11-12",
+										"3": "2026-11-12 23:05:26.115",
+										"4": "2026-11-18",
+										"5": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "1",
+										"1": "1",
+										"2": "2026-11-01",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "2",
+										"1": "2",
+										"2": "2026-11-01",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "3",
+										"1": "1",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "4",
+										"1": "3",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "5",
+										"1": "4",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "6",
+										"1": "5",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "7",
+										"1": "2",
+										"2": "2026-11-02",
+										"3": "2026-11-05 18:31:06.994",
+										"4": "2026-11-19",
+										"5": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_pedido",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "id_cliente",
+										"type": "int"
+									},
+									{
+										"key": "2",
+										"name": "fecha",
+										"type": "date"
+									},
+									{
+										"key": "3",
+										"name": "fecha_modificacion_utc",
+										"type": "timestamp"
+									},
+									{
+										"key": "4",
+										"name": "fecha_ingesta",
+										"type": "date"
+									},
+									{
+										"key": "5",
+										"name": "id_lote",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"023f2be8-c495-487d-a51c-6f7ed332666b": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "1",
+										"1": "1",
+										"2": "101",
+										"3": "1",
+										"4": "100.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "2",
+										"1": "2",
+										"2": "102",
+										"3": "1",
+										"4": "200.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "3",
+										"1": "3",
+										"2": "102",
+										"3": "1",
+										"4": "80.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "4",
+										"1": "4",
+										"2": "103",
+										"3": "1",
+										"4": "120.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "5",
+										"1": "5",
+										"2": "101",
+										"3": "1",
+										"4": "150.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "6",
+										"1": "6",
+										"2": "999",
+										"3": "1",
+										"4": "90.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "7",
+										"1": "7",
+										"2": "103",
+										"3": "1",
+										"4": "-50.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "8",
+										"1": "8",
+										"2": "101",
+										"3": "1",
+										"4": "30.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "9",
+										"1": "9",
+										"2": "104",
+										"3": "1",
+										"4": "75.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "10",
+										"1": "10",
+										"2": "102",
+										"3": "1",
+										"4": "40.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "11",
+										"1": "11",
+										"2": "105",
+										"3": "2",
+										"4": "45.90",
+										"5": "2026-11-12 23:05:26.115",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "12",
+										"1": "11",
+										"2": "106",
+										"3": "1",
+										"4": "72.50",
+										"5": "2026-11-12 23:05:26.115",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "13",
+										"1": "12",
+										"2": "107",
+										"3": "1",
+										"4": "210.00",
+										"5": "2026-11-12 23:05:26.115",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "14",
+										"1": "13",
+										"2": "101",
+										"3": "1",
+										"4": "950.00",
+										"5": "2026-11-12 23:05:26.115",
+										"6": "2026-11-18",
+										"7": "a714e32c-550e-4edc-ab6b-ac4a638ddfa5"
+									},
+									{
+										"0": "1",
+										"1": "1",
+										"2": "101",
+										"3": "1",
+										"4": "100.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "2",
+										"1": "2",
+										"2": "102",
+										"3": "1",
+										"4": "200.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "3",
+										"1": "3",
+										"2": "102",
+										"3": "1",
+										"4": "80.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "4",
+										"1": "4",
+										"2": "103",
+										"3": "1",
+										"4": "120.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "5",
+										"1": "5",
+										"2": "101",
+										"3": "1",
+										"4": "150.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									},
+									{
+										"0": "6",
+										"1": "6",
+										"2": "999",
+										"3": "1",
+										"4": "90.00",
+										"5": "2026-11-05 18:31:18.949",
+										"6": "2026-11-19",
+										"7": "ae69562e-919e-4e01-8e95-4e30e2c2044f"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_detalle",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "id_pedido",
+										"type": "int"
+									},
+									{
+										"key": "2",
+										"name": "id_producto",
+										"type": "int"
+									},
+									{
+										"key": "3",
+										"name": "cantidad",
+										"type": "int"
+									},
+									{
+										"key": "4",
+										"name": "precio_unitario",
+										"type": "decimal"
+									},
+									{
+										"key": "5",
+										"name": "fecha_modificacion_utc",
+										"type": "timestamp"
+									},
+									{
+										"key": "6",
+										"name": "fecha_ingesta",
+										"type": "date"
+									},
+									{
+										"key": "7",
+										"name": "id_lote",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					}
+				}
+			},
+			"enableDebugMode": false,
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/3eac8f23-88c8-4ed3-85d4-adc05237fc61/resourceGroups/miGrupoDeRecursos/providers/Microsoft.Synapse/workspaces/synapse-ingenieria-demo-2026/bigDataPools/sparkDemo",
+				"name": "sparkDemo",
+				"type": "Spark",
+				"endpoint": "https://synapse-ingenieria-demo-2026.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkDemo",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.5",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "markdown",
+				"source": [
+					"# Exploración de datos — capa Bronze\n",
+					"\n",
+					"## Objetivo\n",
+					"Revisar la estructura, calidad y relaciones de las tablas Bronze de clientes, productos, pedidos y detalle de pedido antes de definir las transformaciones hacia Silver.\n",
+					"\n",
+					"Las celdas muestran los datos tal como están almacenados. Los valores señalados como posibles inconsistencias requieren revisión; no se corrigen en este notebook.\n",
+					"\n",
+					"## Contenido\n",
+					"1. Carga y funciones de exploración\n",
+					"2. Clientes\n",
+					"3. Productos\n",
+					"4. Pedidos y detalle de pedido\n",
+					"5. Criterios para preparar Silver"
+				]
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"## 1. Carga y funciones de exploración\n",
+					"\n",
+					"Las tablas se leen desde sus rutas Delta en Bronze. La función de valores nulos cuenta también las cadenas vacías y los textos que contienen solo espacios."
+				]
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"from pyspark.sql import functions as F"
+				],
+				"execution_count": 33
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"# Rutas Bronze\n",
+					"ruta_cliente = \"abfss://datos@proyectos2027.dfs.core.windows.net/bronze/cliente\"\n",
+					"ruta_productos = \"abfss://datos@proyectos2027.dfs.core.windows.net/bronze/producto\"\n",
+					"ruta_pedidos = \"abfss://datos@proyectos2027.dfs.core.windows.net/bronze/pedido\"\n",
+					"ruta_detalle_pedido = \"abfss://datos@proyectos2027.dfs.core.windows.net/bronze/pedido/detalle_pedido\"\n",
+					"\n",
+					"# Lectura de las tablas\n",
+					"df_cliente = spark.read.format(\"delta\").load(ruta_cliente)\n",
+					"df_productos = spark.read.format(\"delta\").load(ruta_productos)\n",
+					"df_pedidos = spark.read.format(\"delta\").load(ruta_pedidos)\n",
+					"df_detalle_pedido = spark.read.format(\"delta\").load(ruta_detalle_pedido)\n",
+					"\n",
+					"def mostrar_resumen(df, nombre):\n",
+					"    print(f\"--- {nombre} ---\")\n",
+					"    print(f\"Filas: {df.count()}\")\n",
+					"    print(f\"Columnas: {len(df.columns)}\")\n",
+					"    print(\"Nombres de columnas:\", df.columns)\n",
+					"    df.printSchema()\n",
+					"    display(df.limit(20))\n",
+					"\n",
+					"for nombre, df in [\n",
+					"    (\"Clientes\", df_cliente),\n",
+					"    (\"Productos\", df_productos),\n",
+					"    (\"Pedidos\", df_pedidos),\n",
+					"    (\"Detalle de pedido\", df_detalle_pedido)\n",
+					"]:\n",
+					"    mostrar_resumen(df, nombre)"
+				],
+				"execution_count": 41
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"## 2. Clientes\n",
+					"\n",
+					"### Significado de las columnas\n",
+					"\n",
+					"| Columna | Significado |\n",
+					"|---|---|\n",
+					"| address | Dirección del cliente; incluye ciudad, calle, código postal y coordenadas. |\n",
+					"| company | Empresa asociada al cliente y datos descriptivos. |\n",
+					"| email | Correo electrónico. |\n",
+					"| id | Identificador del cliente en la API de origen. |\n",
+					"| name | Nombre completo recibido de la API. |\n",
+					"| phone | Teléfono recibido de la API. |\n",
+					"| username | Nombre de usuario de la API. |\n",
+					"| website | Sitio web asociado al cliente. |\n",
+					"| fecha_ingesta | Fecha en que el registro se incorporó a Bronze. |\n",
+					"| id_lote | Identificador de la ejecución de ingesta. |"
+				]
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 2.1 Estructura y dimensiones"
+				]
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"mostrar_resumen(df_cliente, \"Clientes Bronze\")"
+				],
+				"execution_count": 36
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 2.2 Valores nulos y vacíos"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"def resumen_nulos_vacios(df, nombre):\n",
+					"    print(f\"Valores nulos o vacíos: {nombre}\")\n",
+					"\n",
+					"    expresiones = []\n",
+					"\n",
+					"    for campo in df.schema.fields:\n",
+					"        columna = F.col(f\"`{campo.name}`\")\n",
+					"        condicion = columna.isNull()\n",
+					"\n",
+					"        if campo.dataType.simpleString() == \"string\":\n",
+					"            condicion = condicion | (F.trim(columna) == \"\")\n",
+					"\n",
+					"        expresiones.append(\n",
+					"            F.sum(F.when(condicion, 1).otherwise(0)).alias(campo.name)\n",
+					"        )\n",
+					"\n",
+					"    return df.agg(*expresiones)\n",
+					"\n",
+					"display(resumen_nulos_vacios(df_cliente, \"Clientes Bronze\"))"
+				],
+				"execution_count": 29
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 2.3 IDs repetidos\n",
+					"\n",
+					"Como una fila puede volver a ingresar en ejecuciones distintas, un mismo ID puede aparecer varias veces. Esta consulta muestra cuántas filas tiene cada ID."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"\n",
+					"ids_repetidos = (\n",
+					"    df_cliente\n",
+					"    .groupBy(\"id\")\n",
+					"    .agg(\n",
+					"        F.count(\"*\").alias(\"filas\"),\n",
+					"        F.countDistinct(\"name\").alias(\"nombres_distintos\"),\n",
+					"        F.collect_set(\"name\").alias(\"nombres\")\n",
+					"    )\n",
+					"    .filter(F.col(\"filas\") > 1)\n",
+					"    .orderBy(F.desc(\"filas\"), \"id\")\n",
+					")\n",
+					"\n",
+					"display(ids_repetidos)"
+				],
+				"execution_count": 6
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 2.4 Revisar las filas completas de los IDs repetidos"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"ids_clientes_repetidos = (\n",
+					"    df_cliente\n",
+					"    .groupBy(\"id\")\n",
+					"    .count()\n",
+					"    .filter(F.col(\"count\") > 1)\n",
+					"    .select(\"id\")\n",
+					")\n",
+					"\n",
+					"display(\n",
+					"    df_cliente\n",
+					"    .join(ids_clientes_repetidos, on=\"id\", how=\"inner\")\n",
+					"    .orderBy(\"id\", \"fecha_ingesta\", \"id_lote\")\n",
+					")"
+				],
+				"execution_count": 7
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 2.5 Nombres asociados a más de un ID\n",
+					"\n",
+					"La comparación normaliza espacios y mayúsculas/minúsculas para ayudar a encontrar posibles coincidencias."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"nombres_con_varios_ids = (\n",
+					"    df_cliente\n",
+					"    .withColumn(\"nombre_normalizado\", F.lower(F.trim(F.col(\"name\"))))\n",
+					"    .groupBy(\"nombre_normalizado\")\n",
+					"    .agg(\n",
+					"        F.countDistinct(\"id\").alias(\"cantidad_ids\"),\n",
+					"        F.collect_set(\"id\").alias(\"ids\"),\n",
+					"        F.collect_set(\"name\").alias(\"nombres\")\n",
+					"    )\n",
+					"    .filter(F.col(\"cantidad_ids\") > 1)\n",
+					"    .orderBy(F.desc(\"cantidad_ids\"), \"nombre_normalizado\")\n",
+					")\n",
+					"\n",
+					"display(nombres_con_varios_ids)"
+				],
+				"execution_count": 8
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 2.6 Explorar valores de las columnas de texto\n",
+					"\n",
+					"La lista permite inspeccionar variantes de escritura. Las columnas estructuradas, como address y company, no se incluyen."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"for campo in df_cliente.schema.fields:\n",
+					"    if campo.dataType.simpleString() == \"string\":\n",
+					"        print(f\"Valores distintos en {campo.name}:\")\n",
+					"        display(\n",
+					"            df_cliente\n",
+					"            .select(F.trim(F.col(f\"`{campo.name}`\")).alias(campo.name))\n",
+					"            .distinct()\n",
+					"            .orderBy(campo.name)\n",
+					"        )"
+				],
+				"execution_count": 9
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"## 3. Productos\n",
+					"\n",
+					"### Significado de las columnas\n",
+					"\n",
+					"| Columna | Significado |\n",
+					"|---|---|\n",
+					"| id_producto | Identificador del producto en la fuente de origen. |\n",
+					"| nombre_producto | Nombre o descripción del producto. |\n",
+					"| categoria | Categoría del producto. |\n",
+					"| fecha_ingesta | Fecha en que el registro se incorporó a Bronze. |\n",
+					"| id_lote | Identificador de la ejecución de ingesta. |"
+				]
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 3.1 Estructura y dimensiones"
+				]
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"mostrar_resumen(df_productos, \"Productos Bronze\")"
+				],
+				"execution_count": 10
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 3.2 Valores nulos y vacíos"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"def resumen_nulos_vacios(df, nombre=\"tabla\"):\n",
+					"    print(f\"Valores nulos o vacíos: {nombre}\")\n",
+					"\n",
+					"    expresiones = []\n",
+					"\n",
+					"    for campo in df.schema.fields:\n",
+					"        columna = F.col(f\"`{campo.name}`\")\n",
+					"        condicion = columna.isNull()\n",
+					"\n",
+					"        if campo.dataType.simpleString() == \"string\":\n",
+					"            condicion = condicion | (F.trim(columna) == \"\")\n",
+					"\n",
+					"        expresiones.append(\n",
+					"            F.sum(F.when(condicion, 1).otherwise(0)).alias(campo.name)\n",
+					"        )\n",
+					"\n",
+					"    return df.agg(*expresiones)\n",
+					"\n",
+					"display(resumen_nulos_vacios(df_productos, \"Productos Bronze\"))"
+				],
+				"execution_count": 30
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 3.3 IDs repetidos y diferencias entre atributos"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"display(\n",
+					"    df_productos\n",
+					"    .groupBy(\"id_producto\")\n",
+					"    .agg(\n",
+					"        F.count(\"*\").alias(\"cantidad_filas\"),\n",
+					"        F.countDistinct(\"nombre_producto\").alias(\"nombres_distintos\"),\n",
+					"        F.countDistinct(\"categoria\").alias(\"categorias_distintas\")\n",
+					"    )\n",
+					"    .filter(F.col(\"cantidad_filas\") > 1)\n",
+					"    .orderBy(\"id_producto\")\n",
+					")"
+				],
+				"execution_count": 12
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 3.4 Combinaciones y filas repetidas"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"duplicados_producto = (\n",
+					"    df_productos\n",
+					"    .groupBy(\"id_producto\", \"nombre_producto\", \"categoria\")\n",
+					"    .count()\n",
+					"    .filter(F.col(\"count\") > 1)\n",
+					"    .orderBy(\"id_producto\")\n",
+					")\n",
+					"\n",
+					"print(\"Combinaciones de producto repetidas:\", duplicados_producto.count())\n",
+					"display(duplicados_producto)"
+				],
+				"execution_count": 15
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"ids_repetidos_producto = (\n",
+					"    df_productos.groupBy(\"id_producto\")\n",
+					"    .count()\n",
+					"    .filter(F.col(\"count\") > 1)\n",
+					"    .select(\"id_producto\")\n",
+					")\n",
+					"\n",
+					"print(\"Combinaciones repetidas de ID, nombre y categoría:\")\n",
+					"display(\n",
+					"    df_productos\n",
+					"    .groupBy(\"id_producto\", \"nombre_producto\", \"categoria\")\n",
+					"    .count()\n",
+					"    .filter(F.col(\"count\") > 1)\n",
+					"    .orderBy(\"id_producto\")\n",
+					")\n",
+					"\n",
+					"print(\"Filas completas de los IDs repetidos:\")\n",
+					"display(\n",
+					"    df_productos\n",
+					"    .join(ids_repetidos_producto, on=\"id_producto\", how=\"inner\")\n",
+					"    .orderBy(\"id_producto\", \"fecha_ingesta\", \"id_lote\")\n",
+					")"
+				],
+				"execution_count": 16
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 3.5 Valores distintos de nombre y categoría"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"for columna in [\"nombre_producto\", \"categoria\"]:\n",
+					"    print(f\"Valores distintos en {columna}:\")\n",
+					"    display(\n",
+					"        df_productos\n",
+					"        .select(F.trim(F.col(columna)).alias(\"valor\"))\n",
+					"        .distinct()\n",
+					"        .orderBy(\"valor\")\n",
+					"    )"
+				],
+				"execution_count": 17
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 3.6 Posibles diferencias de escritura\n",
+					"\n",
+					"Se señalan espacios al inicio/final, mezcla de mayúsculas y minúsculas o caracteres fuera del conjunto esperado. Son candidatos para inspección manual; no necesariamente son errores."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"for columna in [\"nombre_producto\", \"categoria\"]:\n",
+					"    valor = F.col(columna)\n",
+					"\n",
+					"    posibles_inconsistencias = df_productos.filter(\n",
+					"        valor.isNotNull() & (\n",
+					"            (valor != F.trim(valor)) |\n",
+					"            valor.rlike(\"[a-z].*[A-Z]|[A-Z].*[a-z]\") |\n",
+					"            valor.rlike(\"[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9 ]\")\n",
+					"        )\n",
+					"    )\n",
+					"\n",
+					"    print(f\"Posibles valores para revisar en {columna}:\")\n",
+					"    display(posibles_inconsistencias.select(columna).distinct())"
+				],
+				"execution_count": 18
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 3.7 Cantidad de productos por categoría"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"display(\n",
+					"    df_productos\n",
+					"    .groupBy(\"categoria\")\n",
+					"    .count()\n",
+					"    .orderBy(F.col(\"count\").desc())\n",
+					")"
+				],
+				"execution_count": 19
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 3.8 Validar que los IDs puedan convertirse a entero"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"ids_invalidos = df_productos.filter(\n",
+					"    F.col(\"id_producto\").isNotNull()\n",
+					"    & ~F.trim(F.col(\"id_producto\")).rlike(r\"^[0-9]+$\")\n",
+					")\n",
+					"\n",
+					"print(\"Cantidad de IDs no numéricos:\", ids_invalidos.count())\n",
+					"display(ids_invalidos.select(\"id_producto\").distinct())"
+				],
+				"execution_count": 20
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"ids_no_convertibles = df_productos.filter(\n",
+					"    F.col(\"id_producto\").isNotNull()\n",
+					"    & F.col(\"id_producto\").cast(\"int\").isNull()\n",
+					")\n",
+					"\n",
+					"print(\"IDs que no se pueden convertir a entero:\", ids_no_convertibles.count())\n",
+					"display(ids_no_convertibles.select(\"id_producto\").distinct())"
+				],
+				"execution_count": 21
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"## 4. Pedidos y detalle de pedido\n",
+					"\n",
+					"### Significado de las columnas\n",
+					"\n",
+					"| Tabla | Columna | Significado |\n",
+					"|---|---|---|\n",
+					"| Pedidos | id_pedido | Identificador del pedido. |\n",
+					"| Pedidos | id_cliente | Cliente asociado al pedido. |\n",
+					"| Pedidos | fecha | Fecha del pedido. |\n",
+					"| Pedidos | fecha_modificacion_utc | Última modificación registrada en el origen, en UTC. |\n",
+					"| Detalle | id_detalle | Identificador de la línea de detalle. |\n",
+					"| Detalle | id_pedido | Pedido al que pertenece la línea. |\n",
+					"| Detalle | id_producto | Producto de la línea. |\n",
+					"| Detalle | cantidad | Unidades del producto. |\n",
+					"| Detalle | precio_unitario | Precio unitario registrado. |\n",
+					"| Ambas | fecha_ingesta | Fecha en que el registro se incorporó a Bronze. |\n",
+					"| Ambas | id_lote | Identificador de la ejecución de ingesta. |"
+				]
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 4.1 Estructura y dimensiones"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"mostrar_resumen(df_pedidos, \"Pedidos Bronze\")\n",
+					"mostrar_resumen(df_detalle_pedido, \"Detalle de pedido Bronze\")"
+				],
+				"execution_count": 31
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 4.2 Valores nulos y vacíos"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"def resumen_nulos_vacios(df):\n",
+					"    expresiones = []\n",
+					"\n",
+					"    for campo in df.schema.fields:\n",
+					"        columna = F.col(f\"`{campo.name}`\")\n",
+					"        condicion = columna.isNull()\n",
+					"\n",
+					"        if campo.dataType.simpleString() == \"string\":\n",
+					"            condicion = condicion | (F.trim(columna) == \"\")\n",
+					"\n",
+					"        expresiones.append(\n",
+					"            F.sum(F.when(condicion, 1).otherwise(0)).alias(campo.name)\n",
+					"        )\n",
+					"\n",
+					"    return df.agg(*expresiones)\n",
+					"\n",
+					"\n",
+					"for nombre, df in [\n",
+					"    (\"Pedidos\", df_pedidos),\n",
+					"    (\"Detalle de pedido\", df_detalle_pedido)\n",
+					"]:\n",
+					"    print(f\"--- Nulos y vacíos: {nombre} ---\")\n",
+					"    display(resumen_nulos_vacios(df))"
+				],
+				"execution_count": 32
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 4.3 Rango de fechas"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"print(\"--- Fechas de pedidos ---\")\n",
+					"display(\n",
+					"    df_pedidos.agg(\n",
+					"        F.min(\"fecha\").alias(\"fecha_pedido_mas_antigua\"),\n",
+					"        F.max(\"fecha\").alias(\"fecha_pedido_mas_reciente\"),\n",
+					"        F.min(\"fecha_modificacion_utc\").alias(\"modificacion_mas_antigua_utc\"),\n",
+					"        F.max(\"fecha_modificacion_utc\").alias(\"modificacion_mas_reciente_utc\")\n",
+					"    )\n",
+					")\n",
+					"\n",
+					"print(\"--- Fechas de detalle de pedido ---\")\n",
+					"display(\n",
+					"    df_detalle_pedido.agg(\n",
+					"        F.min(\"fecha_modificacion_utc\").alias(\"modificacion_mas_antigua_utc\"),\n",
+					"        F.max(\"fecha_modificacion_utc\").alias(\"modificacion_mas_reciente_utc\")\n",
+					"    )\n",
+					")"
+				],
+				"execution_count": 24
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 4.4 IDs repetidos y filas asociadas"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"for nombre, df, columna_id in [\n",
+					"    (\"Pedidos\", df_pedidos, \"id_pedido\"),\n",
+					"    (\"Detalle de pedido\", df_detalle_pedido, \"id_detalle\")\n",
+					"]:\n",
+					"    ids_repetidos = (\n",
+					"        df.groupBy(columna_id)\n",
+					"        .count()\n",
+					"        .filter(F.col(\"count\") > 1)\n",
+					"        .orderBy(columna_id)\n",
+					"    )\n",
+					"\n",
+					"    print(f\"\\n--- IDs repetidos: {nombre} ---\")\n",
+					"    print(\"Cantidad de IDs repetidos:\", ids_repetidos.count())\n",
+					"    display(ids_repetidos)"
+				],
+				"execution_count": 25
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"for nombre, df, columna_id in [\n",
+					"    (\"Pedidos\", df_pedidos, \"id_pedido\"),\n",
+					"    (\"Detalle de pedido\", df_detalle_pedido, \"id_detalle\")\n",
+					"]:\n",
+					"    ids_repetidos = (\n",
+					"        df.groupBy(columna_id)\n",
+					"        .count()\n",
+					"        .filter(F.col(\"count\") > 1)\n",
+					"        .select(columna_id)\n",
+					"    )\n",
+					"\n",
+					"    print(f\"\\n--- Filas con IDs repetidos: {nombre} ---\")\n",
+					"\n",
+					"    display(\n",
+					"        df.join(ids_repetidos, on=columna_id, how=\"inner\")\n",
+					"          .orderBy(columna_id, \"fecha_ingesta\", \"id_lote\")\n",
+					"    )"
+				],
+				"execution_count": 26
+			},
+			{
+				"cell_type": "markdown",
+				"source": [
+					"### 4.5 Revisar relaciones entre las tablas\n",
+					"\n",
+					"Relaciones esperadas:\n",
+					"- Pedidos.id_cliente → Clientes.id\n",
+					"- Detalle.id_pedido → Pedidos.id_pedido\n",
+					"- Detalle.id_producto → Productos.id_producto\n",
+					"\n",
+					"Las consultas muestran las referencias que no encuentran una fila relacionada, sin depender de un ID particular."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"ids_clientes = (\n",
+					"    df_cliente\n",
+					"    .select(F.col(\"id\").cast(\"int\").alias(\"id_cliente\"))\n",
+					"    .filter(F.col(\"id\").isNotNull())\n",
+					"    .distinct()\n",
+					")\n",
+					"\n",
+					"ids_pedidos = (\n",
+					"    df_pedidos\n",
+					"    .select(\"id_pedido\")\n",
+					"    .filter(F.col(\"id_pedido\").isNotNull())\n",
+					"    .distinct()\n",
+					")\n",
+					"\n",
+					"ids_productos = (\n",
+					"    df_productos\n",
+					"    .select(F.col(\"id_producto\").cast(\"int\").alias(\"id_producto\"))\n",
+					"    .filter(F.col(\"id_producto\").cast(\"int\").isNotNull())\n",
+					"    .distinct()\n",
+					")\n",
+					"\n",
+					"pedidos_sin_cliente = df_pedidos.join(\n",
+					"    ids_clientes,\n",
+					"    on=\"id_cliente\",\n",
+					"    how=\"left_anti\"\n",
+					")\n",
+					"\n",
+					"detalles_sin_pedido = df_detalle_pedido.join(\n",
+					"    ids_pedidos,\n",
+					"    on=\"id_pedido\",\n",
+					"    how=\"left_anti\"\n",
+					")\n",
+					"\n",
+					"detalles_sin_producto = df_detalle_pedido.join(\n",
+					"    ids_productos,\n",
+					"    on=\"id_producto\",\n",
+					"    how=\"left_anti\"\n",
+					")\n",
+					"\n",
+					"print(\"Pedidos sin cliente relacionado:\", pedidos_sin_cliente.count())\n",
+					"display(\n",
+					"    pedidos_sin_cliente\n",
+					"    .select(\"id_pedido\", \"id_cliente\")\n",
+					"    .distinct()\n",
+					"    .orderBy(\"id_pedido\")\n",
+					")\n",
+					"\n",
+					"print(\"Detalles sin pedido relacionado:\", detalles_sin_pedido.count())\n",
+					"display(\n",
+					"    detalles_sin_pedido\n",
+					"    .select(\"id_detalle\", \"id_pedido\")\n",
+					"    .distinct()\n",
+					"    .orderBy(\"id_detalle\")\n",
+					")\n",
+					"\n",
+					"print(\"Detalles sin producto relacionado:\", detalles_sin_producto.count())\n",
+					"display(\n",
+					"    detalles_sin_producto\n",
+					"    .select(\"id_detalle\", \"id_producto\")\n",
+					"    .distinct()\n",
+					"    .orderBy(\"id_detalle\")\n",
+					")"
+				],
+				"execution_count": 27
+			}
+		]
+	}
+}

@@ -1,0 +1,1190 @@
+{
+	"name": "NB_Bronze_a_Silver",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkDemo",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "b30e4160-35d2-44dc-a8e3-f353ac316e6d"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1",
+				"state": {
+					"6c94f853-7605-4412-ab46-3cd03557eff7": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "1",
+										"1": "3",
+										"2": "Leanne",
+										"3": "Graham",
+										"4": "s***@april.biz",
+										"5": "1770***6442"
+									},
+									{
+										"0": "2",
+										"1": "10",
+										"2": "Ervin",
+										"3": "Howell",
+										"4": "s***@melissa.tv",
+										"5": "0106***9125"
+									},
+									{
+										"0": "3",
+										"1": "6",
+										"2": "Clementine",
+										"3": "Bauch",
+										"4": "n***@yesenia.net",
+										"5": "1463***4447"
+									},
+									{
+										"0": "4",
+										"1": "9",
+										"2": "Patricia",
+										"3": "Lebsack",
+										"4": "j***@kory.org",
+										"5": "4931***3156"
+									},
+									{
+										"0": "5",
+										"1": "7",
+										"2": "Chelsey",
+										"3": "Dietrich",
+										"4": "l***@annie.ca",
+										"5": "2549***1289"
+									},
+									{
+										"0": "6",
+										"1": "8",
+										"2": "Dennis",
+										"3": "Schulist",
+										"4": "k***@jasper.info",
+										"5": "1477***6430"
+									},
+									{
+										"0": "7",
+										"1": "4",
+										"2": "Kurtis",
+										"3": "Weissnat",
+										"4": "t***@billy.biz",
+										"5": "2100***6132"
+									},
+									{
+										"0": "8",
+										"1": "1",
+										"2": "Nicholas",
+										"3": "Runolfsdottir V",
+										"4": "s***@rosamond.me",
+										"5": "5864***3140"
+									},
+									{
+										"0": "9",
+										"1": "2",
+										"2": "Glenna",
+										"3": "Reichert",
+										"4": "c***@dana.io",
+										"5": "7759***1206"
+									},
+									{
+										"0": "10",
+										"1": "5",
+										"2": "Clementina",
+										"3": "DuBuque",
+										"4": "r***@karina.biz",
+										"5": "0246***3804"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_cliente",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "id_ubicacion",
+										"type": "int"
+									},
+									{
+										"key": "2",
+										"name": "nombre",
+										"type": "string"
+									},
+									{
+										"key": "3",
+										"name": "sobrenombre",
+										"type": "string"
+									},
+									{
+										"key": "4",
+										"name": "email",
+										"type": "string"
+									},
+									{
+										"key": "5",
+										"name": "telefono",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"0103b379-8203-4b22-baaa-b350e345960b": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "1",
+										"1": "Aliyaview",
+										"2": "-14.399000",
+										"3": "-120.767700"
+									},
+									{
+										"0": "2",
+										"1": "Bartholomebury",
+										"2": "24.646300",
+										"3": "-168.888900"
+									},
+									{
+										"0": "3",
+										"1": "Gwenborough",
+										"2": "-37.315900",
+										"3": "81.149600"
+									},
+									{
+										"0": "4",
+										"1": "Howemouth",
+										"2": "24.891800",
+										"3": "21.898400"
+									},
+									{
+										"0": "5",
+										"1": "Lebsackbury",
+										"2": "-38.238600",
+										"3": "57.223200"
+									},
+									{
+										"0": "6",
+										"1": "Mckenziehaven",
+										"2": "-68.610200",
+										"3": "-47.065300"
+									},
+									{
+										"0": "7",
+										"1": "Roscoeview",
+										"2": "-31.812900",
+										"3": "62.534200"
+									},
+									{
+										"0": "8",
+										"1": "South Christy",
+										"2": "-71.419700",
+										"3": "71.747800"
+									},
+									{
+										"0": "9",
+										"1": "South Elvis",
+										"2": "29.457200",
+										"3": "-164.299000"
+									},
+									{
+										"0": "10",
+										"1": "Wisokyburgh",
+										"2": "-43.950900",
+										"3": "-34.461800"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_ubicacion",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "ciudad",
+										"type": "string"
+									},
+									{
+										"key": "2",
+										"name": "latitud",
+										"type": "decimal"
+									},
+									{
+										"key": "3",
+										"name": "longitud",
+										"type": "decimal"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"81b97022-f4e5-41fb-98b9-8c97bacb9c8e": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "101",
+										"1": "Notebook",
+										"2": "Tecnologia"
+									},
+									{
+										"0": "102",
+										"1": "Mouse",
+										"2": "Accesorios"
+									},
+									{
+										"0": "103",
+										"1": "Teclado",
+										"2": "Accesorios"
+									},
+									{
+										"0": "104",
+										"1": "Monitor",
+										"2": "Tecnologia"
+									},
+									{
+										"0": "105",
+										"1": "Auriculares",
+										"2": "Accesorios"
+									},
+									{
+										"0": "106",
+										"1": "Webcam",
+										"2": "Accesorios"
+									},
+									{
+										"0": "107",
+										"1": "Silla Ergonomica",
+										"2": "Muebles"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_producto",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "nombre_producto",
+										"type": "string"
+									},
+									{
+										"key": "2",
+										"name": "categoria",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"8c7acba7-4974-4dae-b284-68bfdcd128d8": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "1",
+										"1": "1",
+										"2": "2026-11-01",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "2",
+										"1": "2",
+										"2": "2026-11-01",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "3",
+										"1": "1",
+										"2": "2026-11-02",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "4",
+										"1": "3",
+										"2": "2026-11-02",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "5",
+										"1": "4",
+										"2": "2026-11-02",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "6",
+										"1": "5",
+										"2": "2026-11-02",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "7",
+										"1": "2",
+										"2": "2026-11-02",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "8",
+										"1": "999",
+										"2": "2026-11-02",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "9",
+										"1": "3",
+										"2": "2026-11-02",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "10",
+										"1": "4",
+										"2": "2027-01-01",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "11",
+										"1": "1",
+										"2": "2026-11-12",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "12",
+										"1": "2",
+										"2": "2026-11-12",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "13",
+										"1": "3",
+										"2": "2026-11-12",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "14",
+										"1": "1",
+										"2": "2026-11-19",
+										"3": "2026-11-23 19:15:08.8"
+									},
+									{
+										"0": "15",
+										"1": "2",
+										"2": "2026-11-19",
+										"3": "2026-11-23 19:15:08.8"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_pedido",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "id_cliente",
+										"type": "int"
+									},
+									{
+										"key": "2",
+										"name": "fecha",
+										"type": "date"
+									},
+									{
+										"key": "3",
+										"name": "fecha_modificacion_utc",
+										"type": "timestamp"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"21811693-a04e-4966-b215-b55b30afbdcc": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "1",
+										"1": "1",
+										"2": "101",
+										"3": "1",
+										"4": "100.00",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "2",
+										"1": "2",
+										"2": "102",
+										"3": "1",
+										"4": "200.00",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "3",
+										"1": "3",
+										"2": "102",
+										"3": "1",
+										"4": "80.00",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "4",
+										"1": "4",
+										"2": "103",
+										"3": "1",
+										"4": "120.00",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "5",
+										"1": "5",
+										"2": "101",
+										"3": "1",
+										"4": "150.00",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "6",
+										"1": "6",
+										"2": "999",
+										"3": "1",
+										"4": "90.00",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "7",
+										"1": "7",
+										"2": "103",
+										"3": "1",
+										"4": "-50.00",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "8",
+										"1": "8",
+										"2": "101",
+										"3": "1",
+										"4": "30.00",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "9",
+										"1": "9",
+										"2": "104",
+										"3": "1",
+										"4": "75.00",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "10",
+										"1": "10",
+										"2": "102",
+										"3": "1",
+										"4": "40.00",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "11",
+										"1": "11",
+										"2": "105",
+										"3": "2",
+										"4": "45.90",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "12",
+										"1": "11",
+										"2": "106",
+										"3": "1",
+										"4": "72.50",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "13",
+										"1": "12",
+										"2": "107",
+										"3": "1",
+										"4": "210.00",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "14",
+										"1": "13",
+										"2": "101",
+										"3": "1",
+										"4": "950.00",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "15",
+										"1": "14",
+										"2": "101",
+										"3": "1",
+										"4": "950.00",
+										"5": "2026-11-23 19:15:08.802"
+									},
+									{
+										"0": "16",
+										"1": "15",
+										"2": "107",
+										"3": "2",
+										"4": "210.00",
+										"5": "2026-11-23 19:15:08.802"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id_detalle",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "id_pedido",
+										"type": "int"
+									},
+									{
+										"key": "2",
+										"name": "id_producto",
+										"type": "int"
+									},
+									{
+										"key": "3",
+										"name": "cantidad",
+										"type": "int"
+									},
+									{
+										"key": "4",
+										"name": "precio_unitario",
+										"type": "decimal"
+									},
+									{
+										"key": "5",
+										"name": "fecha_modificacion_utc",
+										"type": "timestamp"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala",
+							"wranglerEntryContext": {
+								"dataframeType": "pyspark"
+							}
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					}
+				}
+			},
+			"enableDebugMode": false,
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/3eac8f23-88c8-4ed3-85d4-adc05237fc61/resourceGroups/miGrupoDeRecursos/providers/Microsoft.Synapse/workspaces/synapse-ingenieria-demo-2026/bigDataPools/sparkDemo",
+				"name": "sparkDemo",
+				"type": "Spark",
+				"endpoint": "https://synapse-ingenieria-demo-2026.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkDemo",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.5",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"from pyspark.sql import functions as F\n",
+					"from pyspark.sql.window import Window\n",
+					"from delta.tables import DeltaTable"
+				],
+				"execution_count": 9
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# Clientes - bronze a silver"
+				]
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Transforma clientes de Bronze a Silver: conserva la ingesta más reciente por ID, limpia y protege los datos personales, y separa la ubicación en una tabla propia. cliente.id_ubicacion referencia ubicacion.id_ubicacion; ambas tablas se reemplazan porque clientes es una carga full."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"from pyspark.sql import functions as F\n",
+					"from pyspark.sql.window import Window\n",
+					"\n",
+					"ruta_bronze_clientes = (\n",
+					"    \"abfss://datos@proyectos2027.dfs.core.windows.net/bronze/cliente\"\n",
+					")\n",
+					"ruta_silver_clientes = (\n",
+					"    \"abfss://datos@proyectos2027.dfs.core.windows.net/silver/cliente\"\n",
+					")\n",
+					"ruta_silver_ubicaciones = (\n",
+					"    \"abfss://datos@proyectos2027.dfs.core.windows.net/silver/ubicacion\"\n",
+					")\n",
+					"\n",
+					"clientes = spark.read.format(\"delta\").load(ruta_bronze_clientes)\n",
+					"\n",
+					"# En esta carga completa, conservar la ingesta más reciente de cada cliente\n",
+					"ventana_clientes = Window.partitionBy(\"id\").orderBy(\n",
+					"    F.col(\"fecha_ingesta\").desc_nulls_last(),\n",
+					"    F.col(\"id_lote\").desc_nulls_last()\n",
+					")\n",
+					"\n",
+					"clientes_base = (\n",
+					"    clientes\n",
+					"    .filter(F.col(\"id\").isNotNull())\n",
+					"    .withColumn(\"_fila\", F.row_number().over(ventana_clientes))\n",
+					"    .filter(F.col(\"_fila\") == 1)\n",
+					"\n",
+					"    # Quitar títulos como Mr., Mrs., Ms., Miss o Dr.\n",
+					"    .withColumn(\n",
+					"        \"nombre_limpio\",\n",
+					"        F.trim(\n",
+					"            F.regexp_replace(\n",
+					"                F.col(\"name\"),\n",
+					"                r\"(?i)^(mr|mrs|ms|miss|dr)\\.?\\s+\",\n",
+					"                \"\"\n",
+					"            )\n",
+					"        )\n",
+					"    )\n",
+					"\n",
+					"    # Limpiar los datos personales\n",
+					"    .withColumn(\"email_limpio\", F.lower(F.trim(F.col(\"email\"))))\n",
+					"    .withColumn(\n",
+					"        \"telefono_limpio\",\n",
+					"        F.regexp_replace(F.col(\"phone\"), r\"[^0-9]\", \"\")\n",
+					"    )\n",
+					"\n",
+					"    # Preparar los datos de ubicación\n",
+					"    .withColumn(\"ciudad\", F.initcap(F.trim(F.col(\"address.city\"))))\n",
+					"    .withColumn(\n",
+					"        \"latitud\",\n",
+					"        F.col(\"address.geo.lat\").cast(\"decimal(10,6)\")\n",
+					"    )\n",
+					"    .withColumn(\n",
+					"        \"longitud\",\n",
+					"        F.col(\"address.geo.lng\").cast(\"decimal(10,6)\")\n",
+					"    )\n",
+					"\n",
+					"    # Separar nombre y sobrenombre\n",
+					"    .withColumn(\n",
+					"        \"nombre\",\n",
+					"        F.regexp_extract(F.col(\"nombre_limpio\"), r\"^(\\S+)\", 1)\n",
+					"    )\n",
+					"    .withColumn(\n",
+					"        \"sobrenombre\",\n",
+					"        F.regexp_extract(F.col(\"nombre_limpio\"), r\"^\\S+\\s+(.+)$\", 1)\n",
+					"    )\n",
+					"\n",
+					"    # Enmascarar email\n",
+					"    .withColumn(\n",
+					"        \"email\",\n",
+					"        F.when(F.col(\"email_limpio\").isNull(), F.lit(None).cast(\"string\"))\n",
+					"        .when(\n",
+					"            F.col(\"email_limpio\").contains(\"@\"),\n",
+					"            F.regexp_replace(\n",
+					"                F.col(\"email_limpio\"),\n",
+					"                r\"(^.).*(@.*$)\",\n",
+					"                r\"$1***$2\"\n",
+					"            )\n",
+					"        )\n",
+					"        .otherwise(F.lit(\"***\"))\n",
+					"    )\n",
+					"\n",
+					"    # Mostrar solo algunos dígitos del teléfono\n",
+					"    .withColumn(\n",
+					"        \"telefono\",\n",
+					"        F.when(F.col(\"telefono_limpio\").isNull(), F.lit(None).cast(\"string\"))\n",
+					"        .when(\n",
+					"            F.length(\"telefono_limpio\") > 8,\n",
+					"            F.concat(\n",
+					"                F.substring(\"telefono_limpio\", 1, 4),\n",
+					"                F.lit(\"***\"),\n",
+					"                F.regexp_extract(\n",
+					"                    F.col(\"telefono_limpio\"),\n",
+					"                    r\"(\\d{4})$\",\n",
+					"                    1\n",
+					"                )\n",
+					"            )\n",
+					"        )\n",
+					"        .otherwise(F.lit(\"***\"))\n",
+					"    )\n",
+					"    .select(\n",
+					"        F.col(\"id\").cast(\"int\").alias(\"id_cliente\"),\n",
+					"        \"nombre\",\n",
+					"        \"sobrenombre\",\n",
+					"        \"email\",\n",
+					"        \"telefono\",\n",
+					"        \"ciudad\",\n",
+					"        \"latitud\",\n",
+					"        \"longitud\"\n",
+					"    )\n",
+					")\n",
+					"\n",
+					"# Crear una fila por cada combinación única de ciudad y coordenadas\n",
+					"ventana_ubicaciones = Window.orderBy(\n",
+					"    F.col(\"ciudad\").asc_nulls_first(),\n",
+					"    F.col(\"latitud\").asc_nulls_first(),\n",
+					"    F.col(\"longitud\").asc_nulls_first()\n",
+					")\n",
+					"\n",
+					"ubicaciones_silver = (\n",
+					"    clientes_base\n",
+					"    .select(\"ciudad\", \"latitud\", \"longitud\")\n",
+					"    .dropDuplicates()\n",
+					"    .withColumn(\n",
+					"        \"id_ubicacion\",\n",
+					"        F.row_number().over(ventana_ubicaciones).cast(\"int\")\n",
+					"    )\n",
+					"    .select(\"id_ubicacion\", \"ciudad\", \"latitud\", \"longitud\")\n",
+					")\n",
+					"\n",
+					"# Agregar el ID entero a cada cliente, incluso si hay campos nulos\n",
+					"c = clientes_base.alias(\"c\")\n",
+					"u = ubicaciones_silver.alias(\"u\")\n",
+					"\n",
+					"clientes_con_ubicacion = (\n",
+					"    c.join(\n",
+					"        u,\n",
+					"        F.col(\"c.ciudad\").eqNullSafe(F.col(\"u.ciudad\"))\n",
+					"        & F.col(\"c.latitud\").eqNullSafe(F.col(\"u.latitud\"))\n",
+					"        & F.col(\"c.longitud\").eqNullSafe(F.col(\"u.longitud\")),\n",
+					"        \"left\"\n",
+					"    )\n",
+					"    .select(\"c.*\", F.col(\"u.id_ubicacion\"))\n",
+					")\n",
+					"\n",
+					"clientes_silver = clientes_con_ubicacion.select(\n",
+					"    \"id_cliente\",\n",
+					"    \"id_ubicacion\",\n",
+					"    \"nombre\",\n",
+					"    \"sobrenombre\",\n",
+					"    \"email\",\n",
+					"    \"telefono\"\n",
+					")\n",
+					"\n",
+					"# Sobrescribir las dos tablas para que compartan los mismos IDs\n",
+					"(\n",
+					"    ubicaciones_silver.write\n",
+					"    .format(\"delta\")\n",
+					"    .mode(\"overwrite\")\n",
+					"    .option(\"overwriteSchema\", \"true\")\n",
+					"    .save(ruta_silver_ubicaciones)\n",
+					")\n",
+					"\n",
+					"(\n",
+					"    clientes_silver.write\n",
+					"    .format(\"delta\")\n",
+					"    .mode(\"overwrite\")\n",
+					"    .option(\"overwriteSchema\", \"true\")\n",
+					"    .save(ruta_silver_clientes)\n",
+					")\n",
+					"\n",
+					"print(\"Clientes en Silver:\", clientes_silver.count())\n",
+					"print(\"Ubicaciones en Silver:\", ubicaciones_silver.count())\n",
+					"\n",
+					"display(clientes_silver.orderBy(\"id_cliente\"))\n",
+					"display(ubicaciones_silver.orderBy(\"id_ubicacion\"))"
+				],
+				"execution_count": 4
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# Productos - Bronze a Silver"
+				]
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Transforma la tabla de productos de Bronze a Silver: elimina IDs nulos, conserva la versión más reciente de cada producto, normaliza los datos y guarda el resultado en formato Delta."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"ruta_bronze_productos = (\n",
+					"    \"abfss://datos@proyectos2027.dfs.core.windows.net/bronze/producto\"\n",
+					")\n",
+					"ruta_silver_productos = (\n",
+					"    \"abfss://datos@proyectos2027.dfs.core.windows.net/silver/producto\"\n",
+					")\n",
+					"\n",
+					"df_productos = spark.read.format(\"delta\").load(ruta_bronze_productos)\n",
+					"\n",
+					"ventana_productos = Window.partitionBy(\"id_producto\").orderBy(\n",
+					"    F.col(\"fecha_ingesta\").desc(),\n",
+					"    F.col(\"id_lote\").desc()\n",
+					")\n",
+					"\n",
+					"productos_silver = (\n",
+					"    df_productos\n",
+					"    .filter(F.col(\"id_producto\").isNotNull())\n",
+					"    .withColumn(\"fila\", F.row_number().over(ventana_productos))\n",
+					"    .filter(F.col(\"fila\") == 1)\n",
+					"    .select(\n",
+					"        F.col(\"id_producto\").cast(\"int\").alias(\"id_producto\"),\n",
+					"        F.col(\"nombre_producto\"),\n",
+					"        F.col(\"categoria\")\n",
+					"    )\n",
+					")\n",
+					"\n",
+					"(\n",
+					"    productos_silver\n",
+					"    .write\n",
+					"    .format(\"delta\")\n",
+					"    .mode(\"overwrite\")\n",
+					"    .save(ruta_silver_productos)\n",
+					")\n",
+					"\n",
+					"print(\"Filas leídas desde Bronze:\", df_productos.count())\n",
+					"print(\"Filas escritas en Silver:\", productos_silver.count())\n",
+					"print(\"Ruta Silver:\", ruta_silver_productos)\n",
+					"\n",
+					"display(productos_silver.orderBy(\"id_producto\"))"
+				],
+				"execution_count": 5
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# Pedidos - bronze a silver"
+				]
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Transforma los pedidos de Bronze a Silver: elimina IDs nulos, conserva la versión más reciente de cada pedido según fecha_modificacion_utc y actualiza Silver de forma incremental."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"# Rutas Bronze\n",
+					"base_bronze = \"abfss://datos@proyectos2027.dfs.core.windows.net/bronze\"\n",
+					"\n",
+					"ruta_bronze_pedidos = f\"{base_bronze}/pedido\"\n",
+					"ruta_bronze_detalle = f\"{base_bronze}/pedido/detalle_pedido\"\n",
+					"\n",
+					"ruta_silver_pedidos = (\n",
+					"    \"abfss://datos@proyectos2027.dfs.core.windows.net/silver/pedidos\"\n",
+					")\n",
+					"\n",
+					"ruta_silver_detalle = (\n",
+					"    \"abfss://datos@proyectos2027.dfs.core.windows.net/silver/detalle_pedido\"\n",
+					")\n",
+					"\n",
+					"# Leer el histórico disponible en Bronze\n",
+					"df_pedidos = spark.read.format(\"delta\").load(ruta_bronze_pedidos)\n",
+					"df_detalle_pedido = spark.read.format(\"delta\").load(ruta_bronze_detalle)\n",
+					"\n",
+					"# Elegir la versión más reciente de cada pedido\n",
+					"ventana_pedidos = (\n",
+					"    Window\n",
+					"    .partitionBy(\"id_pedido\")\n",
+					"    .orderBy(\n",
+					"        F.col(\"fecha_modificacion_utc\").desc_nulls_last(),\n",
+					"        F.col(\"fecha_ingesta\").desc_nulls_last()\n",
+					"    )\n",
+					")\n",
+					"\n",
+					"pedidos_silver = (\n",
+					"    df_pedidos\n",
+					"    .filter(F.col(\"id_pedido\").isNotNull())\n",
+					"    .withColumn(\"_fila\", F.row_number().over(ventana_pedidos))\n",
+					"    .filter(F.col(\"_fila\") == 1)\n",
+					"    .drop(\"_fila\", \"fecha_ingesta\", \"id_lote\")\n",
+					"    .withColumn(\"id_pedido\", F.col(\"id_pedido\").cast(\"int\"))\n",
+					"    .withColumn(\"id_cliente\", F.col(\"id_cliente\").cast(\"int\"))\n",
+					")\n",
+					"\n",
+					"# Elegir la versión más reciente de cada detalle\n",
+					"ventana_detalle = (\n",
+					"    Window\n",
+					"    .partitionBy(\"id_detalle\")\n",
+					"    .orderBy(\n",
+					"        F.col(\"fecha_modificacion_utc\").desc_nulls_last(),\n",
+					"        F.col(\"fecha_ingesta\").desc_nulls_last()\n",
+					"    )\n",
+					")\n",
+					"\n",
+					"detalle_pedido_silver = (\n",
+					"    df_detalle_pedido\n",
+					"    .filter(F.col(\"id_detalle\").isNotNull())\n",
+					"    .withColumn(\"_fila\", F.row_number().over(ventana_detalle))\n",
+					"    .filter(F.col(\"_fila\") == 1)\n",
+					"    .drop(\"_fila\", \"fecha_ingesta\", \"id_lote\")\n",
+					"    .withColumn(\"id_detalle\", F.col(\"id_detalle\").cast(\"int\"))\n",
+					"    .withColumn(\"id_pedido\", F.col(\"id_pedido\").cast(\"int\"))\n",
+					"    .withColumn(\"id_producto\", F.col(\"id_producto\").cast(\"int\"))\n",
+					"    .withColumn(\"cantidad\", F.col(\"cantidad\").cast(\"int\"))\n",
+					"    .withColumn(\"precio_unitario\", F.col(\"precio_unitario\").cast(\"decimal(10,2)\"))\n",
+					")\n",
+					"\n",
+					"# Primera ejecución: crear Silver.\n",
+					"# Ejecuciones siguientes: actualizar o insertar por ID.\n",
+					"if DeltaTable.isDeltaTable(spark, ruta_silver_pedidos):\n",
+					"    tabla_pedidos = DeltaTable.forPath(spark, ruta_silver_pedidos)\n",
+					"\n",
+					"    (\n",
+					"        tabla_pedidos.alias(\"silver\")\n",
+					"        .merge(\n",
+					"            pedidos_silver.alias(\"bronze\"),\n",
+					"            \"silver.id_pedido = bronze.id_pedido\"\n",
+					"        )\n",
+					"        .whenMatchedUpdateAll(\n",
+					"            condition=\"\"\"\n",
+					"                bronze.fecha_modificacion_utc > silver.fecha_modificacion_utc\n",
+					"                OR (\n",
+					"                    bronze.fecha_modificacion_utc = silver.fecha_modificacion_utc\n",
+					"                    AND bronze.id_cliente <> silver.id_cliente\n",
+					"                )\n",
+					"            \"\"\"\n",
+					"        )\n",
+					"        .whenNotMatchedInsertAll()\n",
+					"        .execute()\n",
+					"    )\n",
+					"else:\n",
+					"    (\n",
+					"        pedidos_silver.write\n",
+					"        .format(\"delta\")\n",
+					"        .mode(\"overwrite\")\n",
+					"        .save(ruta_silver_pedidos)\n",
+					"    )\n",
+					"\n",
+					"if DeltaTable.isDeltaTable(spark, ruta_silver_detalle):\n",
+					"    tabla_detalle = DeltaTable.forPath(spark, ruta_silver_detalle)\n",
+					"\n",
+					"    (\n",
+					"        tabla_detalle.alias(\"silver\")\n",
+					"        .merge(\n",
+					"            detalle_pedido_silver.alias(\"bronze\"),\n",
+					"            \"silver.id_detalle = bronze.id_detalle\"\n",
+					"        )\n",
+					"        .whenMatchedUpdateAll(\n",
+					"            condition=\"\"\"\n",
+					"                bronze.fecha_modificacion_utc > silver.fecha_modificacion_utc\n",
+					"                OR (\n",
+					"                    bronze.fecha_modificacion_utc = silver.fecha_modificacion_utc\n",
+					"                    AND (\n",
+					"                        bronze.id_pedido <> silver.id_pedido\n",
+					"                        OR bronze.id_producto <> silver.id_producto\n",
+					"                        OR bronze.cantidad <> silver.cantidad\n",
+					"                        OR bronze.precio_unitario <> silver.precio_unitario\n",
+					"                    )\n",
+					"                )\n",
+					"            \"\"\"\n",
+					"        )\n",
+					"        .whenNotMatchedInsertAll()\n",
+					"        .execute()\n",
+					"    )\n",
+					"else:\n",
+					"    (\n",
+					"        detalle_pedido_silver.write\n",
+					"        .format(\"delta\")\n",
+					"        .mode(\"overwrite\")\n",
+					"        .save(ruta_silver_detalle)\n",
+					"    )\n",
+					"\n",
+					"print(\"Pedidos en Silver:\", spark.read.format(\"delta\").load(ruta_silver_pedidos).count())\n",
+					"print(\"Detalles en Silver:\", spark.read.format(\"delta\").load(ruta_silver_detalle).count())\n",
+					"print(\"Ruta Silver pedidos:\", ruta_silver_pedidos)\n",
+					"print(\"Ruta Silver detalle:\", ruta_silver_detalle)\n",
+					"display(pedidos_silver.orderBy(\"id_pedido\"))\n",
+					"display(detalle_pedido_silver.orderBy(\"id_detalle\"))"
+				],
+				"execution_count": 10
+			}
+		]
+	}
+}
