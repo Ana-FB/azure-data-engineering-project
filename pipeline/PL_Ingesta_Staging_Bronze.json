@@ -173,6 +173,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"dataflow": {
+						"referenceName": "DF_Staging_Bronze",
+						"type": "DataFlowReference"
+					},
 					"integrationRuntime": {
 						"referenceName": "IRAzureBrazilSouth",
 						"type": "IntegrationRuntimeReference"
