@@ -173,30 +173,6 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataflow": {
-						"referenceName": "DF_Staging_Bronze",
-						"type": "DataFlowReference",
-						"parameters": {
-							"p_id_lote": {
-								"value": "'@{pipeline().RunId}'",
-								"type": "Expression"
-							}
-						},
-						"datasetParameters": {
-							"srcStagingPedidos": {
-								"p_carpeta": {
-									"value": "@concat('staging/pedidos/', pipeline().RunId)",
-									"type": "Expression"
-								}
-							},
-							"srcStagingDetallePedido": {
-								"p_carpeta": {
-									"value": "@concat('staging/detalle_pedido/', pipeline().RunId)",
-									"type": "Expression"
-								}
-							}
-						}
-					},
 					"integrationRuntime": {
 						"referenceName": "IRAzureBrazilSouth",
 						"type": "IntegrationRuntimeReference"
