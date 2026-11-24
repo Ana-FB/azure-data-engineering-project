@@ -21,7 +21,7 @@
 				}
 			},
 			{
-				"name": "Notebook1",
+				"name": "NB_Orquestador_Spark",
 				"type": "SynapseNotebook",
 				"dependsOn": [
 					{
@@ -40,18 +40,23 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"notebook": {
+						"referenceName": "NB_Orquestador_Spark",
+						"type": "NotebookReference"
+					},
 					"snapshot": true,
 					"sparkPool": {
-						"referenceName": {
-							"value": "sparkDemo",
-							"type": "Expression"
-						},
+						"referenceName": "sparkDemo",
 						"type": "BigDataPoolReference"
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "LS_Synapse_Artifacts",
-					"type": "LinkedServiceReference"
+					},
+					"executorSize": "Small",
+					"conf": {
+						"spark.dynamicAllocation.enabled": null,
+						"spark.dynamicAllocation.minExecutors": null,
+						"spark.dynamicAllocation.maxExecutors": null
+					},
+					"driverSize": "Small",
+					"numExecutors": null
 				}
 			}
 		],
