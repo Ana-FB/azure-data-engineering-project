@@ -19,6 +19,39 @@
 					},
 					"waitOnCompletion": true
 				}
+			},
+			{
+				"name": "NB_Orquestador_Spark",
+				"type": "SynapseNotebook",
+				"dependsOn": [
+					{
+						"activity": "PL_Ingesta_Staging_Bronze",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebook": {
+						"referenceName": "NB_Orquestador_Spark",
+						"type": "NotebookReference"
+					},
+					"snapshot": true,
+					"sparkPool": {
+						"referenceName": "sparkDemo",
+						"type": "BigDataPoolReference"
+					},
+					"executorSize": "Small",
+					"driverSize": "Small"
+				}
 			}
 		],
 		"annotations": []
