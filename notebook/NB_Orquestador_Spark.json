@@ -1,0 +1,44 @@
+{
+	"name": "NB_Orquestador_Spark",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "5596ecd0-e96c-459e-b67d-44b011c38f0b"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "python"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"mssparkutils.notebook.run(\"NB_Bronze_a_Silver\", 600)\n",
+					"mssparkutils.notebook.run(\"NB_Calidad_Cuarentena\", 600)\n",
+					"mssparkutils.notebook.run(\"NB_Test_Silver\", 600)\n",
+					"mssparkutils.notebook.run(\"NB_Silver_a_Gold\", 600)"
+				],
+				"execution_count": null
+			}
+		]
+	}
+}
