@@ -23,7 +23,14 @@
 			{
 				"name": "Notebook1",
 				"type": "SynapseNotebook",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "PL_Ingesta_Staging_Bronze",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -33,7 +40,14 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"snapshot": true
+					"snapshot": true,
+					"sparkPool": {
+						"referenceName": {
+							"value": "sparkDemo",
+							"type": "Expression"
+						},
+						"type": "BigDataPoolReference"
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "LS_Synapse_Artifacts",
