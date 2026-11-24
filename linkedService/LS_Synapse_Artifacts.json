@@ -8,6 +8,10 @@
 			"endpoint": "https://synapse-ingenieria-demo-2026.dev.azuresynapse.net",
 			"authentication": "MSI",
 			"workspaceResourceId": "/subscriptions/3eac8f23-88c8-4ed3-85d4-adc05237fc61/resourceGroups/miGrupoDeRecursos/providers/Microsoft.Synapse/workspaces/synapse-ingenieria-demo-2026"
+		},
+		"connectVia": {
+			"referenceName": "IRAzureBrazilSouth",
+			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
