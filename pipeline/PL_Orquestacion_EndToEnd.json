@@ -41,13 +41,6 @@
 				"userProperties": [],
 				"typeProperties": {
 					"snapshot": true,
-					"sparkPool": {
-						"referenceName": {
-							"value": "sparkDemo",
-							"type": "Expression"
-						},
-						"type": "BigDataPoolReference"
-					},
 					"executorSize": "Small",
 					"conf": {
 						"spark.dynamicAllocation.enabled": null,
