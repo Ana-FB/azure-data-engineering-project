@@ -1,6 +1,5 @@
 {
 	"name": "LS_Synapse_Artifacts",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureSynapseArtifacts",
@@ -13,5 +12,6 @@
 			"referenceName": "IRAzureBrazilSouth",
 			"type": "IntegrationRuntimeReference"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
