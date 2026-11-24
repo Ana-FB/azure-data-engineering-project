@@ -42,16 +42,32 @@
 				"userProperties": [],
 				"typeProperties": {
 					"notebook": {
-						"referenceName": "NB_Bronze_a_Silver",
+						"referenceName": {
+							"value": "NB_Bronze_a_Silver",
+							"type": "Expression"
+						},
 						"type": "NotebookReference"
 					},
 					"snapshot": true,
 					"sparkPool": {
-						"referenceName": "sparkDemo",
+						"referenceName": {
+							"value": "sparkDemo",
+							"type": "Expression"
+						},
 						"type": "BigDataPoolReference"
 					},
 					"executorSize": "Small",
-					"driverSize": "Small"
+					"conf": {
+						"spark.dynamicAllocation.enabled": null,
+						"spark.dynamicAllocation.minExecutors": null,
+						"spark.dynamicAllocation.maxExecutors": null
+					},
+					"driverSize": "Small",
+					"numExecutors": null
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_Synapse_Artifacts",
+					"type": "LinkedServiceReference"
 				}
 			},
 			{
@@ -76,16 +92,32 @@
 				"userProperties": [],
 				"typeProperties": {
 					"notebook": {
-						"referenceName": "NB_Silver_Cuarentena_DataQuality",
+						"referenceName": {
+							"value": "NB_Silver_Cuarentena_DataQuality",
+							"type": "Expression"
+						},
 						"type": "NotebookReference"
 					},
 					"snapshot": true,
 					"sparkPool": {
-						"referenceName": "sparkDemo",
+						"referenceName": {
+							"value": "sparkDemo",
+							"type": "Expression"
+						},
 						"type": "BigDataPoolReference"
 					},
 					"executorSize": "Small",
-					"driverSize": "Small"
+					"conf": {
+						"spark.dynamicAllocation.enabled": null,
+						"spark.dynamicAllocation.minExecutors": null,
+						"spark.dynamicAllocation.maxExecutors": null
+					},
+					"driverSize": "Small",
+					"numExecutors": null
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_Synapse_Artifacts",
+					"type": "LinkedServiceReference"
 				}
 			},
 			{
@@ -110,16 +142,32 @@
 				"userProperties": [],
 				"typeProperties": {
 					"notebook": {
-						"referenceName": "NB_Test_Silver",
+						"referenceName": {
+							"value": "NB_Test_Silver",
+							"type": "Expression"
+						},
 						"type": "NotebookReference"
 					},
 					"snapshot": true,
 					"sparkPool": {
-						"referenceName": "sparkDemo",
+						"referenceName": {
+							"value": "sparkDemo",
+							"type": "Expression"
+						},
 						"type": "BigDataPoolReference"
 					},
 					"executorSize": "Small",
-					"driverSize": "Small"
+					"conf": {
+						"spark.dynamicAllocation.enabled": null,
+						"spark.dynamicAllocation.minExecutors": null,
+						"spark.dynamicAllocation.maxExecutors": null
+					},
+					"driverSize": "Small",
+					"numExecutors": null
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_Synapse_Artifacts",
+					"type": "LinkedServiceReference"
 				}
 			},
 			{
@@ -144,16 +192,32 @@
 				"userProperties": [],
 				"typeProperties": {
 					"notebook": {
-						"referenceName": "NB_Silver_a_Gold",
+						"referenceName": {
+							"value": "NB_Silver_a_Gold",
+							"type": "Expression"
+						},
 						"type": "NotebookReference"
 					},
 					"snapshot": true,
 					"sparkPool": {
-						"referenceName": "sparkDemo",
+						"referenceName": {
+							"value": "sparkDemo",
+							"type": "Expression"
+						},
 						"type": "BigDataPoolReference"
 					},
 					"executorSize": "Small",
-					"driverSize": "Small"
+					"conf": {
+						"spark.dynamicAllocation.enabled": null,
+						"spark.dynamicAllocation.minExecutors": null,
+						"spark.dynamicAllocation.maxExecutors": null
+					},
+					"driverSize": "Small",
+					"numExecutors": null
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_Synapse_Artifacts",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
