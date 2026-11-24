@@ -1,5 +1,5 @@
 {
-	"name": "DF_Staging_Bronze_copy1",
+	"name": "DF_Staging_Bronze",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
