@@ -21,16 +21,9 @@
 				}
 			},
 			{
-				"name": "NB_Orquestador_Spark",
+				"name": "Notebook1",
 				"type": "SynapseNotebook",
-				"dependsOn": [
-					{
-						"activity": "PL_Ingesta_Staging_Bronze",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -40,17 +33,11 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebook": {
-						"referenceName": "NB_Orquestador_Spark",
-						"type": "NotebookReference"
-					},
-					"snapshot": true,
-					"sparkPool": {
-						"referenceName": "sparkDemo",
-						"type": "BigDataPoolReference"
-					},
-					"executorSize": "Small",
-					"driverSize": "Small"
+					"snapshot": true
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_Synapse_Artifacts",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
