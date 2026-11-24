@@ -9,6 +9,10 @@
 			"url": "https://jsonplaceholder.typicode.com/",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "IRAzureBrazilSouth",
+			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
