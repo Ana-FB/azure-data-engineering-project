@@ -1,0 +1,17 @@
+{
+	"name": "SQL_02_Crear_Vistas_Gold",
+	"properties": {
+		"content": {
+			"query": "USE db_gold_powerbi;\nGO\n\nCREATE OR ALTER VIEW vw_dim_cliente AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/dim_cliente/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_dim_fecha AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/dim_fecha/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_dim_producto AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/dim_producto/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_dim_ubicacion AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/dim_ubicacion/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_fact_ventas AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/fact_ventas/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "db_gold_powerbi",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

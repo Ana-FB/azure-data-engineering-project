@@ -1,0 +1,17 @@
+{
+	"name": "SQL_01_Crear_DB_Gold",
+	"properties": {
+		"content": {
+			"query": "CREATE DATABASE db_gold_powerbi;\nGO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
