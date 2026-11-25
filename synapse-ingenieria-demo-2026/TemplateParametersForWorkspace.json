@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "synapse-ingenieria-demo-2026"
+		},
+		"HttpServer1_password": {
+			"value": ""
+		},
+		"LS_ADLS_Gen2_accountKey": {
+			"value": ""
+		},
+		"LS_AzureSQL_password": {
+			"value": ""
+		},
+		"synapse-ingenieria-demo-2026-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapse-ingenieria-demo-2026.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "https://drive.google.com/"
+		},
+		"HttpServer1_properties_typeProperties_userName": {
+			"value": "anadmin"
+		},
+		"LS_ADLS_Gen2_properties_typeProperties_url": {
+			"value": "https://proyectos2027.dfs.core.windows.net/"
+		},
+		"LS_API_Clientes_properties_typeProperties_url": {
+			"value": "https://jsonplaceholder.typicode.com/"
+		},
+		"LS_AzureSQL_properties_typeProperties_server": {
+			"value": "sql-server-practica-ana.database.windows.net"
+		},
+		"LS_AzureSQL_properties_typeProperties_database": {
+			"value": "practica01"
+		},
+		"LS_AzureSQL_properties_typeProperties_userName": {
+			"value": "anaadmin"
+		},
+		"synapse-ingenieria-demo-2026-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://proyectos2027.dfs.core.windows.net"
+		}
+	}
+}
