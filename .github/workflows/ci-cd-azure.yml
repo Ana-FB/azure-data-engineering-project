@@ -1,0 +1,67 @@
+name: CI/CD - Azure Data Factory & Synapse
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - adf_publish
+      - workspace_publish
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  ci-validate-artifacts:
+    name: Validar Artefactos JSON y Notebooks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validar integridad de archivos JSON y Notebooks (.ipynb)
+        run: |
+          python3 -c '
+          import glob, json, sys
+          files = glob.glob("**/*.json", recursive=True) + glob.glob("**/*.ipynb", recursive=True)
+          if not files:
+              print("No se encontraron archivos JSON/IPYNB para validar.")
+              sys.exit(0)
+          for f in files:
+              with open(f, "r", encoding="utf-8") as fp:
+                  json.load(fp)
+          print(f"✅ Validados correctamente {len(files)} artefactos de ADF y Synapse.")
+          '
+
+  cd-deploy-production:
+    name: Despliegue ARM a Producción (Template)
+    needs: ci-validate-artifacts
+    if: github.ref == 'refs/heads/adf_publish' || github.ref == 'refs/heads/workspace_publish'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar plantillas ARM generadas
+        uses: actions/checkout@v4
+
+      - name: Verificar generación de plantillas ARM
+        run: |
+          echo "🚀 Artefactos listos para despliegue continuo (CD) mediante Azure Resource Manager."
+          ls -la
+      # Para activar el despliegue automático a un Resource Group de Producción,
+      # configura el secreto AZURE_CREDENTIALS en Settings > Secrets and variables > Actions
+      # y descomenta los siguientes pasos:
+      # - name: Iniciar sesión en Azure
+      #   uses: azure/login@v2
+      #   with:
+      #     creds: ${{ secrets.AZURE_CREDENTIALS }}
+      # - name: Desplegar ARM Template de ADF
+      #   uses: azure/arm-deploy@v2
+      #   with:
+      #     resourceGroupName: ${{ secrets.AZURE_RG_PROD }}
+      #     template: ./df-ana/ARMTemplateForFactory.json
+      #     parameters: ./df-ana/ARMTemplateParametersForFactory.json
