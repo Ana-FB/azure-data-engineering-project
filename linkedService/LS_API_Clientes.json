@@ -11,7 +11,7 @@
 			"authenticationType": "Anonymous"
 		},
 		"connectVia": {
-			"referenceName": "AutoResolveIntegrationRuntime",
+			"referenceName": "IRAzureBrazilSouth",
 			"type": "IntegrationRuntimeReference"
 		}
 	}
