@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "1568f8ff-0c58-473c-b018-072defaf4bc3"
+				"spark.autotune.trackingId": "1645b89d-fdf3-4872-8e7b-eaf4679ff6f1"
 			}
 		},
 		"metadata": {
@@ -52,7 +52,7 @@
 				"cell_type": "code",
 				"source": [
 					"mssparkutils.notebook.run(\"NB_Bronze_a_Silver\", 600)\n",
-					"mssparkutils.notebook.run(\"NB_Calidad_Cuarentena\", 600)\n",
+					"mssparkutils.notebook.run(\"NB_Silver_Cuarentena_DataQuality\", 600)\n",
 					"mssparkutils.notebook.run(\"NB_Test_Silver\", 600)\n",
 					"mssparkutils.notebook.run(\"NB_Silver_a_Gold\", 600)"
 				],
