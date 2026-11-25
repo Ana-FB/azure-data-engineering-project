@@ -7,7 +7,7 @@
 		},
 		"type": "AzureBlobFS",
 		"connectVia": {
-			"referenceName": "IRAzureBrazilSouth",
+			"referenceName": "AutoResolveIntegrationRuntime",
 			"type": "IntegrationRuntimeReference"
 		},
 		"annotations": []
