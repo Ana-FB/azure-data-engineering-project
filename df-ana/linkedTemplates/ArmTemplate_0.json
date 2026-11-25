@@ -919,9 +919,9 @@
 								}
 							},
 							"staging": {},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
+							"integrationRuntime": {
+								"referenceName": "IRAzureBrazilSouth",
+								"type": "IntegrationRuntimeReference"
 							},
 							"traceLevel": "Fine"
 						}
@@ -1195,6 +1195,7 @@
 				"[concat(variables('factoryId'), '/datasets/DS_HTTP_Productos')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Productos_CSV')]",
 				"[concat(variables('factoryId'), '/dataflows/DF_Staging_Bronze')]",
+				"[concat(variables('factoryId'), '/integrationRuntimes/IRAzureBrazilSouth')]",
 				"[concat(variables('factoryId'), '/datasets/DS_SQL')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Root')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_SQL_Parquet')]",
