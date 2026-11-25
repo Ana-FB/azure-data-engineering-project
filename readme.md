@@ -6,8 +6,8 @@ Proyecto integral de **Ingeniería de Datos en Microsoft Azure** que implementa 
 
 ## 🏗️ Arquitectura y Stack Tecnológico
 
-* **Orquestación e Ingesta:** Azure Data Factory (`df-ana`) con pipelines dinámicos guiados por metadatos y desencadenador programado.
-* **Data Lake (Almacenamiento):** Azure Data Lake Storage Gen2 (`proyectos2027`) bajo formato transaccional **Delta Lake**.
+* **Orquestación e Ingesta:** Azure Data Factory con pipelines dinámicos guiados por metadatos y desencadenador programado.
+* **Data Lake (Almacenamiento):** Azure Data Lake Storage Gen2 bajo formato transaccional **Delta Lake**.
 * **Procesamiento Distribuido:** Azure Synapse Analytics (Apache Spark Pools + PySpark).
 * **Capa Analítica (Serving Layer):** Synapse Serverless SQL Pool (`OPENROWSET` dinámico sobre Delta Lake).
 * **Visualización y BI:** Power BI Desktop (Modelo Estrella + Medidas DAX).
