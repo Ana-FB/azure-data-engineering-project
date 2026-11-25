@@ -19,9 +19,10 @@
 			"type": "secureString",
 			"metadata": "Cadena protegida para \"password\"de \"LS_AzureSQL\""
 		},
-		"LS_storage_connectionString": {
+		"synapse-ingenieria-demo-2026-WorkspaceDefaultSqlServer_connectionString": {
 			"type": "secureString",
-			"metadata": "Cadena protegida para \"connectionString\"de \"LS_storage\""
+			"metadata": "Cadena protegida para \"connectionString\"de \"synapse-ingenieria-demo-2026-WorkspaceDefaultSqlServer\"",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapse-ingenieria-demo-2026.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
 		"HttpServer1_properties_typeProperties_url": {
 			"type": "string",
@@ -54,12 +55,56 @@
 		"LS_Synapse_Artifacts_properties_typeProperties_endpoint": {
 			"type": "string",
 			"defaultValue": "https://synapse-ingenieria-demo-2026.dev.azuresynapse.net"
+		},
+		"synapse-ingenieria-demo-2026-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://proyectos2027.dfs.core.windows.net"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AutoResolveIntegrationRuntime')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "AutoResolve",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 0
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/IRAzureBrazilSouth')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "Brazil South",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 10,
+							"cleanup": false,
+							"customProperties": []
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/HttpServer1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -76,9 +121,15 @@
 						"type": "SecureString",
 						"value": "[parameters('HttpServer1_password')]"
 					}
+				},
+				"connectVia": {
+					"referenceName": "IRAzureBrazilSouth",
+					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/IRAzureBrazilSouth')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LS_ADLS_Gen2')]",
@@ -93,9 +144,15 @@
 						"type": "SecureString",
 						"value": "[parameters('LS_ADLS_Gen2_accountKey')]"
 					}
+				},
+				"connectVia": {
+					"referenceName": "IRAzureBrazilSouth",
+					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/IRAzureBrazilSouth')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LS_API_Clientes')]",
@@ -109,9 +166,15 @@
 					"url": "[parameters('LS_API_Clientes_properties_typeProperties_url')]",
 					"enableServerCertificateValidation": true,
 					"authenticationType": "Anonymous"
+				},
+				"connectVia": {
+					"referenceName": "IRAzureBrazilSouth",
+					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/IRAzureBrazilSouth')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LS_AzureSQL')]",
@@ -131,9 +194,15 @@
 						"type": "SecureString",
 						"value": "[parameters('LS_AzureSQL_password')]"
 					}
+				},
+				"connectVia": {
+					"referenceName": "IRAzureBrazilSouth",
+					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/IRAzureBrazilSouth')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LS_Synapse_Artifacts')]",
@@ -146,22 +215,58 @@
 					"endpoint": "[parameters('LS_Synapse_Artifacts_properties_typeProperties_endpoint')]",
 					"authentication": "MSI",
 					"workspaceResourceId": "/subscriptions/3eac8f23-88c8-4ed3-85d4-adc05237fc61/resourceGroups/miGrupoDeRecursos/providers/Microsoft.Synapse/workspaces/synapse-ingenieria-demo-2026"
+				},
+				"connectVia": {
+					"referenceName": "IRAzureBrazilSouth",
+					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/IRAzureBrazilSouth')]"
+			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/LS_storage')]",
+			"name": "[concat(parameters('factoryName'), '/synapse-ingenieria-demo-2026-WorkspaceDefaultSqlServer')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"DBName": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlDW",
+				"typeProperties": {
+					"connectionString": "[parameters('synapse-ingenieria-demo-2026-WorkspaceDefaultSqlServer_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "IRAzureBrazilSouth",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/IRAzureBrazilSouth')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/synapse-ingenieria-demo-2026-WorkspaceDefaultStorage')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"type": "AzureBlobStorage",
+				"type": "AzureBlobFS",
 				"typeProperties": {
-					"connectionString": "[parameters('LS_storage_connectionString')]"
+					"url": "[parameters('synapse-ingenieria-demo-2026-WorkspaceDefaultStorage_properties_typeProperties_url')]"
+				},
+				"connectVia": {
+					"referenceName": "IRAzureBrazilSouth",
+					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/IRAzureBrazilSouth')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Staging_Clientes_JSON')]",
@@ -480,17 +585,7 @@
 						"     allowSchemaDrift: true,",
 						"     validateSchema: true,",
 						"     ignoreNoFilesFound: false) ~> srcStagingProductos",
-						"source(output(",
-						"          address as (city as string, geo as (lat as double, lng as double), street as string, suite as string, zipcode as string),",
-						"          company as (bs as string, catchPhrase as string, name as string),",
-						"          email as string,",
-						"          id as short,",
-						"          name as string,",
-						"          phone as string,",
-						"          username as string,",
-						"          website as string",
-						"     ),",
-						"     allowSchemaDrift: true,",
+						"source(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     ignoreNoFilesFound: false,",
 						"     documentForm: 'documentPerLine') ~> srcStagingClientes",
@@ -975,7 +1070,7 @@
 									]
 								},
 								{
-									"name": "Append variable1",
+									"name": "Append",
 									"type": "AppendVariable",
 									"dependsOn": [
 										{
@@ -1104,6 +1199,91 @@
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_Root')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Staging_SQL_Parquet')]",
 				"[concat(variables('factoryId'), '/linkedServices/LS_AzureSQL')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_Orquestacion_EndToEnd')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Orquesta el proceso completo de ingesta y transformación de datos: ejecuta el pipeline de ingesta a Bronze, transforma los datos de Bronze a Silver, realiza controles de calidad y cuarentena, valida las tablas Silver y genera las tablas Gold.",
+				"activities": [
+					{
+						"name": "PL_Ingesta_Staging_Bronze",
+						"description": "Ejecutar el pipeline de ingesta",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"policy": {
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "PL_Ingesta_Staging_Bronze",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "NB_Orquestador_Spark",
+						"type": "SynapseNotebook",
+						"dependsOn": [
+							{
+								"activity": "PL_Ingesta_Staging_Bronze",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebook": {
+								"referenceName": {
+									"value": "NB_Orquestador_Spark",
+									"type": "Expression"
+								},
+								"type": "NotebookReference"
+							},
+							"snapshot": true,
+							"sparkPool": {
+								"referenceName": {
+									"value": "sparkDemo",
+									"type": "Expression"
+								},
+								"type": "BigDataPoolReference"
+							},
+							"executorSize": "Small",
+							"conf": {
+								"spark.dynamicAllocation.enabled": null,
+								"spark.dynamicAllocation.minExecutors": null,
+								"spark.dynamicAllocation.maxExecutors": null
+							},
+							"driverSize": "Small",
+							"numExecutors": null
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_Synapse_Artifacts",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_Ingesta_Staging_Bronze')]",
+				"[concat(variables('factoryId'), '/linkedServices/LS_Synapse_Artifacts')]"
 			]
 		}
 	]

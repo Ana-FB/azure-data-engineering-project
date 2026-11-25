@@ -14,8 +14,8 @@
 		"LS_AzureSQL_password": {
 			"value": ""
 		},
-		"LS_storage_connectionString": {
-			"value": ""
+		"synapse-ingenieria-demo-2026-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapse-ingenieria-demo-2026.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
 		"HttpServer1_properties_typeProperties_url": {
 			"value": "https://drive.google.com/"
@@ -40,6 +40,9 @@
 		},
 		"LS_Synapse_Artifacts_properties_typeProperties_endpoint": {
 			"value": "https://synapse-ingenieria-demo-2026.dev.azuresynapse.net"
+		},
+		"synapse-ingenieria-demo-2026-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://proyectos2027.dfs.core.windows.net"
 		}
 	}
 }
