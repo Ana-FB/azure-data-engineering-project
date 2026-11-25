@@ -81,14 +81,21 @@ El repositorio implementa buenas prácticas de **DataOps** con separación de ca
 ```text
 ├── .github/
 │   └── workflows/
-│       └── ci-cd-azure.yml      # Pipeline de validación CI/CD en GitHub Actions
-├── adf/                         # Pipelines, Datasets, Triggers y Linked Services (ADF)
+│       └── ci-cd-azure.yml          # Pipeline de validación CI/CD en GitHub Actions
+├── adf/
+│   ├── dataflow/                    # Mapping Data Flows de transformación (Staging -> Bronze)
+│   ├── dataset/                     # Datasets parametrizados (Azure SQL, API REST, CSV, ADLS Gen2)
+│   ├── factory/                     # Configuración del recurso Azure Data Factory (df-ana)
+│   ├── integrationRuntime/          # Entorno de ejecución (IRAzureBrazilSouth)
+│   ├── linkedService/               # Conexiones a orígenes de datos, Data Lake y Synapse
+│   ├── pipeline/                    # Pipelines de ingesta (PL_Ingesta_Staging_Bronze) y orquestación (PL_Orquestacion_EndToEnd)
+│   ├── trigger/                     # Desencadenador programado diario (TR_Diario_Orquestacion_EndToEnd)
+│   └── publish_config.json          # Configuración de publicación de ARM Templates
 ├── synapse/
-│   ├── notebook/                # Notebooks PySpark (Bronze -> Silver -> Quality -> Gold)
-│   └── sqlscript/               # Scripts SQL para vistas Serverless (OPENROWSET)
-└── readme.md                    # Documentación del proyecto
+│   ├── notebook/                    # Notebooks PySpark (Bronze -> Silver -> Quality -> Test -> Gold + Orquestador)
+│   └── sqlscript/                   # Scripts SQL Serverless (Base de datos y vistas OPENROWSET para Power BI)
+└── readme.md                        # Documentación completa del proyecto
 ```
-
 ---
 
 ## 📊 Dashboard Ejecutivo en Power BI
@@ -103,6 +110,7 @@ El repositorio implementa buenas prácticas de **DataOps** con separación de ca
 
 Proyecto desarrollado como demostración de arquitectura moderna de datos extremo a extremo en **Microsoft Azure** y **Power BI**.
 
-[![LinkedIn](https://shields.io)]([https://linkedin.com](https://www.linkedin.com/in/anaferreirabezerra/))
+[![LinkedIn](https://shields.io)](https://www.linkedin.com/in/anaferreirabezerra/)
 [![Email](https://shields.io)](mailto:ani.bf95@gmail.com)
+
 
