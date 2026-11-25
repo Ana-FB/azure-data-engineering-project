@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "d54b4f73-9e42-41d2-b886-bc2ae84908b1"
+				"spark.autotune.trackingId": "210484b9-b71c-41b7-9855-604028c66978"
 			}
 		},
 		"metadata": {
@@ -56,7 +56,7 @@
 					"mssparkutils.notebook.run(\"NB_Test_Silver\", 600)\n",
 					"mssparkutils.notebook.run(\"NB_Silver_a_Gold\", 600)"
 				],
-				"execution_count": null
+				"execution_count": 1
 			}
 		]
 	}
