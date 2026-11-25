@@ -84,6 +84,46 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('workspaceName'), '/SQL_01_Crear_DB_Gold')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"content": {
+					"query": "CREATE DATABASE db_gold_powerbi;\nGO\n",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "master",
+						"poolName": "Built-in"
+					},
+					"resultLimit": 5000
+				},
+				"type": "SqlQuery"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/SQL_02_Crear_Vistas_Gold')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"content": {
+					"query": "USE db_gold_powerbi;\nGO\n\nCREATE OR ALTER VIEW vw_dim_cliente AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/dim_cliente/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_dim_fecha AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/dim_fecha/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_dim_producto AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/dim_producto/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_dim_ubicacion AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/dim_ubicacion/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_fact_ventas AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/fact_ventas/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "db_gold_powerbi",
+						"poolName": "Built-in"
+					},
+					"resultLimit": 5000
+				},
+				"type": "SqlQuery"
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/NB_Bronze_a_Silver')]",
 			"type": "Microsoft.Synapse/workspaces/notebooks",
 			"apiVersion": "2019-06-01-preview",
@@ -6523,7 +6563,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "58054127-502d-4e1b-a239-6ecd247da346"
+						"spark.autotune.trackingId": "1645b89d-fdf3-4872-8e7b-eaf4679ff6f1"
 					}
 				},
 				"metadata": {
@@ -6548,15 +6588,13 @@
 						"sparkVersion": "3.5",
 						"nodeCount": 3,
 						"cores": 4,
-						"memory": 28,
-						"automaticScaleJobs": false
+						"memory": 28
 					},
 					"sessionKeepAliveTimeout": 30
 				},
 				"cells": [
 					{
 						"cell_type": "code",
-						"metadata": {},
 						"source": [
 							"mssparkutils.notebook.run(\"NB_Bronze_a_Silver\", 600)\n",
 							"mssparkutils.notebook.run(\"NB_Silver_Cuarentena_DataQuality\", 600)\n",
