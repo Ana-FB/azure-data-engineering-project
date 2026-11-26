@@ -7095,7 +7095,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "e800894e-fe2d-4b3c-8586-793cb239b040"
+						"spark.autotune.trackingId": "99d383cd-5952-4c95-a451-497a6847be70"
 					}
 				},
 				"metadata": {
@@ -7120,13 +7120,15 @@
 						"sparkVersion": "3.5",
 						"nodeCount": 3,
 						"cores": 4,
-						"memory": 28
+						"memory": 28,
+						"automaticScaleJobs": false
 					},
 					"sessionKeepAliveTimeout": 30
 				},
 				"cells": [
 					{
 						"cell_type": "code",
+						"metadata": {},
 						"source": [
 							"base_silver = \"abfss://datos@proyectos2027.dfs.core.windows.net/silver\"\n",
 							"base_gold = \"abfss://datos@proyectos2027.dfs.core.windows.net/gold\"\n",
@@ -7152,6 +7154,7 @@
 					},
 					{
 						"cell_type": "code",
+						"metadata": {},
 						"source": [
 							"rutas_silver = {\n",
 							"    \"clientes\": ruta_cliente,\n",
@@ -7193,7 +7196,7 @@
 							"    df.printSchema()"
 						],
 						"outputs": [],
-						"execution_count": 2
+						"execution_count": null
 					},
 					{
 						"cell_type": "code",
@@ -7201,13 +7204,10 @@
 							"collapsed": false
 						},
 						"source": [
-							"from pyspark.sql import functions as F\n",
-							"from pyspark.sql.window import Window\n",
-							"\n",
-							"# Una clave técnica ordenada para cada cliente\n",
+							"# Dimensión de clientes: solo clientes válidos presentes en Silver.\n",
 							"ventana_clientes_gold = Window.orderBy(\"id_cliente\")\n",
 							"\n",
-							"dim_cliente_real = (\n",
+							"dim_cliente = (\n",
 							"    df_cliente\n",
 							"    .filter(F.col(\"id_cliente\").isNotNull())\n",
 							"    .dropDuplicates([\"id_cliente\"])\n",
@@ -7223,32 +7223,15 @@
 							"        \"email\",\n",
 							"        \"telefono\"\n",
 							"    )\n",
-							")\n",
-							"\n",
-							"# Fila especial para pedidos cuyo cliente no aparece en Silver\n",
-							"cliente_desconocido = spark.createDataFrame(\n",
-							"    [(0, -1, \"Desconocido\", \"Desconocido\", \"***\", \"***\")],\n",
-							"    schema=\"\"\"\n",
-							"        cliente_key BIGINT,\n",
-							"        id_cliente INT,\n",
-							"        nombre STRING,\n",
-							"        sobrenombre STRING,\n",
-							"        email STRING,\n",
-							"        telefono STRING\n",
-							"    \"\"\"\n",
-							")\n",
-							"\n",
-							"dim_cliente = (\n",
-							"    dim_cliente_real\n",
-							"    .unionByName(cliente_desconocido)\n",
 							"    .orderBy(\"cliente_key\")\n",
 							")\n",
 							"\n",
 							"display(dim_cliente)\n",
-							"print(\"Clientes en dim_cliente, incluido el desconocido:\", dim_cliente.count())"
+							"print(\"Clientes válidos en dim_cliente:\", dim_cliente.count())\n",
+							""
 						],
 						"outputs": [],
-						"execution_count": 3
+						"execution_count": null
 					},
 					{
 						"cell_type": "code",
@@ -7256,9 +7239,10 @@
 							"collapsed": false
 						},
 						"source": [
+							"# Dimensión de ubicaciones: solo ubicaciones válidas presentes en Silver.\n",
 							"ventana_ubicaciones_gold = Window.orderBy(\"id_ubicacion\")\n",
 							"\n",
-							"dim_ubicacion_real = (\n",
+							"dim_ubicacion = (\n",
 							"    df_ubicacion\n",
 							"    .filter(F.col(\"id_ubicacion\").isNotNull())\n",
 							"    .dropDuplicates([\"id_ubicacion\"])\n",
@@ -7273,30 +7257,15 @@
 							"        \"latitud\",\n",
 							"        \"longitud\"\n",
 							"    )\n",
-							")\n",
-							"\n",
-							"ubicacion_desconocida = spark.createDataFrame(\n",
-							"    [(0, \"-1\", \"Desconocida\", None, None)],\n",
-							"    schema=\"\"\"\n",
-							"        ubicacion_key BIGINT,\n",
-							"        id_ubicacion STRING,\n",
-							"        ciudad STRING,\n",
-							"        latitud DECIMAL(10,6),\n",
-							"        longitud DECIMAL(10,6)\n",
-							"    \"\"\"\n",
-							")\n",
-							"\n",
-							"dim_ubicacion = (\n",
-							"    dim_ubicacion_real\n",
-							"    .unionByName(ubicacion_desconocida)\n",
 							"    .orderBy(\"ubicacion_key\")\n",
 							")\n",
 							"\n",
 							"display(dim_ubicacion)\n",
-							"print(\"Ubicaciones en dim_ubicacion, incluida la desconocida:\", dim_ubicacion.count())"
+							"print(\"Ubicaciones válidas en dim_ubicacion:\", dim_ubicacion.count())\n",
+							""
 						],
 						"outputs": [],
-						"execution_count": 4
+						"execution_count": null
 					},
 					{
 						"cell_type": "code",
@@ -7304,9 +7273,10 @@
 							"collapsed": false
 						},
 						"source": [
+							"# Dimensión de productos: solo productos válidos presentes en Silver.\n",
 							"ventana_productos_gold = Window.orderBy(\"id_producto\")\n",
 							"\n",
-							"dim_producto_real = (\n",
+							"dim_producto = (\n",
 							"    df_producto\n",
 							"    .filter(F.col(\"id_producto\").isNotNull())\n",
 							"    .dropDuplicates([\"id_producto\"])\n",
@@ -7320,29 +7290,15 @@
 							"        \"nombre_producto\",\n",
 							"        \"categoria\"\n",
 							"    )\n",
-							")\n",
-							"\n",
-							"producto_desconocido = spark.createDataFrame(\n",
-							"    [(0, -1, \"Desconocido\", \"Desconocida\")],\n",
-							"    schema=\"\"\"\n",
-							"        producto_key BIGINT,\n",
-							"        id_producto INT,\n",
-							"        nombre_producto STRING,\n",
-							"        categoria STRING\n",
-							"    \"\"\"\n",
-							")\n",
-							"\n",
-							"dim_producto = (\n",
-							"    dim_producto_real\n",
-							"    .unionByName(producto_desconocido)\n",
 							"    .orderBy(\"producto_key\")\n",
 							")\n",
 							"\n",
 							"display(dim_producto)\n",
-							"print(\"Productos en dim_producto, incluido el desconocido:\", dim_producto.count())"
+							"print(\"Productos válidos en dim_producto:\", dim_producto.count())\n",
+							""
 						],
 						"outputs": [],
-						"execution_count": 5
+						"execution_count": null
 					},
 					{
 						"cell_type": "code",
@@ -7350,7 +7306,7 @@
 							"collapsed": false
 						},
 						"source": [
-							"# Obtener el rango de fechas de los pedidos\n",
+							"# Crear el calendario con las fechas presentes en los pedidos válidos de Silver.\n",
 							"rango_fechas = df_pedidos.agg(\n",
 							"    F.min(F.to_date(\"fecha\")).alias(\"fecha_minima\"),\n",
 							"    F.max(F.to_date(\"fecha\")).alias(\"fecha_maxima\")\n",
@@ -7359,7 +7315,6 @@
 							"if rango_fechas[\"fecha_minima\"] is None:\n",
 							"    raise Exception(\"No hay fechas válidas en la tabla de pedidos.\")\n",
 							"\n",
-							"# Crear una fila por cada día del rango\n",
 							"calendario = spark.range(1).select(\n",
 							"    F.explode(\n",
 							"        F.sequence(\n",
@@ -7370,39 +7325,21 @@
 							"    ).alias(\"fecha\")\n",
 							")\n",
 							"\n",
-							"dim_fecha_real = calendario.select(\n",
+							"dim_fecha = calendario.select(\n",
 							"    F.date_format(\"fecha\", \"yyyyMMdd\").cast(\"int\").alias(\"fecha_key\"),\n",
 							"    F.col(\"fecha\").cast(\"date\").alias(\"fecha\"),\n",
 							"    F.dayofmonth(\"fecha\").alias(\"dia\"),\n",
 							"    F.month(\"fecha\").alias(\"mes\"),\n",
 							"    F.quarter(\"fecha\").alias(\"trimestre\"),\n",
 							"    F.year(\"fecha\").alias(\"anio\")\n",
-							")\n",
-							"\n",
-							"# Clave 0 para fechas nulas o que no se encuentren en el calendario\n",
-							"fecha_desconocida = spark.createDataFrame(\n",
-							"    [(0, None, None, None, None, None)],\n",
-							"    schema=\"\"\"\n",
-							"        fecha_key INT,\n",
-							"        fecha DATE,\n",
-							"        dia INT,\n",
-							"        mes INT,\n",
-							"        trimestre INT,\n",
-							"        anio INT\n",
-							"    \"\"\"\n",
-							")\n",
-							"\n",
-							"dim_fecha = (\n",
-							"    dim_fecha_real\n",
-							"    .unionByName(fecha_desconocida)\n",
-							"    .orderBy(\"fecha_key\")\n",
-							")\n",
+							").orderBy(\"fecha_key\")\n",
 							"\n",
 							"display(dim_fecha)\n",
-							"print(\"Fechas en dim_fecha, incluida la desconocida:\", dim_fecha.count())"
+							"print(\"Fechas válidas en dim_fecha:\", dim_fecha.count())\n",
+							""
 						],
 						"outputs": [],
-						"execution_count": 6
+						"execution_count": null
 					},
 					{
 						"cell_type": "code",
@@ -7410,8 +7347,8 @@
 							"collapsed": false
 						},
 						"source": [
-							"# Separar las líneas que requieren revisión antes de construir la tabla de hechos.\n",
-							"# Se conserva una sola fila por línea, aunque tenga más de una anomalía.\n",
+							"# Detectar anomalías para el reporte de cuarentena. Los registros originales\n",
+							"# permanecen en Silver; solo se excluyen de las tablas Gold.\n",
 							"detalle_revision = (\n",
 							"    df_detalle_pedido.alias(\"det\")\n",
 							"    .join(\n",
@@ -7435,11 +7372,12 @@
 							"            \" | \",\n",
 							"            F.when(F.col(\"det.precio_unitario\").isNull(), F.lit(\"PRECIO_NULO\")),\n",
 							"            F.when(F.col(\"det.precio_unitario\") < 0, F.lit(\"PRECIO_NEGATIVO\")),\n",
-							"            F.when(F.col(\"dc.cliente_key\").isNull(), F.lit(\"CLIENTE_SIN_DIMENSION_GOLD\"))\n",
+							"            F.when(F.col(\"dc.cliente_key\").isNull(), F.lit(\"CLIENTE_DESCONOCIDO\"))\n",
 							"        )\n",
 							"    )\n",
 							")\n",
 							"\n",
+							"# Reporte de cuarentena: conserva identificadores y datos necesarios para investigar.\n",
 							"lineas_revision = detalle_revision.filter(\n",
 							"    F.col(\"motivo_revision\") != \"\"\n",
 							").select(\n",
@@ -7452,7 +7390,7 @@
 							"    F.col(\"motivo_revision\")\n",
 							")\n",
 							"\n",
-							"# Solo pasan a Gold las líneas con precio válido y cliente presente en dim_cliente.\n",
+							"# A Gold pasan solo líneas con precio no negativo y cliente identificado.\n",
 							"detalle_para_gold = (\n",
 							"    detalle_revision\n",
 							"    .filter(\n",
@@ -7463,7 +7401,6 @@
 							"    .select(\"det.*\")\n",
 							")\n",
 							"\n",
-							"# Construir la tabla de hechos con las líneas aceptadas.\n",
 							"fact_ventas = (\n",
 							"    detalle_para_gold.alias(\"det\")\n",
 							"    .join(\n",
@@ -7497,10 +7434,10 @@
 							"        \"left\"\n",
 							"    )\n",
 							"    .select(\n",
-							"        F.coalesce(F.col(\"dc.cliente_key\"), F.lit(0)).cast(\"long\").alias(\"cliente_key\"),\n",
-							"        F.coalesce(F.col(\"du.ubicacion_key\"), F.lit(0)).cast(\"long\").alias(\"ubicacion_key\"),\n",
-							"        F.coalesce(F.col(\"dp.producto_key\"), F.lit(0)).cast(\"long\").alias(\"producto_key\"),\n",
-							"        F.coalesce(F.col(\"df.fecha_key\"), F.lit(0)).cast(\"int\").alias(\"fecha_key\"),\n",
+							"        F.col(\"dc.cliente_key\").cast(\"long\").alias(\"cliente_key\"),\n",
+							"        F.col(\"du.ubicacion_key\").cast(\"long\").alias(\"ubicacion_key\"),\n",
+							"        F.col(\"dp.producto_key\").cast(\"long\").alias(\"producto_key\"),\n",
+							"        F.col(\"df.fecha_key\").cast(\"int\").alias(\"fecha_key\"),\n",
 							"        F.col(\"det.id_pedido\").cast(\"int\").alias(\"id_pedido\"),\n",
 							"        F.col(\"det.id_detalle\").cast(\"int\").alias(\"id_detalle\"),\n",
 							"        F.col(\"det.cantidad\").cast(\"int\").alias(\"cantidad\"),\n",
@@ -7515,23 +7452,24 @@
 							"display(fact_ventas.orderBy(\"id_pedido\", \"id_detalle\"))\n",
 							"display(lineas_revision.orderBy(\"id_pedido\", \"id_detalle\"))\n",
 							"\n",
-							"print(\"Líneas válidas para Gold:\", fact_ventas.count())\n",
-							"print(\"Líneas apartadas para revisión:\", lineas_revision.count())\n",
+							"print(\"Líneas incluidas en Gold:\", fact_ventas.count())\n",
+							"print(\"Líneas en el reporte de cuarentena:\", lineas_revision.count())\n",
 							"print(\n",
-							"    \"Líneas con cliente_key 0 en fact_ventas:\",\n",
-							"    fact_ventas.filter(F.col(\"cliente_key\") == 0).count()\n",
+							"    \"Líneas con precio negativo en cuarentena:\",\n",
+							"    lineas_revision.filter(F.col(\"precio_unitario\") < 0).count()\n",
 							")\n",
 							"print(\n",
-							"    \"Líneas con producto desconocido:\",\n",
-							"    fact_ventas.filter(F.col(\"producto_key\") == 0).count()\n",
+							"    \"Líneas con cliente desconocido en cuarentena:\",\n",
+							"    lineas_revision.filter(F.col(\"motivo_revision\").contains(\"CLIENTE_DESCONOCIDO\")).count()\n",
 							")\n",
 							""
 						],
 						"outputs": [],
-						"execution_count": 7
+						"execution_count": null
 					},
 					{
 						"cell_type": "code",
+						"metadata": {},
 						"source": [
 							"tablas_gold = [\n",
 							"    (\"dim_cliente\", dim_cliente, ruta_dim_cliente),\n",
@@ -7552,7 +7490,7 @@
 							"    print(f\"{nombre} guardada en: {ruta}\")"
 						],
 						"outputs": [],
-						"execution_count": 8
+						"execution_count": null
 					}
 				]
 			},
