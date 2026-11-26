@@ -57,6 +57,7 @@ Estructura de almacenamiento en el contenedor `datos` siguiendo el patrón Medal
 
 <img width="860" height="607" alt="image" src="https://github.com/user-attachments/assets/d0284d0a-badc-427b-8dab-98c57253d32b" />
 
+<img width="1275" height="714" alt="image" src="https://github.com/user-attachments/assets/647b256f-91f6-4b60-8487-3c967af38065" />
 
 Tablas Delta materializadas en la carpeta `/gold/` listas para consumo en BI:
 
@@ -100,17 +101,17 @@ El repositorio implementa buenas prácticas de **DataOps** con separación de ca
 
 ## 📊 Dashboard Ejecutivo en Power BI
 
-*(Próximamente / Arrastra aquí la captura de tu dashboard final en Power BI Desktop)*
-
+<img width="906" height="753" alt="image" src="https://github.com/user-attachments/assets/5db62cbe-9399-4daa-b049-b3327d01c868" />
 ---
 
-## 👩‍💻 Autora
+👩‍💻 Autora
 
-**Ana Ferreira** — *Data Engineer & Business Intelligence Analyst*
+Ana Ferreira — Data Engineer | Business Intelligence Analyst
 
-Proyecto desarrollado como demostración de arquitectura moderna de datos extremo a extremo en **Microsoft Azure** y **Power BI**.
+Este proyecto fue desarrollado como una demostración práctica de una arquitectura moderna de datos de extremo a extremo (End-to-End), utilizando Microsoft Azure y Power BI.
 
-[![LinkedIn](https://shields.io)](https://www.linkedin.com/in/anaferreirabezerra/)
-[![Email](https://shields.io)](mailto:ani.bf95@gmail.com)
+![LinkedIn](https://img.shields.io/badge/LinkedIn-Perfil-blue?logo=linkedin)
+
+![Email](https://img.shields.io/badge/Email-Contacto-red?logo=gmail)
 
 
