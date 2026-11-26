@@ -101,7 +101,8 @@ El repositorio implementa buenas prácticas de **DataOps** con separación de ca
 
 ## 📊 Dashboard Ejecutivo en Power BI
 
-<img width="906" height="753" alt="image" src="https://github.com/user-attachments/assets/5db62cbe-9399-4daa-b049-b3327d01c868" />
+<img width="906" height="750" alt="image" src="https://github.com/user-attachments/assets/e621aec7-c173-4cd2-b4df-35009ff8a40e" />
+
 ---
 
 👩‍💻 Autora
