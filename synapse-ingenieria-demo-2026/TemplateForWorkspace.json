@@ -109,7 +109,7 @@
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
 				"content": {
-					"query": "USE db_gold_powerbi;\nGO\n\nCREATE OR ALTER VIEW vw_dim_cliente AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/dim_cliente/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_dim_fecha AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/dim_fecha/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_dim_producto AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/dim_producto/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_dim_ubicacion AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/dim_ubicacion/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_fact_ventas AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'abfss://datos@proyectos2027.dfs.core.windows.net/gold/fact_ventas/',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n",
+					"query": "USE db_gold_powerbi;\nGO\n\nCREATE OR ALTER VIEW vw_dim_cliente AS\nSELECT * FROM OPENROWSET(\n    BULK 'gold/dim_cliente/',\n    DATA_SOURCE = 'GoldDataLake',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_dim_fecha AS\nSELECT * FROM OPENROWSET(\n    BULK 'gold/dim_fecha/',\n    DATA_SOURCE = 'GoldDataLake',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_dim_producto AS\nSELECT * FROM OPENROWSET(\n    BULK 'gold/dim_producto/',\n    DATA_SOURCE = 'GoldDataLake',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_dim_ubicacion AS\nSELECT * FROM OPENROWSET(\n    BULK 'gold/dim_ubicacion/',\n    DATA_SOURCE = 'GoldDataLake',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\nCREATE OR ALTER VIEW vw_fact_ventas AS\nSELECT * FROM OPENROWSET(\n    BULK 'gold/fact_ventas/',\n    DATA_SOURCE = 'GoldDataLake',\n    FORMAT = 'DELTA'\n) AS rows;\nGO\n\n",
 					"metadata": {
 						"language": "sql"
 					},
@@ -7091,1224 +7091,20 @@
 					"executorMemory": "28g",
 					"executorCores": 4,
 					"numExecutors": 2,
-					"runAsWorkspaceSystemIdentity": false,
 					"conf": {
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "4218de6d-09e9-41f8-8bc0-8a3cac5af898"
+						"spark.autotune.trackingId": "e800894e-fe2d-4b3c-8586-793cb239b040"
 					}
 				},
 				"metadata": {
 					"saveOutput": true,
-					"synapse_widget": {
-						"version": "0.1",
-						"state": {
-							"2abe5024-d3a8-47fd-916a-84230006a7b2": {
-								"type": "Synapse.DataFrame",
-								"sync_state": {
-									"table": {
-										"rows": [
-											{
-												"0": "0",
-												"1": "-1",
-												"2": "Desconocido",
-												"3": "Desconocido",
-												"4": "***",
-												"5": "***"
-											},
-											{
-												"0": "1",
-												"1": "1",
-												"2": "Leanne",
-												"3": "Graham",
-												"4": "s***@april.biz",
-												"5": "1770***6442"
-											},
-											{
-												"0": "2",
-												"1": "2",
-												"2": "Ervin",
-												"3": "Howell",
-												"4": "s***@melissa.tv",
-												"5": "0106***9125"
-											},
-											{
-												"0": "3",
-												"1": "3",
-												"2": "Clementine",
-												"3": "Bauch",
-												"4": "n***@yesenia.net",
-												"5": "1463***4447"
-											},
-											{
-												"0": "4",
-												"1": "4",
-												"2": "Patricia",
-												"3": "Lebsack",
-												"4": "j***@kory.org",
-												"5": "4931***3156"
-											},
-											{
-												"0": "5",
-												"1": "5",
-												"2": "Chelsey",
-												"3": "Dietrich",
-												"4": "l***@annie.ca",
-												"5": "2549***1289"
-											},
-											{
-												"0": "6",
-												"1": "6",
-												"2": "Dennis",
-												"3": "Schulist",
-												"4": "k***@jasper.info",
-												"5": "1477***6430"
-											},
-											{
-												"0": "7",
-												"1": "7",
-												"2": "Kurtis",
-												"3": "Weissnat",
-												"4": "t***@billy.biz",
-												"5": "2100***6132"
-											},
-											{
-												"0": "8",
-												"1": "8",
-												"2": "Nicholas",
-												"3": "Runolfsdottir V",
-												"4": "s***@rosamond.me",
-												"5": "5864***3140"
-											},
-											{
-												"0": "9",
-												"1": "9",
-												"2": "Glenna",
-												"3": "Reichert",
-												"4": "c***@dana.io",
-												"5": "7759***1206"
-											},
-											{
-												"0": "10",
-												"1": "10",
-												"2": "Clementina",
-												"3": "DuBuque",
-												"4": "r***@karina.biz",
-												"5": "0246***3804"
-											}
-										],
-										"schema": [
-											{
-												"key": "0",
-												"name": "cliente_key",
-												"type": "bigint"
-											},
-											{
-												"key": "1",
-												"name": "id_cliente",
-												"type": "int"
-											},
-											{
-												"key": "2",
-												"name": "nombre",
-												"type": "string"
-											},
-											{
-												"key": "3",
-												"name": "sobrenombre",
-												"type": "string"
-											},
-											{
-												"key": "4",
-												"name": "email",
-												"type": "string"
-											},
-											{
-												"key": "5",
-												"name": "telefono",
-												"type": "string"
-											}
-										],
-										"truncated": false
-									},
-									"isSummary": false,
-									"language": "scala",
-									"wranglerEntryContext": {
-										"candidateVariableNames": [
-											"dim_cliente"
-										],
-										"dataframeType": "pyspark"
-									}
-								},
-								"persist_state": {
-									"view": {
-										"type": "details",
-										"chartOptions": {
-											"chartType": "bar",
-											"aggregationType": "sum",
-											"categoryFieldKeys": [
-												"1"
-											],
-											"seriesFieldKeys": [
-												"0"
-											],
-											"isStacked": false
-										}
-									}
-								}
-							},
-							"d5345438-f756-47f4-9243-4fad0447031f": {
-								"type": "Synapse.DataFrame",
-								"sync_state": {
-									"table": {
-										"rows": [
-											{
-												"0": "0",
-												"1": "-1",
-												"2": "Desconocida"
-											},
-											{
-												"0": "1",
-												"1": "1",
-												"2": "Aliyaview",
-												"3": "-14.399000",
-												"4": "-120.767700"
-											},
-											{
-												"0": "2",
-												"1": "2",
-												"2": "Bartholomebury",
-												"3": "24.646300",
-												"4": "-168.888900"
-											},
-											{
-												"0": "3",
-												"1": "3",
-												"2": "Gwenborough",
-												"3": "-37.315900",
-												"4": "81.149600"
-											},
-											{
-												"0": "4",
-												"1": "4",
-												"2": "Howemouth",
-												"3": "24.891800",
-												"4": "21.898400"
-											},
-											{
-												"0": "5",
-												"1": "5",
-												"2": "Lebsackbury",
-												"3": "-38.238600",
-												"4": "57.223200"
-											},
-											{
-												"0": "6",
-												"1": "6",
-												"2": "Mckenziehaven",
-												"3": "-68.610200",
-												"4": "-47.065300"
-											},
-											{
-												"0": "7",
-												"1": "7",
-												"2": "Roscoeview",
-												"3": "-31.812900",
-												"4": "62.534200"
-											},
-											{
-												"0": "8",
-												"1": "8",
-												"2": "South Christy",
-												"3": "-71.419700",
-												"4": "71.747800"
-											},
-											{
-												"0": "9",
-												"1": "9",
-												"2": "South Elvis",
-												"3": "29.457200",
-												"4": "-164.299000"
-											},
-											{
-												"0": "10",
-												"1": "10",
-												"2": "Wisokyburgh",
-												"3": "-43.950900",
-												"4": "-34.461800"
-											}
-										],
-										"schema": [
-											{
-												"key": "0",
-												"name": "ubicacion_key",
-												"type": "bigint"
-											},
-											{
-												"key": "1",
-												"name": "id_ubicacion",
-												"type": "string"
-											},
-											{
-												"key": "2",
-												"name": "ciudad",
-												"type": "string"
-											},
-											{
-												"key": "3",
-												"name": "latitud",
-												"type": "decimal"
-											},
-											{
-												"key": "4",
-												"name": "longitud",
-												"type": "decimal"
-											}
-										],
-										"truncated": false
-									},
-									"isSummary": false,
-									"language": "scala",
-									"wranglerEntryContext": {
-										"candidateVariableNames": [
-											"dim_ubicacion"
-										],
-										"dataframeType": "pyspark"
-									}
-								},
-								"persist_state": {
-									"view": {
-										"type": "details",
-										"chartOptions": {
-											"chartType": "bar",
-											"aggregationType": "sum",
-											"categoryFieldKeys": [
-												"1"
-											],
-											"seriesFieldKeys": [
-												"0"
-											],
-											"isStacked": false
-										}
-									}
-								}
-							},
-							"0626cd69-bd15-4cf4-bebe-097e31894fb9": {
-								"type": "Synapse.DataFrame",
-								"sync_state": {
-									"table": {
-										"rows": [
-											{
-												"0": "0",
-												"1": "-1",
-												"2": "Desconocido",
-												"3": "Desconocida"
-											},
-											{
-												"0": "1",
-												"1": "101",
-												"2": "Notebook",
-												"3": "Tecnologia"
-											},
-											{
-												"0": "2",
-												"1": "102",
-												"2": "Mouse",
-												"3": "Accesorios"
-											},
-											{
-												"0": "3",
-												"1": "103",
-												"2": "Teclado",
-												"3": "Accesorios"
-											},
-											{
-												"0": "4",
-												"1": "104",
-												"2": "Monitor",
-												"3": "Tecnologia"
-											},
-											{
-												"0": "5",
-												"1": "105",
-												"2": "Auriculares",
-												"3": "Accesorios"
-											},
-											{
-												"0": "6",
-												"1": "106",
-												"2": "Webcam",
-												"3": "Accesorios"
-											},
-											{
-												"0": "7",
-												"1": "107",
-												"2": "Silla Ergonomica",
-												"3": "Muebles"
-											}
-										],
-										"schema": [
-											{
-												"key": "0",
-												"name": "producto_key",
-												"type": "bigint"
-											},
-											{
-												"key": "1",
-												"name": "id_producto",
-												"type": "int"
-											},
-											{
-												"key": "2",
-												"name": "nombre_producto",
-												"type": "string"
-											},
-											{
-												"key": "3",
-												"name": "categoria",
-												"type": "string"
-											}
-										],
-										"truncated": false
-									},
-									"isSummary": false,
-									"language": "scala",
-									"wranglerEntryContext": {
-										"candidateVariableNames": [
-											"dim_producto"
-										],
-										"dataframeType": "pyspark"
-									}
-								},
-								"persist_state": {
-									"view": {
-										"type": "details",
-										"chartOptions": {
-											"chartType": "bar",
-											"aggregationType": "sum",
-											"categoryFieldKeys": [
-												"1"
-											],
-											"seriesFieldKeys": [
-												"0"
-											],
-											"isStacked": false
-										}
-									}
-								}
-							},
-							"9c19deec-7d3a-4c36-9ea7-9a9aeb314686": {
-								"type": "Synapse.DataFrame",
-								"sync_state": {
-									"table": {
-										"rows": [
-											{
-												"0": "0"
-											},
-											{
-												"0": "20261101",
-												"1": "2026-11-01",
-												"2": "1",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261102",
-												"1": "2026-11-02",
-												"2": "2",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261103",
-												"1": "2026-11-03",
-												"2": "3",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261104",
-												"1": "2026-11-04",
-												"2": "4",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261105",
-												"1": "2026-11-05",
-												"2": "5",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261106",
-												"1": "2026-11-06",
-												"2": "6",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261107",
-												"1": "2026-11-07",
-												"2": "7",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261108",
-												"1": "2026-11-08",
-												"2": "8",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261109",
-												"1": "2026-11-09",
-												"2": "9",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261110",
-												"1": "2026-11-10",
-												"2": "10",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261111",
-												"1": "2026-11-11",
-												"2": "11",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261112",
-												"1": "2026-11-12",
-												"2": "12",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261113",
-												"1": "2026-11-13",
-												"2": "13",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261114",
-												"1": "2026-11-14",
-												"2": "14",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261115",
-												"1": "2026-11-15",
-												"2": "15",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261116",
-												"1": "2026-11-16",
-												"2": "16",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261117",
-												"1": "2026-11-17",
-												"2": "17",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261118",
-												"1": "2026-11-18",
-												"2": "18",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261119",
-												"1": "2026-11-19",
-												"2": "19",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261120",
-												"1": "2026-11-20",
-												"2": "20",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261121",
-												"1": "2026-11-21",
-												"2": "21",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261122",
-												"1": "2026-11-22",
-												"2": "22",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261123",
-												"1": "2026-11-23",
-												"2": "23",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261124",
-												"1": "2026-11-24",
-												"2": "24",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261125",
-												"1": "2026-11-25",
-												"2": "25",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261126",
-												"1": "2026-11-26",
-												"2": "26",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261127",
-												"1": "2026-11-27",
-												"2": "27",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261128",
-												"1": "2026-11-28",
-												"2": "28",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261129",
-												"1": "2026-11-29",
-												"2": "29",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261130",
-												"1": "2026-11-30",
-												"2": "30",
-												"3": "11",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261201",
-												"1": "2026-12-01",
-												"2": "1",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261202",
-												"1": "2026-12-02",
-												"2": "2",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261203",
-												"1": "2026-12-03",
-												"2": "3",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261204",
-												"1": "2026-12-04",
-												"2": "4",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261205",
-												"1": "2026-12-05",
-												"2": "5",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261206",
-												"1": "2026-12-06",
-												"2": "6",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261207",
-												"1": "2026-12-07",
-												"2": "7",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261208",
-												"1": "2026-12-08",
-												"2": "8",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261209",
-												"1": "2026-12-09",
-												"2": "9",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261210",
-												"1": "2026-12-10",
-												"2": "10",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261211",
-												"1": "2026-12-11",
-												"2": "11",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261212",
-												"1": "2026-12-12",
-												"2": "12",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261213",
-												"1": "2026-12-13",
-												"2": "13",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261214",
-												"1": "2026-12-14",
-												"2": "14",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261215",
-												"1": "2026-12-15",
-												"2": "15",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261216",
-												"1": "2026-12-16",
-												"2": "16",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261217",
-												"1": "2026-12-17",
-												"2": "17",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261218",
-												"1": "2026-12-18",
-												"2": "18",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261219",
-												"1": "2026-12-19",
-												"2": "19",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261220",
-												"1": "2026-12-20",
-												"2": "20",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261221",
-												"1": "2026-12-21",
-												"2": "21",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261222",
-												"1": "2026-12-22",
-												"2": "22",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261223",
-												"1": "2026-12-23",
-												"2": "23",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261224",
-												"1": "2026-12-24",
-												"2": "24",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261225",
-												"1": "2026-12-25",
-												"2": "25",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261226",
-												"1": "2026-12-26",
-												"2": "26",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261227",
-												"1": "2026-12-27",
-												"2": "27",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261228",
-												"1": "2026-12-28",
-												"2": "28",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261229",
-												"1": "2026-12-29",
-												"2": "29",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261230",
-												"1": "2026-12-30",
-												"2": "30",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20261231",
-												"1": "2026-12-31",
-												"2": "31",
-												"3": "12",
-												"4": "4",
-												"5": "2026"
-											},
-											{
-												"0": "20270101",
-												"1": "2027-01-01",
-												"2": "1",
-												"3": "1",
-												"4": "1",
-												"5": "2027"
-											}
-										],
-										"schema": [
-											{
-												"key": "0",
-												"name": "fecha_key",
-												"type": "int"
-											},
-											{
-												"key": "1",
-												"name": "fecha",
-												"type": "date"
-											},
-											{
-												"key": "2",
-												"name": "dia",
-												"type": "int"
-											},
-											{
-												"key": "3",
-												"name": "mes",
-												"type": "int"
-											},
-											{
-												"key": "4",
-												"name": "trimestre",
-												"type": "int"
-											},
-											{
-												"key": "5",
-												"name": "anio",
-												"type": "int"
-											}
-										],
-										"truncated": false
-									},
-									"isSummary": false,
-									"language": "scala",
-									"wranglerEntryContext": {
-										"candidateVariableNames": [
-											"dim_fecha"
-										],
-										"dataframeType": "pyspark"
-									}
-								},
-								"persist_state": {
-									"view": {
-										"type": "details",
-										"chartOptions": {
-											"chartType": "bar",
-											"aggregationType": "sum",
-											"categoryFieldKeys": [
-												"1"
-											],
-											"seriesFieldKeys": [
-												"0"
-											],
-											"isStacked": false
-										}
-									}
-								}
-							},
-							"b4c7a379-3c50-4f30-b253-8aebb863341f": {
-								"type": "Synapse.DataFrame",
-								"sync_state": {
-									"table": {
-										"rows": [
-											{
-												"0": "1",
-												"1": "3",
-												"2": "1",
-												"3": "20261101",
-												"4": "1",
-												"5": "1",
-												"6": "1",
-												"7": "100.00",
-												"8": "100.00"
-											},
-											{
-												"0": "2",
-												"1": "10",
-												"2": "2",
-												"3": "20261101",
-												"4": "2",
-												"5": "2",
-												"6": "1",
-												"7": "200.00",
-												"8": "200.00"
-											},
-											{
-												"0": "1",
-												"1": "3",
-												"2": "2",
-												"3": "20261102",
-												"4": "3",
-												"5": "3",
-												"6": "1",
-												"7": "80.00",
-												"8": "80.00"
-											},
-											{
-												"0": "3",
-												"1": "6",
-												"2": "3",
-												"3": "20261102",
-												"4": "4",
-												"5": "4",
-												"6": "1",
-												"7": "120.00",
-												"8": "120.00"
-											},
-											{
-												"0": "4",
-												"1": "9",
-												"2": "1",
-												"3": "20261102",
-												"4": "5",
-												"5": "5",
-												"6": "1",
-												"7": "150.00",
-												"8": "150.00"
-											},
-											{
-												"0": "5",
-												"1": "7",
-												"2": "0",
-												"3": "20261102",
-												"4": "6",
-												"5": "6",
-												"6": "1",
-												"7": "90.00",
-												"8": "90.00"
-											},
-											{
-												"0": "0",
-												"1": "0",
-												"2": "1",
-												"3": "20261102",
-												"4": "8",
-												"5": "8",
-												"6": "1",
-												"7": "30.00",
-												"8": "30.00"
-											},
-											{
-												"0": "3",
-												"1": "6",
-												"2": "4",
-												"3": "20261102",
-												"4": "9",
-												"5": "9",
-												"6": "1",
-												"7": "75.00",
-												"8": "75.00"
-											},
-											{
-												"0": "4",
-												"1": "9",
-												"2": "2",
-												"3": "20270101",
-												"4": "10",
-												"5": "10",
-												"6": "1",
-												"7": "40.00",
-												"8": "40.00"
-											},
-											{
-												"0": "1",
-												"1": "3",
-												"2": "5",
-												"3": "20261112",
-												"4": "11",
-												"5": "11",
-												"6": "2",
-												"7": "45.90",
-												"8": "91.80"
-											},
-											{
-												"0": "1",
-												"1": "3",
-												"2": "6",
-												"3": "20261112",
-												"4": "11",
-												"5": "12",
-												"6": "1",
-												"7": "72.50",
-												"8": "72.50"
-											},
-											{
-												"0": "2",
-												"1": "10",
-												"2": "7",
-												"3": "20261112",
-												"4": "12",
-												"5": "13",
-												"6": "1",
-												"7": "210.00",
-												"8": "210.00"
-											},
-											{
-												"0": "3",
-												"1": "6",
-												"2": "1",
-												"3": "20261112",
-												"4": "13",
-												"5": "14",
-												"6": "1",
-												"7": "950.00",
-												"8": "950.00"
-											},
-											{
-												"0": "1",
-												"1": "3",
-												"2": "1",
-												"3": "20261119",
-												"4": "14",
-												"5": "15",
-												"6": "1",
-												"7": "950.00",
-												"8": "950.00"
-											},
-											{
-												"0": "2",
-												"1": "10",
-												"2": "7",
-												"3": "20261119",
-												"4": "15",
-												"5": "16",
-												"6": "2",
-												"7": "210.00",
-												"8": "420.00"
-											}
-										],
-										"schema": [
-											{
-												"key": "0",
-												"name": "cliente_key",
-												"type": "bigint"
-											},
-											{
-												"key": "1",
-												"name": "ubicacion_key",
-												"type": "bigint"
-											},
-											{
-												"key": "2",
-												"name": "producto_key",
-												"type": "bigint"
-											},
-											{
-												"key": "3",
-												"name": "fecha_key",
-												"type": "int"
-											},
-											{
-												"key": "4",
-												"name": "id_pedido",
-												"type": "int"
-											},
-											{
-												"key": "5",
-												"name": "id_detalle",
-												"type": "int"
-											},
-											{
-												"key": "6",
-												"name": "cantidad",
-												"type": "int"
-											},
-											{
-												"key": "7",
-												"name": "precio_unitario",
-												"type": "decimal"
-											},
-											{
-												"key": "8",
-												"name": "importe",
-												"type": "decimal"
-											}
-										],
-										"truncated": false
-									},
-									"isSummary": false,
-									"language": "scala",
-									"wranglerEntryContext": {
-										"dataframeType": "pyspark"
-									}
-								},
-								"persist_state": {
-									"view": {
-										"type": "details",
-										"chartOptions": {
-											"chartType": "bar",
-											"aggregationType": "sum",
-											"categoryFieldKeys": [
-												"1"
-											],
-											"seriesFieldKeys": [
-												"0"
-											],
-											"isStacked": false
-										}
-									}
-								}
-							}
-						}
-					},
 					"enableDebugMode": false,
+					"kernelspec": {
+						"name": "synapse_pyspark",
+						"display_name": "Synapse PySpark"
+					},
 					"language_info": {
 						"name": "python"
 					},
@@ -8319,14 +7115,12 @@
 						"endpoint": "https://synapse-ingenieria-demo-2026.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkDemo",
 						"auth": {
 							"type": "AAD",
-							"authResource": "https://dev.azuresynapse.net",
-							"authHeader": null
+							"authResource": "https://dev.azuresynapse.net"
 						},
 						"sparkVersion": "3.5",
 						"nodeCount": 3,
 						"cores": 4,
-						"memory": 28,
-						"extraHeader": null
+						"memory": 28
 					},
 					"sessionKeepAliveTimeout": 30
 				},
@@ -8354,7 +7148,7 @@
 							"print(\"Rutas configuradas para Silver → Gold\")"
 						],
 						"outputs": [],
-						"execution_count": 2
+						"execution_count": 1
 					},
 					{
 						"cell_type": "code",
@@ -8399,7 +7193,7 @@
 							"    df.printSchema()"
 						],
 						"outputs": [],
-						"execution_count": 3
+						"execution_count": 2
 					},
 					{
 						"cell_type": "code",
@@ -8454,7 +7248,7 @@
 							"print(\"Clientes en dim_cliente, incluido el desconocido:\", dim_cliente.count())"
 						],
 						"outputs": [],
-						"execution_count": 4
+						"execution_count": 3
 					},
 					{
 						"cell_type": "code",
@@ -8502,7 +7296,7 @@
 							"print(\"Ubicaciones en dim_ubicacion, incluida la desconocida:\", dim_ubicacion.count())"
 						],
 						"outputs": [],
-						"execution_count": 5
+						"execution_count": 4
 					},
 					{
 						"cell_type": "code",
@@ -8548,7 +7342,7 @@
 							"print(\"Productos en dim_producto, incluido el desconocido:\", dim_producto.count())"
 						],
 						"outputs": [],
-						"execution_count": 6
+						"execution_count": 5
 					},
 					{
 						"cell_type": "code",
@@ -8608,7 +7402,7 @@
 							"print(\"Fechas en dim_fecha, incluida la desconocida:\", dim_fecha.count())"
 						],
 						"outputs": [],
-						"execution_count": 7
+						"execution_count": 6
 					},
 					{
 						"cell_type": "code",
@@ -8616,21 +7410,62 @@
 							"collapsed": false
 						},
 						"source": [
-							"# Separar las líneas con precio negativo o nulo para no incorporarlas\n",
-							"# a la tabla de hechos hasta revisarlas.\n",
-							"lineas_precio_invalido = df_detalle_pedido.filter(\n",
-							"    F.col(\"precio_unitario\").isNull()\n",
-							"    | (F.col(\"precio_unitario\") < 0)\n",
+							"# Separar las líneas que requieren revisión antes de construir la tabla de hechos.\n",
+							"# Se conserva una sola fila por línea, aunque tenga más de una anomalía.\n",
+							"detalle_revision = (\n",
+							"    df_detalle_pedido.alias(\"det\")\n",
+							"    .join(\n",
+							"        df_pedidos.alias(\"ped\"),\n",
+							"        F.col(\"det.id_pedido\") == F.col(\"ped.id_pedido\"),\n",
+							"        \"left\"\n",
+							"    )\n",
+							"    .join(\n",
+							"        df_cliente.alias(\"cli\"),\n",
+							"        F.col(\"ped.id_cliente\") == F.col(\"cli.id_cliente\"),\n",
+							"        \"left\"\n",
+							"    )\n",
+							"    .join(\n",
+							"        dim_cliente.alias(\"dc\"),\n",
+							"        F.col(\"cli.id_cliente\") == F.col(\"dc.id_cliente\"),\n",
+							"        \"left\"\n",
+							"    )\n",
+							"    .withColumn(\n",
+							"        \"motivo_revision\",\n",
+							"        F.concat_ws(\n",
+							"            \" | \",\n",
+							"            F.when(F.col(\"det.precio_unitario\").isNull(), F.lit(\"PRECIO_NULO\")),\n",
+							"            F.when(F.col(\"det.precio_unitario\") < 0, F.lit(\"PRECIO_NEGATIVO\")),\n",
+							"            F.when(F.col(\"dc.cliente_key\").isNull(), F.lit(\"CLIENTE_SIN_DIMENSION_GOLD\"))\n",
+							"        )\n",
+							"    )\n",
 							")\n",
 							"\n",
-							"detalle_valido = df_detalle_pedido.filter(\n",
-							"    F.col(\"precio_unitario\").isNotNull()\n",
-							"    & (F.col(\"precio_unitario\") >= 0)\n",
+							"lineas_revision = detalle_revision.filter(\n",
+							"    F.col(\"motivo_revision\") != \"\"\n",
+							").select(\n",
+							"    F.col(\"det.id_pedido\").cast(\"int\").alias(\"id_pedido\"),\n",
+							"    F.col(\"det.id_detalle\").cast(\"int\").alias(\"id_detalle\"),\n",
+							"    F.col(\"ped.id_cliente\").cast(\"int\").alias(\"id_cliente\"),\n",
+							"    F.col(\"det.id_producto\").cast(\"int\").alias(\"id_producto\"),\n",
+							"    F.col(\"det.cantidad\").cast(\"int\").alias(\"cantidad\"),\n",
+							"    F.col(\"det.precio_unitario\").alias(\"precio_unitario\"),\n",
+							"    F.col(\"motivo_revision\")\n",
 							")\n",
 							"\n",
-							"# Unir cada línea con su pedido y con las dimensiones Gold\n",
+							"# Solo pasan a Gold las líneas con precio válido y cliente presente en dim_cliente.\n",
+							"detalle_para_gold = (\n",
+							"    detalle_revision\n",
+							"    .filter(\n",
+							"        F.col(\"det.precio_unitario\").isNotNull()\n",
+							"        & (F.col(\"det.precio_unitario\") >= 0)\n",
+							"        & F.col(\"dc.cliente_key\").isNotNull()\n",
+							"    )\n",
+							"    .select(\"det.*\")\n",
+							")\n",
+							"\n",
+							"# Construir la tabla de hechos con las líneas aceptadas.\n",
 							"fact_ventas = (\n",
-							"    detalle_valido.alias(\"det\")\n",
+							"    detalle_para_gold.alias(\"det\")\n",
 							"    .join(\n",
 							"        df_pedidos.alias(\"ped\"),\n",
 							"        F.col(\"det.id_pedido\") == F.col(\"ped.id_pedido\"),\n",
@@ -8662,19 +7497,14 @@
 							"        \"left\"\n",
 							"    )\n",
 							"    .select(\n",
-							"        F.coalesce(F.col(\"dc.cliente_key\"), F.lit(0))\n",
-							"            .cast(\"long\").alias(\"cliente_key\"),\n",
-							"        F.coalesce(F.col(\"du.ubicacion_key\"), F.lit(0))\n",
-							"            .cast(\"long\").alias(\"ubicacion_key\"),\n",
-							"        F.coalesce(F.col(\"dp.producto_key\"), F.lit(0))\n",
-							"            .cast(\"long\").alias(\"producto_key\"),\n",
-							"        F.coalesce(F.col(\"df.fecha_key\"), F.lit(0))\n",
-							"            .cast(\"int\").alias(\"fecha_key\"),\n",
+							"        F.coalesce(F.col(\"dc.cliente_key\"), F.lit(0)).cast(\"long\").alias(\"cliente_key\"),\n",
+							"        F.coalesce(F.col(\"du.ubicacion_key\"), F.lit(0)).cast(\"long\").alias(\"ubicacion_key\"),\n",
+							"        F.coalesce(F.col(\"dp.producto_key\"), F.lit(0)).cast(\"long\").alias(\"producto_key\"),\n",
+							"        F.coalesce(F.col(\"df.fecha_key\"), F.lit(0)).cast(\"int\").alias(\"fecha_key\"),\n",
 							"        F.col(\"det.id_pedido\").cast(\"int\").alias(\"id_pedido\"),\n",
 							"        F.col(\"det.id_detalle\").cast(\"int\").alias(\"id_detalle\"),\n",
 							"        F.col(\"det.cantidad\").cast(\"int\").alias(\"cantidad\"),\n",
-							"        F.col(\"det.precio_unitario\").cast(\"decimal(10,2)\")\n",
-							"            .alias(\"precio_unitario\"),\n",
+							"        F.col(\"det.precio_unitario\").cast(\"decimal(10,2)\").alias(\"precio_unitario\"),\n",
 							"        (\n",
 							"            F.col(\"det.cantidad\").cast(\"decimal(10,2)\")\n",
 							"            * F.col(\"det.precio_unitario\").cast(\"decimal(10,2)\")\n",
@@ -8683,20 +7513,22 @@
 							")\n",
 							"\n",
 							"display(fact_ventas.orderBy(\"id_pedido\", \"id_detalle\"))\n",
+							"display(lineas_revision.orderBy(\"id_pedido\", \"id_detalle\"))\n",
 							"\n",
 							"print(\"Líneas válidas para Gold:\", fact_ventas.count())\n",
-							"print(\"Líneas apartadas por precio negativo o nulo:\", lineas_precio_invalido.count())\n",
+							"print(\"Líneas apartadas para revisión:\", lineas_revision.count())\n",
 							"print(\n",
-							"    \"Líneas con cliente desconocido:\",\n",
+							"    \"Líneas con cliente_key 0 en fact_ventas:\",\n",
 							"    fact_ventas.filter(F.col(\"cliente_key\") == 0).count()\n",
 							")\n",
 							"print(\n",
 							"    \"Líneas con producto desconocido:\",\n",
 							"    fact_ventas.filter(F.col(\"producto_key\") == 0).count()\n",
-							")"
+							")\n",
+							""
 						],
 						"outputs": [],
-						"execution_count": 8
+						"execution_count": 7
 					},
 					{
 						"cell_type": "code",
@@ -8720,7 +7552,7 @@
 							"    print(f\"{nombre} guardada en: {ruta}\")"
 						],
 						"outputs": [],
-						"execution_count": 9
+						"execution_count": 8
 					}
 				]
 			},
