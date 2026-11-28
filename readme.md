@@ -57,8 +57,6 @@ Estructura de almacenamiento en el contenedor `datos` siguiendo el patrón Medal
 
 <img width="860" height="607" alt="image" src="https://github.com/user-attachments/assets/d0284d0a-badc-427b-8dab-98c57253d32b" />
 
-<img width="1275" height="714" alt="image" src="https://github.com/user-attachments/assets/647b256f-91f6-4b60-8487-3c967af38065" />
-
 Tablas Delta materializadas en la carpeta `/gold/` listas para consumo en BI:
 
 <img width="860" height="579" alt="image" src="https://github.com/user-attachments/assets/4814543e-8281-4c59-8ed2-588184024ee2" />
@@ -100,6 +98,8 @@ El repositorio implementa buenas prácticas de **DataOps** con separación de ca
 ---
 
 ## 📊 Dashboard Ejecutivo en Power BI
+
+<img width="1275" height="714" alt="image" src="https://github.com/user-attachments/assets/647b256f-91f6-4b60-8487-3c967af38065" />
 
 <img width="906" height="750" alt="image" src="https://github.com/user-attachments/assets/e621aec7-c173-4cd2-b4df-35009ff8a40e" />
 
